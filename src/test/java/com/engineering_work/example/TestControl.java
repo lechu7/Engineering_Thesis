@@ -26,7 +26,7 @@ public class TestControl {
 		Firefox, Chrome, Opera, IE, Edge;
 	}
 	//toDo Lepszy wybór przegl¹darki
-	Browsers browser= Browsers.Firefox;
+	Browsers browser= Browsers.Chrome;
 			
 	@SuppressWarnings("deprecation")
 	@BeforeTest
@@ -54,7 +54,7 @@ public class TestControl {
 				driver.manage().window().maximize();
 				break;
 		  case IE:
-				System.setProperty("webdriver.ie.driver", ".\\src\\test\\resources\\drivers\\IEDriverServer32.exe");
+				System.setProperty("webdriver.ie.driver", ".\\src\\test\\resources\\drivers\\IEDriverServer64.exe");
 				//DesiredCapabilities caps = new DesiredCapabilities();
 				//caps.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
 				driver = new InternetExplorerDriver();
