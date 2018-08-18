@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2018-08-18T20:09:31Z" name="Default suite" finished-at="2018-08-18T20:09:34Z" duration-ms="3395">
+    <groups>
+    </groups>
+    <test started-at="2018-08-18T20:09:31Z" name="Default test" finished-at="2018-08-18T20:09:34Z" duration-ms="3395">
+      <class name="com.engineering_work.example.TestControl">
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.engineering_work.example.TestControl@6a2b953e]" started-at="2018-08-18T20:09:31Z" name="beforeTest" finished-at="2018-08-18T20:09:33Z" duration-ms="2025" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method signature="f()[pri:0, instance:com.engineering_work.example.TestControl@6a2b953e]" started-at="2018-08-18T20:09:33Z" name="f" finished-at="2018-08-18T20:09:34Z" duration-ms="1317" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- f -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.engineering_work.example.TestControl@6a2b953e]" started-at="2018-08-18T20:09:34Z" name="afterTest" finished-at="2018-08-18T20:09:34Z" duration-ms="22" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+      </class> <!-- com.engineering_work.example.TestControl -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
