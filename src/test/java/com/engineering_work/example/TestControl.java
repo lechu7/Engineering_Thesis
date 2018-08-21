@@ -21,12 +21,13 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class TestControl {
 
 	WebDriver driver;
+	Rest_currency rc= new Rest_currency();
 
 	public enum Browsers {
 		Firefox, Chrome, Opera, IE, Edge;
 	}
 	//toDo Lepszy wybór przegl¹darki
-	Browsers browser= Browsers.Chrome;
+	Browsers browser= Browsers.Firefox;
 			
 	@SuppressWarnings("deprecation")
 	@BeforeTest
@@ -75,16 +76,17 @@ public class TestControl {
 
 	@Test
 	public void f() {
-		driver.get("http://google.com");
+		driver.get("http://www.nbp.pl");
+		rc.exchange("A","EUR",true);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		WebElement header = driver.findElement(By.id("lst-ib"));
+		WebElement header = driver.findElement(By.id("breadcrumbs"));
 		AssertJUnit.assertTrue((header.isDisplayed()));
 	}
 
 	@AfterTest
 	public void afterTest() {
 		//driver.quit();
-	
+
 		driver.close();
 		//Problem with closing the browser (Opera)
 		if	(browser==Browsers.Opera)
@@ -94,7 +96,7 @@ public class TestControl {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}	
 		}
 	}
 
