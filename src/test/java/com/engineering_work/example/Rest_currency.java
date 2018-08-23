@@ -8,80 +8,87 @@ import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 
 public class Rest_currency {
 
-	// ... , bool ObjectCurrency- rozpoznanie czy kurs z³ota czy waluty
-	public String exchange( String table, String code, boolean Currency) {
-		//adres url w stringu
+	// Method for currency
+	public String exchange(String table, String code) {
+		// address url in string
 		String url;
-		//adres url
+		// address url
 		URL urlTMP;
-		//deklaracja po³¹czenia
+		// declaration of connection
 		URLConnection Connection;
 		BufferedReader Reader;
 		String Line;
 		StringBuilder sbResponse;
 		String Response = null;
-				
-		//dla waluty
-		if	(Currency==true)
-			{
-			url="http://api.nbp.pl/api/exchangerates/rates/"+table+"/"+code+"/?format=json";
-			try {
-				urlTMP = new URL(url);
-				Connection = urlTMP.openConnection();
-				Reader = new BufferedReader(new InputStreamReader(Connection.getInputStream(), StandardCharsets.UTF_8));
-				sbResponse = new StringBuilder();
-				
 
-				while ((Line = Reader.readLine()) != null) {
-					sbResponse.append(Line);
-				}
-				
-			    Gson gson = new Gson();
-				ObjectCurrency cur = gson.fromJson(sbResponse.toString(), ObjectCurrency.class);
-				Response=cur.Get_currency_exchange().toString();
-				
-				//wypisanie na konsole wartoœci dla waluty
-				String tmpConsole="Wartoœæ kursu dla "+cur.Get_currency_name().toString()+" wynosi "+cur.Get_currency_exchange().toString()+" z³otych.";
-				System.out.println(tmpConsole);
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			}
-		//dla z³ota
-		else
-		{
-			url="http://api.nbp.pl/api/cenyzlota?format=json";
-			try {
-				urlTMP = new URL(url);
-				Connection = urlTMP.openConnection();
-				Reader = new BufferedReader(new InputStreamReader(Connection.getInputStream(), StandardCharsets.UTF_8));
-				sbResponse = new StringBuilder();
-				
-				while ((Line = Reader.readLine()) != null) {
-					sbResponse.append(Line);
-				}
+		url = "http://api.nbp.pl/api/exchangerates/rates/" + table + "/" + code + "/?format=json";
+		try {
+			urlTMP = new URL(url);
+			Connection = urlTMP.openConnection();
+			Reader = new BufferedReader(new InputStreamReader(Connection.getInputStream(), StandardCharsets.UTF_8));
+			sbResponse = new StringBuilder();
 
-				System.out.println(sbResponse.toString());
-			    Gson gson = new Gson();
-			    ObjectGold gold = gson.fromJson(sbResponse.toString(), ObjectGold.class);		    
-			    Response=gold.Get_gold_exchange().toString();
-				
-				//wypisanie na konsole wartoœci dla z³ota
-				String tmpConsole="Wartoœæ kursu dla z³ota wynosi "+gold.Get_gold_exchange().toString()+" z³otych.";
-				System.out.println(tmpConsole);
-				
-			} catch (Exception e) {
-				e.printStackTrace();
+			while ((Line = Reader.readLine()) != null) {
+				sbResponse.append(Line);
 			}
+			// writing to console JSON
+			System.out.println(sbResponse.toString());
+
+			Gson gson = new Gson();
+			ObjectCurrency cur = gson.fromJson(sbResponse.toString(), ObjectCurrency.class);
+			Response = cur.Get_currency_exchange().toString();
+
+			// writing to console values for the currency
+			String tmpConsole = "Values for the currency " + cur.Get_currency_name().toString() + " is "
+					+ cur.Get_currency_exchange().toString() + " z³otych.";
+			System.out.println(tmpConsole);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return Response;
+
+	}
+
+	// Method for gold
+	public String exchange() {
+
+		// address url in string
+		String url;
+		// address url
+		URL urlTMP;
+		// declaration of connection
+		URLConnection Connection;
+		BufferedReader Reader;
+		String Line;
+		StringBuilder sbResponse;
+		String Response = null;
+
+		url = "http://api.nbp.pl/api/cenyzlota?format=json";
+		try {
+			urlTMP = new URL(url);
+			Connection = urlTMP.openConnection();
+			Reader = new BufferedReader(new InputStreamReader(Connection.getInputStream(), StandardCharsets.UTF_8));
+			sbResponse = new StringBuilder();
+
+			while ((Line = Reader.readLine()) != null) {
+				sbResponse.append(Line);
 			}
-		
-		
+			// writing to console JSON
+			System.out.println(sbResponse.toString());
+			Gson gson = new Gson();
+			ObjectGold[] gold = gson.fromJson(sbResponse.toString(), ObjectGold[].class);
+
+			// writing to console values for the gold
+			String tmpConsole = "Values for the gold is " + gold[0].Get_gold_exchange() + " z³otych.";
+			System.out.println(tmpConsole);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return Response;
 	}
 }

@@ -2,24 +2,24 @@ package com.engineering_work.example;
 
 import java.util.ArrayList;
 
-//obiekt waluty z list¹ obiektów ObjectRate
-public class ObjectCurrency{
+//currency object with object list ObjectRate 
+public class ObjectCurrency {
 
-	
 	private String currency;
-	private ArrayList<ObjectRate> objectRates = new ArrayList<ObjectRate>();
+	private ArrayList<ObjectRate> rates;
 
-	ObjectCurrency(String table,String currency,String code, ArrayList<ObjectRate> objectRates)
-	{
-		this.currency=currency;
-		this.objectRates=objectRates;
+	ObjectCurrency(String currency, ArrayList<ObjectRate> objectRates) {
+		this.currency = currency;
+		this.rates = new ArrayList<ObjectRate>();
 	}
-	//Zwraca nazwê waluty
+
+	// return currency name
 	public String Get_currency_name() {
 		return this.currency;
 	}
-	//Zwraca aktualny kurs waluty
+
+	// return currency exchange from method form ObjectRate
 	public Double Get_currency_exchange() {
-		return this.objectRates.get(0).Get_currency_exchange();
+		return this.rates.get(0).Get_currency_exchange();
 	}
 }
