@@ -1,0 +1,2 @@
+
+2018/08/23 22:28:32:878 Uruchomiono Firefox [*C*:com.engineering_work.example.TestControl;/*M*:beforeTest;/*L*:47]

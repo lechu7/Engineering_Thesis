@@ -1,4 +1,4 @@
-//Klasa pobierajaca z API kurs walut
+//The class that download the current exchange rate with the API
 package com.engineering_work.example;
 
 import java.io.BufferedReader;
