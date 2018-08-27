@@ -51,12 +51,12 @@ public class Rest_currency {
 					+ Response + " z³otych.";
 			System.out.println(tmpConsole);
 			//writing to logs
-			logi.addToLogs("Pobrano kurs waluty- "+code+": "+Response+ " zlotych." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),53);
+			logi.addToLogs("Pobrano kurs waluty- "+code+": "+Response+ " zlotych." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),54);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			//writing to logs
-			logi.addToLogs("***ERROR***Nie pobrano kursu waluty- "+code+"." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),57);
+			logi.addToLogs("***ERROR***Nie pobrano kursu waluty- "+code+"." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),59);
 
 		}
 		return Response;
@@ -96,11 +96,11 @@ public class Rest_currency {
 			String tmpConsole = "Values for the gold is " + gold[0].Get_gold_exchange() + " z³otych.";
 			System.out.println(tmpConsole);
 			//writing to logs
-			logi.addToLogs("Pobrano kurs zlota- "+gold[0].Get_gold_exchange()+ " zlotych." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),96);
+			logi.addToLogs("Pobrano kurs zlota- "+gold[0].Get_gold_exchange()+ " zlotych." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),99);
 		} catch (Exception e) {
 			e.printStackTrace();
 			//writing to logs
-			logi.addToLogs("***ERROR***Nie pobrano kursu zlota- "+Response+ "zlotych." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),99);
+			logi.addToLogs("***ERROR***Nie pobrano kursu zlota- "+Response+ "zlotych." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),103);
 
 		}
 		return Response;

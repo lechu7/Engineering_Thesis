@@ -1,8 +1,9 @@
 package com.engineering_work.example;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -16,35 +17,53 @@ public class Logs {
 	      }
 	      return instance;
 	   }
-	 //Add logs and automatically save to logs.txt
-	public void addToLogs(String log, String className, String methodName, int line)throws IOException
+	 //Add empty line to file logs
+	public void addToLogs()throws IOException
 	{
 		try		
 		{
-			FileWriter file = new FileWriter("logs.txt", true);
-			BufferedWriter out = new BufferedWriter(file);
-			out.write("\n"+getCurrentData()+" "+log+" [*C*:"+className+";/*M*:"+methodName+";/*L*:"+line+"]");
-			out.close();
+			FileOutputStream fileStream = new FileOutputStream(new File("logs.txt"),true);
+			//Changed iso-8859-2 encoding for polish chars
+			OutputStreamWriter writer = new OutputStreamWriter(fileStream, "ISO-8859-2");
+			writer.write("\n--------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+			writer.close();
 		}
 		catch (Exception e)
 		{
 			System.out.println(e.getMessage());
 		}
 	}
-	//Clear file logs.txt after 
+	 //Add logs and automatically save to logs.txt in format ISO-8859-2
+	public void addToLogs(String log, String className, String methodName, int line)throws IOException
+	{
+		try		
+		{
+			FileOutputStream fileStream = new FileOutputStream(new File("logs.txt"),true);
+			//Changed iso-8859-2 encoding for polish chars
+			OutputStreamWriter writer = new OutputStreamWriter(fileStream, "ISO-8859-2");
+			writer.write("\n"+getCurrentData()+" "+log+" [*C*:"+className+";/*M*:"+methodName+";/*L*:"+line+"]");
+			writer.close();
+		}
+		catch (Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+	}
+	//Clear file logs.txt
 	public void clearFileLogs() throws IOException
 	{
 		try		
 		{
-			FileWriter file = new FileWriter("logs.txt", false);
-			BufferedWriter out = new BufferedWriter(file);
-			out.write("");
-			out.close();
-		System.out.println("Wyczyszczono plik logs.txt");
+			FileOutputStream fileStream = new FileOutputStream(new File("logs.txt"),false);
+			//Changed iso-8859-2 encoding for polish chars
+			OutputStreamWriter writer = new OutputStreamWriter(fileStream,"ISO-8859-2");
+			writer.write("");
+			writer.close();
+		System.out.println("Clear file logs.txt");
 		}
 		catch(Exception e)
 		{		
-			System.out.println("***Warning*** Nie wyczyszczono pliku logs.txt");
+			System.out.println("***Warning*** It doesn't clear file logs.txt");
 		}
 		
 	}

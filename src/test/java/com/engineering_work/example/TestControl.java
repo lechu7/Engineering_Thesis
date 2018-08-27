@@ -6,6 +6,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -23,36 +24,61 @@ public class TestControl {
 
 	WebDriver driver;
 	Rest_currency rc = new Rest_currency();
+	PreparationCSV pCSV= new PreparationCSV();
 	Logs logi=Logs.getInstance();
+	
+	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfEurope=new ArrayList<ObjectAllAboutCurrencyCSV>();
+	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfAsia=new ArrayList<ObjectAllAboutCurrencyCSV>();
+	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfAustralia=new ArrayList<ObjectAllAboutCurrencyCSV>();
+	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfNorthAmerica=new ArrayList<ObjectAllAboutCurrencyCSV>();
+	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfSouthAmerica=new ArrayList<ObjectAllAboutCurrencyCSV>();
+	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfAfrica=new ArrayList<ObjectAllAboutCurrencyCSV>();
+	//public ArrayList<ObjectAllAboutCurrencyCSV> CountriesUserList=new ArrayList<ObjectAllAboutCurrencyCSV>();
 	
 	public enum Browsers {
 		Firefox, Chrome, Opera, IE, Edge;
 	}
-
-	// toDo Lepszy wybór przegl¹darki
-	Browsers browser = Browsers.Firefox;
-
-	
+	Browsers browser;
 
 	@SuppressWarnings("deprecation")
 	@BeforeTest
 	public void beforeTest() throws IOException {
 		//clear the file logs.txt 
 		logi.clearFileLogs();
+		
+		// toDo Lepszy wybór przegl¹darki
+		//toDo Tu GUI z wyborem
+		//toDo Jak w GUI zaznaczy przegl¹darke której nie ma na kompie to nie robi testu tylko wyrzuca komunikat
+		browser=Browsers.Firefox;
+		
+		//Mo¿na zrobiæ ¿e dopiero po wyborze z GUI tworzy siê odpoweidnia lista (do przemyœlenia)
+		//Preparation CSV data file and countries list
+		pCSV.readCSVDate();
+		logi.addToLogs();
+		CountriesOfEurope=pCSV.CSVCountriesOfEurope;
+		CountriesOfAsia=pCSV.CSVCountriesOfAsia;
+		CountriesOfAustralia=pCSV.CSVCountriesOfAustralia;
+		CountriesOfNorthAmerica=pCSV.CSVCountriesOfNorthAmerica;
+		CountriesOfSouthAmerica=pCSV.CSVCountriesOfEurope;
+		CountriesOfAfrica=pCSV.CSVCountriesOfAfrica;
+		
+
+		
+		
 		//switch the browser
 		switch (browser) {
 		case Firefox:
 			 System.setProperty("webdriver.gecko.driver",".\\src\\test\\resources\\drivers\\geckodriver.exe");
 			 driver = new FirefoxDriver();
 			 driver.manage().window().maximize();
-			 logi.addToLogs("Uruchomiono Firefox",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),47);
+			 logi.addToLogs("Uruchomiono Firefox",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),74);
 			break;
 
 		case Chrome:
 			System.setProperty("webdriver.chrome.driver", ".\\src\\test\\resources\\drivers\\chromedriver.exe");
 			driver = new ChromeDriver();
 			driver.manage().window().maximize();
-			 logi.addToLogs("Uruchomiono Chrome",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),54);
+			logi.addToLogs("Uruchomiono Chrome",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),81);
 			break;
 		case Opera:
 			System.setProperty("webdriver.opera.driver", ".\\src\\test\\resources\\drivers\\operadriver.exe");
@@ -62,7 +88,7 @@ public class TestControl {
 			capabilities.setCapability(OperaOptions.CAPABILITY, options);
 			driver = new OperaDriver(capabilities);
 			driver.manage().window().maximize();
-			 logi.addToLogs("Uruchomiono Opere",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),64);
+			 logi.addToLogs("Uruchomiono Opere",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),91);
 			break;
 		case IE:
 			System.setProperty("webdriver.ie.driver", ".\\src\\test\\resources\\drivers\\IEDriverServer64.exe");
@@ -70,18 +96,18 @@ public class TestControl {
 			//caps.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
 			driver = new InternetExplorerDriver();
 			driver.manage().window().maximize();
-			logi.addToLogs("Uruchomiono Internet Explorer" ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),72);
+			logi.addToLogs("Uruchomiono Internet Explorer" ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),99);
 			break;
 		case Edge:
 			System.setProperty("webdriver.edge.driver", ".\\src\\test\\resources\\drivers\\MicrosoftWebDriver.exe");
 			driver = new EdgeDriver();
 			driver.manage().window().maximize();
-			 logi.addToLogs("Uruchomiono Microsoft Edge",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),78);
+			 logi.addToLogs("Uruchomiono Microsoft Edge",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),105);
 			break;
 		default:
 			System.setProperty("webdriver.gecko.driver", ".\\src\\test\\resources\\drivers\\geckodriver.exe");
 			driver = new FirefoxDriver();
-			logi.addToLogs("***ERROR***Uruchomiono Firefox z default",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),83);
+			logi.addToLogs("***ERROR***Uruchomiono Firefox z default",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),110);
 
 			break;
 		}
@@ -112,10 +138,10 @@ public class TestControl {
 				Runtime.getRuntime().exec("taskkill /f /im opera.exe");
 			} catch (IOException e) {
 				e.printStackTrace();
-				logi.addToLogs("***ERROR***Nie udalo sie zamknac Opery (killProcess)",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),83);
+				logi.addToLogs("***ERROR***Nie udalo sie zamknac Opery (killProcess)",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),141);
 			}
 		}
-		logi.addToLogs("Zamknieto przegladarke. ",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),114);
+		logi.addToLogs("Zamknieto przegladarke. ",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),144);
 	}
 
 }
