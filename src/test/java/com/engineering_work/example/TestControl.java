@@ -38,7 +38,8 @@ public class TestControl {
 	@BeforeTest
 	public void beforeTest() throws IOException {
 		//clear the file logs.txt 
-		//logi.clearFileLogs();
+		logi.clearFileLogs();
+		//switch the browser
 		switch (browser) {
 		case Firefox:
 			 System.setProperty("webdriver.gecko.driver",".\\src\\test\\resources\\drivers\\geckodriver.exe");
@@ -88,18 +89,20 @@ public class TestControl {
 	}
 
 	@Test
-	public void Test1() {
+	public void Test1() throws IOException {
+
 		
 		driver.get("http://www.nbp.pl");
 		 
 		rc.exchange("a","CLP");
+		rc.exchange();
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		WebElement header = driver.findElement(By.id("breadcrumbs"));
 		AssertJUnit.assertTrue((header.isDisplayed()));
 	}
 
 	@AfterTest
-	public void afterTest() {
+	public void afterTest() throws IOException {
 		 driver.quit();
 		// driver.close();
 
@@ -109,8 +112,10 @@ public class TestControl {
 				Runtime.getRuntime().exec("taskkill /f /im opera.exe");
 			} catch (IOException e) {
 				e.printStackTrace();
+				logi.addToLogs("***ERROR***Nie udalo sie zamknac Opery (killProcess)",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),83);
 			}
 		}
+		logi.addToLogs("Zamknieto przegladarke. ",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),114);
 	}
 
 }

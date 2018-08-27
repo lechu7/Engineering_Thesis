@@ -40,11 +40,11 @@ public class Logs {
 			BufferedWriter out = new BufferedWriter(file);
 			out.write("");
 			out.close();
-		System.out.println("Wyczyszczono plik logs.txt [C:"+this.getClass().getName().toString()+";M:"+this.getClass().getEnclosingMethod().getName().toString()+";L:30");
+		System.out.println("Wyczyszczono plik logs.txt");
 		}
 		catch(Exception e)
 		{		
-			System.out.println("***Warning*** Nie wyczyszczono pliku logs.txt [C:"+this.getClass().getName().toString()+";M:"+this.getClass().getEnclosingMethod().getName().toString()+";L:46");
+			System.out.println("***Warning*** Nie wyczyszczono pliku logs.txt");
 		}
 		
 	}

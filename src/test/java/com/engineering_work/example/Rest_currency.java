@@ -2,6 +2,7 @@
 package com.engineering_work.example;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
@@ -12,7 +13,10 @@ import com.google.gson.Gson;
 public class Rest_currency {
 
 	// Method for currency
-	public String exchange(String table, String code) {
+	public String exchange(String table, String code) throws IOException {
+		Logs logi = Logs.getInstance();
+		
+		
 		// address url in string
 		String url;
 		// address url
@@ -23,6 +27,7 @@ public class Rest_currency {
 		String Line;
 		StringBuilder sbResponse;
 		String Response = null;
+		
 
 		url = "http://api.nbp.pl/api/exchangerates/rates/" + table + "/" + code + "/?format=json";
 		try {
@@ -43,19 +48,24 @@ public class Rest_currency {
 
 			// writing to console values for the currency
 			String tmpConsole = "Values for the currency " + cur.Get_currency_name().toString() + " is "
-					+ cur.Get_currency_exchange().toString() + " z³otych.";
+					+ Response + " z³otych.";
 			System.out.println(tmpConsole);
+			//writing to logs
+			logi.addToLogs("Pobrano kurs waluty- "+code+": "+Response+ " zlotych." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),53);
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			//writing to logs
+			logi.addToLogs("***ERROR***Nie pobrano kursu waluty- "+code+"." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),57);
+
 		}
 		return Response;
 
 	}
 
 	// Method for gold
-	public String exchange() {
-
+	public String exchange() throws IOException {
+		Logs logi = Logs.getInstance();
 		// address url in string
 		String url;
 		// address url
@@ -85,9 +95,13 @@ public class Rest_currency {
 			// writing to console values for the gold
 			String tmpConsole = "Values for the gold is " + gold[0].Get_gold_exchange() + " z³otych.";
 			System.out.println(tmpConsole);
-
+			//writing to logs
+			logi.addToLogs("Pobrano kurs zlota- "+gold[0].Get_gold_exchange()+ " zlotych." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),96);
 		} catch (Exception e) {
 			e.printStackTrace();
+			//writing to logs
+			logi.addToLogs("***ERROR***Nie pobrano kursu zlota- "+Response+ "zlotych." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),99);
+
 		}
 		return Response;
 	}
