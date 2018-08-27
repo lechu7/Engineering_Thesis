@@ -1,0 +1,150 @@
+Nazwa waluty;Kod waluty;Kod+Jednostka;Europa;Azja;Australia i Oceania;Ameryka P³n;Ameryka P³d;Afryka ;Tabela
+bat (Tajlandia);THB;1 THB;;X;;;;;A
+dolar amerykañski;USD;1 USD;;;;X;;;A
+dolar australijski;AUD;1 AUD;;;X;;;;A
+dolar Hongkongu;HKD;1 HKD;;X;;;;;A
+dolar kanadyjski;CAD;1 CAD;;;;X;;;A
+dolar nowozelandzki;NZD;1 NZD;;;X;;;;A
+dolar singapurski;SGD;1 SGD;;X;;;;;A
+euro;EUR;1 EUR;X;;;;;;A
+forint (Wêgry);HUF;100 HUF;X;;;;;;A
+frank szwajcarski;CHF;1 CHF;X;;;;;;A
+funt szterling;GBP;1 GBP;X;;;;;;A
+hrywna (Ukraina);UAH;1 UAH;X;;;;;;A
+jen (Japonia);JPY;100 JPY;;X;;;;;A
+korona czeska;CZK;1 CZK;X;;;;;;A
+korona duñska;DKK;1 DKK;X;;;;;;A
+korona islandzka;ISK;100 ISK;X;;;;;;A
+korona norweska;NOK;1 NOK;X;;;;;;A
+korona szwedzka;SEK;1 SEK;X;;;;;;A
+kuna (Chorwacja);HRK;1 HRK;X;;;;;;A
+lej rumuñski;RON;1 RON;X;;;;;;A
+lew (Bu³garia);BGN;1 BGN;X;;;;;;A
+lira turecka;TRY;1 TRY;X;;;;;;A
+nowy izraelski szekel;ILS;1 ILS;;X;;;;;A
+peso chilijskie;CLP;100 CLP;;;;;X;;A
+peso meksykañskie;MXN;1 MXN;;;;X;;;A
+piso filipiñskie;PHP;1 PHP;;X;;;;;A
+rand (Republika Po³udniowej Afryki);ZAR;1 ZAR;;;;;;X;A
+real (Brazylia);BRL;1 BRL;;;;;X;;A
+ringgit (Malezja);MYR;1 MYR;;X;;;;;A
+rubel rosyjski;RUB;1 RUB;X;X;;;;;A
+rupia indonezyjska;IDR;10000 IDR;;X;;;;;A
+rupia indyjska;INR;100 INR;;X;;;;;A
+won po³udniowokoreañski;KRW;100 KRW;;X;;;;;A
+yuan renminbi (Chiny);CNY;1 CNY;;X;;;;;A
+SDR (MFW);XDR;1 XDR;X;X;X;X;X;X;A
+afgani (Afganistan);AFN;100 AFN;;X;;;;;B
+ariary (Madagaskar);MGA;100 MGA;;;;;;X;B
+balboa (Panama);PAB;1 PAB;;;;X;;;B
+birr etiopski;ETB;1 ETB;;;;;;X;B
+bolivar (Wenezuela);VEF;10000 VEF;;;;;X;;B
+boliwiano (Boliwia);BOB;1 BOB;;;;;X;;B
+colon kostarykañski;CRC;100 CRC;;;;X;;;B
+colon salwadorski;SVC;1 SVC;;;;X;;;B
+cordoba oro (Nikaragua);NIO;1 NIO;;;;X;;;B
+dalasi (Gambia);GMD;1 GMD;;;;;;X;B
+denar (Macedonia);MKD;100 MKD;X;;;;;;B
+dinar algierski;DZD;100 DZD;;;;;;X;B
+dinar bahrajski;BHD;1 BHD;;X;;;;;B
+dinar iracki;IQD;100 IQD;;X;;;;;B
+dinar jordañski;JOD;1 JOD;;X;;;;;B
+dinar kuwejcki;KWD;1 KWD;;X;;;;;B
+dinar libijski;LYD;1 LYD;;;;;;X;B
+dinar serbski;RSD;1 RSD;X;;;;;;B
+dinar tunezyjski;TND;1 TND;;;;;;X;B
+dirham marokañski;MAD;1 MAD;;;;;;X;B
+dirham ZEA (Zjednoczone Emiraty Arabskie);AED;1 AED;;X;;;;;B
+dobra (Wyspy Œwiêtego Tomasza i Ksi¹¿êca);STN;1 STN;;;;;;X;B
+dolar bahamski;BSD;1 BSD;;;;X;;;B
+dolar barbadoski;BBD;1 BBD;;;;X;;;B
+dolar belizeñski;BZD;1 BZD;;;;X;;;B
+dolar brunejski;BND;1 BND;;X;;;;;B
+dolar Fid¿i;FJD;1 FJD;;;X;;;;B
+dolar gujañski;GYD;100 GYD;;;;X;;;B
+dolar jamajski;JMD;1 JMD;;;;X;;;B
+dolar liberyjski;LRD;1 LRD;;;;;;X;B
+dolar namibijski;NAD;1 NAD;;;;;;X;B
+dolar surinamski;SRD;1 SRD;;;;;X;;B
+dolar Trynidadu i Tobago;TTD;1 TTD;;;;;X;;B
+dolar wschodniokaraibski;XCD;1 XCD;;;;X;;;B
+dolar Wysp Salomona;SBD;1 SBD;;;X;;;;B
+dong (Wietnam);VND;10000 VND;;X;;;;;B
+dram (Armenia);AMD;100 AMD;;X;;;;;B
+escudo Zielonego Przyl¹dka;CVE;1 CVE;;;;;;X;B
+florin arubañski;AWG;1 AWG;;;;X;X;;B
+frank burundyjski;BIF;100 BIF;;;;;;X;B
+frank CFA BCEAO;XOF;100 XOF;;;;;;X;B
+frank CFA BEAC;XAF;100 XAF;;;;;;X;B
+frank CFP;XPF;100 XPF;;;X;;;;B
+frank D¿ibuti;DJF;100 DJF;;;;;;X;B
+frank gwinejski;GNF;100 GNF;;;;;;X;B
+frank Komorów;KMF;100 KMF;;;;;;X;B
+frank kongijski (Dem. Republika Konga);CDF;100 CDF;;;;;;X;B
+frank rwandyjski;RWF;100 RWF;;;;;;X;B
+funt egipski;EGP;1 EGP;;;;;;X;B
+funt gibraltarski;GIP;1 GIP;X;;;;;;B
+funt libañski;LBP;100 LBP;;X;;;;;B
+funt po³udniowosudañski;SSP;100 SSP;;;;;;X;B
+funt sudañski;SDG;1 SDG;;;;;;X;B
+funt syryjski;SYP;1 SYP;;X;;;;;B
+Ghana cedi;GHS;1 GHS;;;;;;X;B
+gourde (Haiti);HTG;1 HTG;;;;X;;;B
+guarani (Paragwaj);PYG;100 PYG;;;;;X;;B
+gulden Antyli Holenderskich;ANG;1 ANG;;;;X;X;;B
+kina (Papua-Nowa Gwinea);PGK;1 PGK;;;X;;;;B
+kip (Laos);LAK;100 LAK;;X;;;;;B
+kwacha malawijska;MWK;100 MWK;;;;;;X;B
+kwacha zambijska;ZMW;1 ZMW;;;;;;X;B
+kwanza (Angola);AOA;1 AOA;;;;;;X;B
+kyat (Myanmar Birma);MMK;100 MMK;;X;;;;;B
+lari (Gruzja);GEL;1 GEL;;X;;;;;B
+lej Mo³dawii;MDL;1 MDL;;X;;;;;B
+lek (Albania);ALL;100 ALL;;X;;;;;B
+lempira (Honduras);HNL;1 HNL;;;;X;;;B
+leone (Sierra Leone);SLL;100 SLL;;;;;;X;B
+lilangeni (Suazi);SZL;1 SZL;;;;;;X;B
+loti (Lesotho);LSL;1 LSL;;;;;;X;B
+manat azerbejd¿añski;AZN;1 AZN;;X;;;;;B
+metical (Mozambik);MZN;1 MZN;;;;;;X;B
+naira (Nigeria);NGN;100 NGN;;;;;;X;B
+nakfa (Erytrea);ERN;1 ERN;;;;;;X;B
+nowy dolar tajwañski;TWD;1 TWD;;X;;;;;B
+nowy manat (Turkmenistan);TMT;1 TMT;;X;;;;;B
+ouguiya (Mauretania);MRU;1 MRU;;;;;;X;B
+pa'anga (Tonga);TOP;1 TOP;;;;;;X;B
+pataca (Makau);MOP;1 MOP;;X;;;;;B
+peso argentyñskie;ARS;1 ARS;;;;;X;;B
+peso dominikañskie;DOP;1 DOP;;;;X;;;B
+peso kolumbijskie;COP;100 COP;;;;;X;;B
+peso kubañskie;CUP;1 CUP;;;;X;;;B
+peso urugwajskie;UYU;1 UYU;;;;;X;;B
+pula (Botswana);BWP;1 BWP;;;;;;X;B
+quetzal (Gwatemala);GTQ;1 GTQ;;;;X;;;B
+rial irañski;IRR;100 IRR;;X;;;;;B
+rial jemeñski;YER;100 YER;;X;;;;;B
+rial katarski;QAR;1 QAR;;X;;;;;B
+rial omañski;OMR;1 OMR;;X;;;;;B
+rial saudyjski;SAR;1 SAR;;X;;;;;B
+riel (Kambod¿a);KHR;100 KHR;;;;;;X;B
+rubel bia³oruski;BYN;1 BYN;X;;;;;;B
+rupia lankijska;LKR;100 LKR;;X;;;;;B
+rupia (Malediwy);MVR;1 MVR;;X;;;;;B
+rupia Mauritiusu;MUR;1 MUR;;;;;;X;B
+rupia nepalska;NPR;100 NPR;;X;;;;;B
+rupia pakistañska;PKR;1 PKR;;X;;;;;B
+rupia seszelska;SCR;1 SCR;;;;;;X;B
+sol (Peru);PEN;1 PEN;;;;;X;;B
+som (Kirgistan);KGS;1 KGS;;X;;;;;B
+somoni (Tad¿ykistan);TJS;1 TJS;;X;;;;;B
+sum (Uzbekistan);UZS;100 UZS;;X;;;;;B
+szyling kenijski;KES;100 KES;;;;;;X;B
+szyling somalijski;SOS;100 SOS;;;;;;X;B
+szyling tanzañski;TZS;100 TZS;;;;;;X;B
+szyling ugandyjski;UGX;100 UGX;;;;;;X;B
+taka (Bangladesz);BDT;100 BDT;;X;;;;;B
+tala (Samoa);WST;1 WST;;;X;;;;B
+tenge (Kazachstan);KZT;100 KZT;;X;;;;;B
+tugrik (Mongolia);MNT;100 MNT;;X;;;;;B
+vatu (Vanuatu);VUV;100 VUV;;;X;;;;B
+wymienialna marka (Boœnia i Hercegowina);BAM;1 BAM;X;;;;;;B
