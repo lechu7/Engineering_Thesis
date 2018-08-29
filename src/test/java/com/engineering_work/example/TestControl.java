@@ -141,7 +141,7 @@ public class TestControl {
 				logi.addToLogs("***ERROR***Nie udalo sie zamknac Opery (killProcess)",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),141);
 			}
 		}
-		logi.addToLogs("Zamknieto przegladarke. ",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),144);
+		logi.addToLogs("Zamknieto przegladarkê "+browser.toString()+". ",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),144);
 	}
 
 }
