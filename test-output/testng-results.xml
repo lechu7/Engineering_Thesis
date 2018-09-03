@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2018-09-03T19:46:18Z" name="Default suite" finished-at="2018-09-03T19:46:47Z" duration-ms="29035">
+  <suite started-at="2018-09-03T20:09:50Z" name="Default suite" finished-at="2018-09-03T20:11:30Z" duration-ms="99563">
     <groups>
     </groups>
-    <test started-at="2018-09-03T19:46:18Z" name="Default test" finished-at="2018-09-03T19:46:47Z" duration-ms="29035">
+    <test started-at="2018-09-03T20:09:50Z" name="Default test" finished-at="2018-09-03T20:11:30Z" duration-ms="99563">
       <class name="com.engineering_work.example.TestControl">
-        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.engineering_work.example.TestControl@394a2528]" started-at="2018-09-03T19:46:18Z" name="beforeTest" finished-at="2018-09-03T19:46:26Z" duration-ms="7943" status="PASS">
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.engineering_work.example.TestControl@394a2528]" started-at="2018-09-03T20:09:50Z" name="beforeTest" finished-at="2018-09-03T20:09:59Z" duration-ms="8070" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method signature="Test1()[pri:0, instance:com.engineering_work.example.TestControl@394a2528]" started-at="2018-09-03T19:46:26Z" name="Test1" finished-at="2018-09-03T19:46:46Z" duration-ms="20190" status="PASS">
+        <test-method signature="Test1()[pri:0, instance:com.engineering_work.example.TestControl@394a2528]" started-at="2018-09-03T20:09:59Z" name="Test1" finished-at="2018-09-03T20:11:29Z" duration-ms="90627" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Test1 -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.engineering_work.example.TestControl@394a2528]" started-at="2018-09-03T19:46:46Z" name="afterTest" finished-at="2018-09-03T19:46:47Z" duration-ms="861" status="PASS">
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.engineering_work.example.TestControl@394a2528]" started-at="2018-09-03T20:11:29Z" name="afterTest" finished-at="2018-09-03T20:11:30Z" duration-ms="819" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->

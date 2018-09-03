@@ -38,16 +38,20 @@ public class CheckExchange {
 			if (side.charAt(42)=='b')
 			{
 			driver.navigate().to(REPO.linkTabelaA);
+			System.out.println("Change side to table A");
+			logi.addToLogs("INFO Zmiana strony na tablice A.",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),42);
 			}
 			break;
 		case "B":
 			if (side.charAt(42)=='a')
 			{
 			driver.navigate().to(REPO.linkTabelaB);
+			System.out.println("Change side to table B");			
+			logi.addToLogs("INFO Zmiana strony na tablice B.",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),52);
 			}
 			break;
 		default:
-			logi.addToLogs("***ERROR***Zle wybrano link z tabela",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),50);
+			logi.addToLogs("***ERROR***Zle wybrano link z tabela",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),54);
 			break;
 		}
 		//XPath to table
@@ -71,11 +75,11 @@ public class CheckExchange {
 				//System.out.println(exchangeFromRestAPI.compareTo(exchangeFromWebSide));
 				AssertJUnit.assertEquals("Porownanie kursu z REST API i strony.",exchangeFromRestAPI, exchangeFromWebSide);
 			if(exchangeFromRestAPI.compareTo(exchangeFromWebSide)==0) {
-				 logi.addToLogs("PASS- Wartoœci zgodne dla "+name+"- KOD: "+code+" równe "+exchangeFromWebSide,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),74);
+				 logi.addToLogs("PASS- Wartoœci zgodne dla "+name+"- KOD: "+code+" równe "+exchangeFromWebSide,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),78);
 			}
 			else
 			{
-				 logi.addToLogs("***FAIL- Nie zgodna wartoœæ dla "+code+" :API- "+exchangeFromRestAPI+" /WebSide- "+exchangeFromWebSide,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),78);
+				 logi.addToLogs("***FAIL- Nie zgodna wartoœæ dla "+code+" :API- "+exchangeFromRestAPI+" /WebSide- "+exchangeFromWebSide,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),82);
 			}
 			}
 		}

@@ -106,7 +106,6 @@ public class TestControl {
 
 			break;
 		}
-
 	}
 
 	@Test
@@ -114,7 +113,7 @@ public class TestControl {
 
 		
 		driver.get(REPO.linkTabelaA);
-		ArrayList<ObjectAllAboutCurrencyCSV> tmpList=CountriesOfEurope;
+		ArrayList<ObjectAllAboutCurrencyCSV> tmpList=CountriesOfAfrica;
 		logi.addToLogs();
 		for(int i=0 ; i<tmpList.size() ; i++){
 			chr.CheckExchangeCurrency(driver, tmpList.get(i).Table, tmpList.get(i).Code,tmpList.get(i).CodeUnit, tmpList.get(i).Name);
