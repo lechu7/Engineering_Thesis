@@ -1,17 +1,9 @@
 package com.engineering_work.example;
 
-import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.AfterTest;
-
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -19,13 +11,18 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 public class TestControl {
 
 	WebDriver driver;
 	Rest_currency rc = new Rest_currency();
 	PreparationCSV pCSV= new PreparationCSV();
+	CheckExchange chr= new CheckExchange();
 	Logs logi=Logs.getInstance();
+	
 	
 	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfEurope=new ArrayList<ObjectAllAboutCurrencyCSV>();
 	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfAsia=new ArrayList<ObjectAllAboutCurrencyCSV>();
@@ -35,10 +32,8 @@ public class TestControl {
 	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfAfrica=new ArrayList<ObjectAllAboutCurrencyCSV>();
 	//public ArrayList<ObjectAllAboutCurrencyCSV> CountriesUserList=new ArrayList<ObjectAllAboutCurrencyCSV>();
 	
-	public enum Browsers {
-		Firefox, Chrome, Opera, IE, Edge;
-	}
-	Browsers browser;
+
+	REPO.Browsers browser;
 
 	@SuppressWarnings("deprecation")
 	@BeforeTest
@@ -49,7 +44,7 @@ public class TestControl {
 		// toDo Lepszy wybór przegl¹darki
 		//toDo Tu GUI z wyborem
 		//toDo Jak w GUI zaznaczy przegl¹darke której nie ma na kompie to nie robi testu tylko wyrzuca komunikat
-		browser=Browsers.Firefox;
+		browser=REPO.Browsers.Firefox;
 		
 		//Mo¿na zrobiæ ¿e dopiero po wyborze z GUI tworzy siê odpoweidnia lista (do przemyœlenia)
 		//Preparation CSV data file and countries list
@@ -118,13 +113,23 @@ public class TestControl {
 	public void Test1() throws IOException {
 
 		
-		driver.get("http://www.nbp.pl");
-		 
-		rc.exchange("a","CLP");
-		rc.exchange();
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		WebElement header = driver.findElement(By.id("breadcrumbs"));
-		AssertJUnit.assertTrue((header.isDisplayed()));
+		driver.get(REPO.linkTabelaA);
+		ArrayList<ObjectAllAboutCurrencyCSV> tmpList=CountriesOfEurope;
+		logi.addToLogs();
+		for(int i=0 ; i<tmpList.size() ; i++){
+			chr.CheckExchangeCurrency(driver, tmpList.get(i).Table, tmpList.get(i).Code,tmpList.get(i).CodeUnit, tmpList.get(i).Name);
+			}
+		logi.addToLogs();
+		
+		
+		//ToDo
+		chr.CheckExchangeGold(driver);
+		
+		//rc.exchange("a","CLP");
+		//rc.exchange();
+		//driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		//WebElement header = driver.findElement(By.id("breadcrumbs"));
+		//AssertJUnit.assertTrue((header.isDisplayed()));
 	}
 
 	@AfterTest
@@ -133,7 +138,7 @@ public class TestControl {
 		// driver.close();
 
 		// Problem with closing the browser (Opera)
-		if (browser == Browsers.Opera) {
+		if (browser == REPO.Browsers.Opera) {
 			try {
 				Runtime.getRuntime().exec("taskkill /f /im opera.exe");
 			} catch (IOException e) {

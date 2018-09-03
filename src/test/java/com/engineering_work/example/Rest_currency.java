@@ -51,7 +51,7 @@ public class Rest_currency {
 					+ Response + " z³otych.";
 			System.out.println(tmpConsole);
 			//writing to logs
-			logi.addToLogs("Pobrano kurs waluty- "+code+": "+Response+ " zlotych." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),54);
+			logi.addToLogs("Pobrano kurs waluty: "+code+": "+Response+ " zlotych." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),54);
 
 		} catch (Exception e) {
 			e.printStackTrace();
