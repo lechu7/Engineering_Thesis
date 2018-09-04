@@ -91,7 +91,8 @@ public class Rest_currency {
 			System.out.println(sbResponse.toString());
 			Gson gson = new Gson();
 			ObjectGold[] gold = gson.fromJson(sbResponse.toString(), ObjectGold[].class);
-
+			Response = gold[0].Get_gold_exchange().toString();
+			
 			// writing to console values for the gold
 			String tmpConsole = "Values for the gold is " + gold[0].Get_gold_exchange() + " z³otych.";
 			System.out.println(tmpConsole);

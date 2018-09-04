@@ -8,6 +8,7 @@ public class REPO {
 	public static String link="http://www.nbp.pl";
 	public static String linkTabelaA="http://www.nbp.pl/home.aspx?f=/kursy/kursya.html";
 	public static String linkTabelaB="http://www.nbp.pl/home.aspx?f=/kursy/kursyb.html";
+	public static String linkGold="http://www.nbp.pl/home.aspx?c=/ascx/Zloto_cena.ascx";
 	
 	public enum Browsers {
 		Firefox, Chrome, Opera, IE, Edge;
