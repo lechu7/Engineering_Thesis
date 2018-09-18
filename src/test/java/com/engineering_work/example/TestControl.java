@@ -30,6 +30,7 @@ public class TestControl {
 	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfNorthAmerica=new ArrayList<ObjectAllAboutCurrencyCSV>();
 	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfSouthAmerica=new ArrayList<ObjectAllAboutCurrencyCSV>();
 	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfAfrica=new ArrayList<ObjectAllAboutCurrencyCSV>();
+	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesAll=new ArrayList<ObjectAllAboutCurrencyCSV>();
 	//public ArrayList<ObjectAllAboutCurrencyCSV> CountriesUserList=new ArrayList<ObjectAllAboutCurrencyCSV>();
 	
 
@@ -54,10 +55,16 @@ public class TestControl {
 		CountriesOfAsia=pCSV.CSVCountriesOfAsia;
 		CountriesOfAustralia=pCSV.CSVCountriesOfAustralia;
 		CountriesOfNorthAmerica=pCSV.CSVCountriesOfNorthAmerica;
-		CountriesOfSouthAmerica=pCSV.CSVCountriesOfEurope;
+		CountriesOfSouthAmerica=pCSV.CSVCountriesOfSouthAmerica;
 		CountriesOfAfrica=pCSV.CSVCountriesOfAfrica;
 		
-
+		//add all lists to CountriesAll list
+		CountriesAll.addAll(CountriesOfEurope);	
+		CountriesAll.addAll(CountriesOfAsia);	
+		CountriesAll.addAll(CountriesOfAustralia);	
+		CountriesAll.addAll(CountriesOfNorthAmerica);	
+		CountriesAll.addAll(CountriesOfSouthAmerica);	
+		CountriesAll.addAll(CountriesOfAfrica);	
 		
 		
 		//switch the browser
@@ -103,16 +110,14 @@ public class TestControl {
 			System.setProperty("webdriver.gecko.driver", ".\\src\\test\\resources\\drivers\\geckodriver.exe");
 			driver = new FirefoxDriver();
 			logi.addToLogs("***ERROR***Uruchomiono Firefox z default",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),110);
-
 			break;
 		}
 	}
 
 	@Test
-	public void Test1() throws IOException {
-
-		
+	public void TestWeb() throws IOException {
 		driver.get(REPO.linkTabelaA);
+		//Exchange Currency
 		ArrayList<ObjectAllAboutCurrencyCSV> tmpList=CountriesOfEurope;
 		logi.addToLogs();
 		for(int i=0 ; i<tmpList.size() ; i++){
@@ -120,23 +125,28 @@ public class TestControl {
 			}
 		logi.addToLogs();
 		
-		
-		//ToDo
+		//ExchangeGold
 		chr.CheckExchangeGold(driver);
 		logi.addToLogs();
-		
-		//rc.exchange("a","CLP");
-		//rc.exchange();
-		//driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		//WebElement header = driver.findElement(By.id("breadcrumbs"));
-		//AssertJUnit.assertTrue((header.isDisplayed()));
 	}
-
+	@Test
+	public void TestMobile() throws IOException {
+		driver.get(REPO.linkTabelaA);
+		//Exchange Currency
+		ArrayList<ObjectAllAboutCurrencyCSV> tmpList=CountriesOfAfrica;
+		logi.addToLogs();
+		for(int i=0 ; i<tmpList.size() ; i++){
+			chr.CheckExchangeCurrency(driver, tmpList.get(i).Table, tmpList.get(i).Code,tmpList.get(i).CodeUnit, tmpList.get(i).Name);
+			}
+		logi.addToLogs();
+		
+		//ExchangeGold
+		chr.CheckExchangeGold(driver);
+		logi.addToLogs();
+	}
 	@AfterTest
 	public void afterTest() throws IOException {
 		 driver.quit();
-		// driver.close();
-
 		// Problem with closing the browser (Opera)
 		if (browser == REPO.Browsers.Opera) {
 			try {
