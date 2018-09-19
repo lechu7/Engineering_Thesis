@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 
 public class TestControl {
 
-	WebDriver driver;
+	public WebDriver driver;
 	Rest_currency rc = new Rest_currency();
 	PreparationCSV pCSV= new PreparationCSV();
 	CheckExchange chr= new CheckExchange();
@@ -131,7 +131,7 @@ public class TestControl {
 	}
 	@Test
 	public void TestMobile() throws IOException {
-		driver.get(REPO.linkTabelaA);
+		/*driver.get(REPO.linkTabelaA);
 		//Exchange Currency
 		ArrayList<ObjectAllAboutCurrencyCSV> tmpList=CountriesOfAfrica;
 		logi.addToLogs();
@@ -142,7 +142,7 @@ public class TestControl {
 		
 		//ExchangeGold
 		chr.CheckExchangeGold(driver);
-		logi.addToLogs();
+		logi.addToLogs();*/
 	}
 	@AfterTest
 	public void afterTest() throws IOException {
