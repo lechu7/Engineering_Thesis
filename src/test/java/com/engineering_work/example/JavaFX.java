@@ -359,13 +359,5 @@ public class JavaFX extends Application {
 		tc.CountriesAll.addAll(tc.CountriesOfAfrica);	
 		}
 	}
-/*	private ObservableList<ObjectToTableView> getObjectList() {
-		 
-		ObjectToTableView item1 = new ObjectToTableView(true,"Europa",tc.CountriesOfEurope);
-       // Person person2 = new Person("Anne McNeil", Gender.FEMALE.getCode(), true);
-       // Person person3 = new Person("Kenvin White", Gender.MALE.getCode(), false);
- 
-        ObservableList<ObjectToTableView> list = FXCollections.observableArrayList(item1);//, person2, person3);
-        return list;
-    }*/
+
 }
