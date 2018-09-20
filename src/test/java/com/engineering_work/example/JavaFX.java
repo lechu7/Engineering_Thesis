@@ -5,6 +5,7 @@ import javafx.scene.control.RadioButton;
 
 import java.awt.event.WindowEvent;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.text.Element;
 import javafx.scene.image.Image;
@@ -27,11 +28,13 @@ import javafx.event.EventHandler;
 import javafx.scene.layout.HBox;
 
 public class JavaFX extends Application {
-	TestControl tc = new TestControl();
+	TestControl tc = TestControl.getInstance();
+	Logs logi=Logs.getInstance();
+	PreparationCSV pCSV= new PreparationCSV();
 	
-	Thread threadAnalysis = new Thread(new Analysis());
-
+	Thread threadAnalysis;
 	public static StackPane root;
+	
 
 	// RadioButton WebTest
 	public static RadioButton WebTest;
@@ -50,7 +53,11 @@ public class JavaFX extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-
+		//clear the file logs.txt 
+		logi.clearFileLogs();
+		//Preparing lists from CSV
+		preparingCSVandLists();
+		
 		// Group for radiobutton that select the test
 		final ToggleGroup typeOfTestGroup = new ToggleGroup();
 		// RadioButton WebTest
@@ -68,8 +75,10 @@ public class JavaFX extends Application {
 		MobileTest.setTranslateY(-220);
 		MobileTest.setToggleGroup(typeOfTestGroup);
 
-		MobileTest.setDisable(true);
+		MobileTest.setDisable(true);//ZASLEPKA
 
+		
+		//toDo Jak w GUI zaznaczy przegl¹darke której nie ma na kompie to nie robi testu tylko wyrzuca komunikat
 		final ToggleGroup browsersGroup = new ToggleGroup();
 		// RadioButton Firefox
 		Firefox = new RadioButton();
@@ -126,14 +135,27 @@ public class JavaFX extends Application {
 		ImageView imgViewEdge = new ImageView(EdgeImage);
 		imgViewEdge.setTranslateX(220);
 		imgViewEdge.setTranslateY(-180);
-
+		
+		// Button Start
 		Start = new Button();
 		Start.setTranslateX(0);
 		Start.setTranslateY(220);
 		Start.setText("Start");
-		Start.setOnAction(e ->{ threadAnalysis.start();});
-
-
+		Start.setOnAction(e ->{ 
+			try {
+				logi.addToLogs();
+				logi.addToLogs("Kliknieto start (UserGUI)",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),144);
+				logi.addToLogs();
+				//Preparing lists from CSV
+				preparingCSVandLists();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			threadAnalysis = new Thread(new Analysis());
+			threadAnalysis.start();
+		});
+		// Add elements to root (layout)
 		root = new StackPane();
 		root.getChildren().add(Start);
 		root.getChildren().add(WebTest);
@@ -148,17 +170,21 @@ public class JavaFX extends Application {
 		root.getChildren().add(imgViewOpera);
 		root.getChildren().add(imgViewIE);
 		root.getChildren().add(imgViewEdge);
-
+		
+		//Window
 		Scene scene = new Scene(root, 600, 500);
-
+		//Event on click close (X)
 		primaryStage.setOnCloseRequest(event -> {
 			try {
+				logi.addToLogs();
+				logi.addToLogs("Zamkniêto program (UserGUI- klikniecie X)",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),144);
 				tc.driver.quit();
 			} catch (Exception e) {
 			}
 			System.exit(0);
 		});
 
+		//Icon set
 		javafx.scene.image.Image icon = new javafx.scene.image.Image(getClass().getResourceAsStream("icon.png"));
 		primaryStage.getIcons().add(icon);
 
@@ -173,4 +199,32 @@ public class JavaFX extends Application {
 
 		launch(args);
 	}	
+	public void preparingCSVandLists() throws IOException
+	{
+		if(tc.CountriesOfEurope==null||tc.CountriesOfAsia==null||tc.CountriesOfAustralia==null||tc.CountriesOfNorthAmerica==null||tc.CountriesOfSouthAmerica==null||tc.CountriesOfAfrica==null)
+		{
+			tc.CountriesOfEurope=new ArrayList<ObjectAllAboutCurrencyCSV>();
+			tc.CountriesOfAsia=new ArrayList<ObjectAllAboutCurrencyCSV>();
+			tc.CountriesOfAustralia=new ArrayList<ObjectAllAboutCurrencyCSV>();
+			tc.CountriesOfNorthAmerica=new ArrayList<ObjectAllAboutCurrencyCSV>();
+			tc.CountriesOfSouthAmerica=new ArrayList<ObjectAllAboutCurrencyCSV>();
+			tc.CountriesOfAfrica=new ArrayList<ObjectAllAboutCurrencyCSV>();
+			tc.CountriesAll=new ArrayList<ObjectAllAboutCurrencyCSV>();
+			pCSV.readCSVDate();
+		tc.CountriesOfEurope=pCSV.CSVCountriesOfEurope;
+		tc.CountriesOfAsia=pCSV.CSVCountriesOfAsia;
+		tc.CountriesOfAustralia=pCSV.CSVCountriesOfAustralia;
+		tc.CountriesOfNorthAmerica=pCSV.CSVCountriesOfNorthAmerica;
+		tc.CountriesOfSouthAmerica=pCSV.CSVCountriesOfSouthAmerica;
+		tc.CountriesOfAfrica=pCSV.CSVCountriesOfAfrica;
+		
+		//add all lists to CountriesAll list
+		tc.CountriesAll.addAll(tc.CountriesOfEurope);	
+		tc.CountriesAll.addAll(tc.CountriesOfAsia);	
+		tc.CountriesAll.addAll(tc.CountriesOfAustralia);	
+		tc.CountriesAll.addAll(tc.CountriesOfNorthAmerica);	
+		tc.CountriesAll.addAll(tc.CountriesOfSouthAmerica);	
+		tc.CountriesAll.addAll(tc.CountriesOfAfrica);	
+		}
+	}
 }

@@ -20,8 +20,7 @@ public class CheckExchange {
 		System.out.println("Change side to table gold");
 		logi.addToLogs("INFO Zmiana strony na tablice ze zlotem.", getClass().getName().toString(),
 				Thread.currentThread().getStackTrace()[1].getMethodName(), 22);
-	
-		
+
 		// Value of exchange from RestAPI
 		String tmp = rc.exchange();
 		Float exchangeFromRestAPI = Float.parseFloat(tmp);

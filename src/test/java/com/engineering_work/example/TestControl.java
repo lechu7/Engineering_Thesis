@@ -16,55 +16,43 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class TestControl {
-
+	
+	//Singleton for class TestControl 
+	private static TestControl instance = null;
+	 public static TestControl getInstance() {
+	      if(instance == null) {
+	         instance = new TestControl();
+	      }
+	      return instance;
+	   }
+	
 	public WebDriver driver;
 	Rest_currency rc = new Rest_currency();
-	PreparationCSV pCSV= new PreparationCSV();
 	CheckExchange chr= new CheckExchange();
 	Logs logi=Logs.getInstance();
 	
 	
-	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfEurope=new ArrayList<ObjectAllAboutCurrencyCSV>();
-	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfAsia=new ArrayList<ObjectAllAboutCurrencyCSV>();
-	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfAustralia=new ArrayList<ObjectAllAboutCurrencyCSV>();
-	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfNorthAmerica=new ArrayList<ObjectAllAboutCurrencyCSV>();
-	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfSouthAmerica=new ArrayList<ObjectAllAboutCurrencyCSV>();
-	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfAfrica=new ArrayList<ObjectAllAboutCurrencyCSV>();
-	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesAll=new ArrayList<ObjectAllAboutCurrencyCSV>();
+	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfEurope;
+	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfAsia;
+	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfAustralia;
+	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfNorthAmerica;
+	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfSouthAmerica;
+	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfAfrica;
+	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesAll;
 	//public ArrayList<ObjectAllAboutCurrencyCSV> CountriesUserList=new ArrayList<ObjectAllAboutCurrencyCSV>();
 	
-
+	public boolean firstRun=true;
 	REPO.Browsers browser;
 
 	@SuppressWarnings("deprecation")
 	@BeforeTest
 	public void beforeTest() throws IOException {
-		//clear the file logs.txt 
-		logi.clearFileLogs();
-		
-		// toDo Lepszy wybór przegl¹darki
-		//toDo Tu GUI z wyborem
-		//toDo Jak w GUI zaznaczy przegl¹darke której nie ma na kompie to nie robi testu tylko wyrzuca komunikat
-		browser=REPO.Browsers.Firefox;
+
+	
 		
 		//Mo¿na zrobiæ ¿e dopiero po wyborze z GUI tworzy siê odpoweidnia lista (do przemyœlenia)
 		//Preparation CSV data file and countries list
-		pCSV.readCSVDate();
-		logi.addToLogs();
-		CountriesOfEurope=pCSV.CSVCountriesOfEurope;
-		CountriesOfAsia=pCSV.CSVCountriesOfAsia;
-		CountriesOfAustralia=pCSV.CSVCountriesOfAustralia;
-		CountriesOfNorthAmerica=pCSV.CSVCountriesOfNorthAmerica;
-		CountriesOfSouthAmerica=pCSV.CSVCountriesOfSouthAmerica;
-		CountriesOfAfrica=pCSV.CSVCountriesOfAfrica;
 		
-		//add all lists to CountriesAll list
-		CountriesAll.addAll(CountriesOfEurope);	
-		CountriesAll.addAll(CountriesOfAsia);	
-		CountriesAll.addAll(CountriesOfAustralia);	
-		CountriesAll.addAll(CountriesOfNorthAmerica);	
-		CountriesAll.addAll(CountriesOfSouthAmerica);	
-		CountriesAll.addAll(CountriesOfAfrica);	
 		
 		
 		//switch the browser
@@ -94,8 +82,8 @@ public class TestControl {
 			break;
 		case IE:
 			System.setProperty("webdriver.ie.driver", ".\\src\\test\\resources\\drivers\\IEDriverServer64.exe");
-			//DesiredCapabilities caps = new DesiredCapabilities();
-			//caps.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+			DesiredCapabilities caps = new DesiredCapabilities();
+			caps.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
 			driver = new InternetExplorerDriver();
 			driver.manage().window().maximize();
 			logi.addToLogs("Uruchomiono Internet Explorer" ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),99);
@@ -127,7 +115,6 @@ public class TestControl {
 		
 		//ExchangeGold
 		chr.CheckExchangeGold(driver);
-		logi.addToLogs();
 	}
 	@Test
 	public void TestMobile() throws IOException {
@@ -154,6 +141,14 @@ public class TestControl {
 			} catch (IOException e) {
 				e.printStackTrace();
 				logi.addToLogs("***ERROR***Nie udalo sie zamknac Opery (killProcess)",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),141);
+			}
+		}
+		if (browser == REPO.Browsers.Edge) {
+			try {
+				Runtime.getRuntime().exec("taskkill /f /im edge.exe");
+			} catch (IOException e) {
+				e.printStackTrace();
+				logi.addToLogs("***ERROR***Nie udalo sie zamknac Edge (killProcess)",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),141);
 			}
 		}
 		logi.addToLogs("Zamknieto przegladarkê "+browser.toString()+". ",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),144);
