@@ -39,7 +39,7 @@ public class TestControl {
 	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfSouthAmerica;
 	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfAfrica;
 	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesAll;
-	//public ArrayList<ObjectAllAboutCurrencyCSV> CountriesUserList=new ArrayList<ObjectAllAboutCurrencyCSV>();
+	
 	
 	public boolean firstRun=true;
 	REPO.Browsers browser;
@@ -84,8 +84,8 @@ public class TestControl {
 			System.setProperty("webdriver.ie.driver", ".\\src\\test\\resources\\drivers\\IEDriverServer64.exe");
 			DesiredCapabilities caps = new DesiredCapabilities();
 			caps.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
-			driver = new InternetExplorerDriver();
-			driver.manage().window().maximize();
+			driver = new InternetExplorerDriver(caps);
+			this.driver.manage().window().maximize();
 			logi.addToLogs("Uruchomiono Internet Explorer" ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),99);
 			break;
 		case Edge:

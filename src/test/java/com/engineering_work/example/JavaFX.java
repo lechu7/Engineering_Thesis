@@ -2,19 +2,20 @@ package com.engineering_work.example;
 
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
-
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.swing.text.Element;
+
+import org.apache.commons.collections.functors.PrototypeFactory;
+
+import com.google.common.collect.Table;
+
+import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.awt.event.ActionEvent;
-
-
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.Image;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
@@ -23,9 +24,34 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import java.awt.event.WindowEvent;
-import javafx.event.EventHandler;
 import javafx.scene.layout.HBox;
+import javafx.scene.control.TableColumn;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.scene.control.TableColumn.CellEditEvent;
+import javafx.scene.control.TablePosition;
+import javafx.scene.control.cell.CheckBoxTableCell;
+import javafx.scene.control.cell.ComboBoxTableCell;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.Callback;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+
+
+import javafx.scene.Group;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+
+
 
 public class JavaFX extends Application {
 	TestControl tc = TestControl.getInstance();
@@ -47,7 +73,14 @@ public class JavaFX extends Application {
 	public static RadioButton Opera;
 	public static RadioButton IE;
 	public static RadioButton Edge;
+	
+	// Radiobuttons All Or Chosen Currency test
+	public static RadioButton All;
+	public static RadioButton Chosen;
+	
+	TableView <ObjectToTableView> table;
 
+	
 	// Button Start
 	public static Button Start;
 
@@ -136,11 +169,107 @@ public class JavaFX extends Application {
 		imgViewEdge.setTranslateX(220);
 		imgViewEdge.setTranslateY(-180);
 		
+		//TableView with select the Continents with Currency
+		//Add Continents to list
+	    ObservableList<ObjectToTableView> list =  FXCollections.observableArrayList();
+	    list.add(new ObjectToTableView(false,"Afryka",tc.CountriesOfAfrica));
+	    list.add(new ObjectToTableView(false,"Amertka Po³udniowa",tc.CountriesOfSouthAmerica));
+	    list.add(new ObjectToTableView(false,"Amertka Pó³nocna",tc.CountriesOfNorthAmerica));
+	    list.add(new ObjectToTableView(false,"Australia",tc. CountriesOfAustralia));
+	    list.add(new ObjectToTableView(false,"Azja",tc.CountriesOfAsia));
+	    list.add(new ObjectToTableView(false,"Europa",tc.CountriesOfEurope));
+	    //new table
+		table = new TableView<ObjectToTableView>();
+		table.setEditable(true);
+		table.setItems(list);
+		//Create and add column1 with CheckBox
+		TableColumn<ObjectToTableView,Boolean> Column1 = new TableColumn<ObjectToTableView,Boolean>("Testowanie");
+		Column1.setCellValueFactory(new PropertyValueFactory<ObjectToTableView,Boolean>("run"));
+		Column1.setCellFactory(column -> new CheckBoxTableCell()); 
+		table.getColumns().add(Column1);
+		//Create and add column2 with Continent name
+		TableColumn<ObjectToTableView,String> Column2 = new TableColumn<ObjectToTableView,String>("Nazwa kontynentu");
+		Column2.setCellValueFactory(new PropertyValueFactory<ObjectToTableView,String>("ContinentName"));
+		table.getColumns().add(Column2);
+		//Create and add column3  with currency count
+		TableColumn<ObjectToTableView,Integer> Column3 = new TableColumn<ObjectToTableView,Integer>("Liczba walut");
+		Column3.setCellValueFactory(new PropertyValueFactory<ObjectToTableView,Integer>("CurrencyCountContinent"));
+		table.getColumns().add(Column3);
+		//Set size tableView
+		double Xsize=295;
+		double Ysize=180;
+		table.setMinWidth(Xsize);
+		table.setMaxWidth(Xsize);
+		table.setMinHeight(Ysize);
+		table.setMaxHeight(Ysize);
+		//Set position tableView
+		table.setTranslateY(-20);
+		table.setTranslateX(-130);
+
+		final ToggleGroup allOrChosenCurrencyGroup = new ToggleGroup();
+		All = new RadioButton();
+		All.setText("Wszystkie waluty (Iloœæ: "+tc.CountriesAll.size()+")");
+		All.setTranslateX(125);
+		All.setTranslateY(-40);
+		All.setToggleGroup(allOrChosenCurrencyGroup);
+		//Event after click All Currency. CheckBoxes in tableView unchecked
+		All.setOnAction(e ->{ 
+			try {
+				logi.addToLogs();
+				logi.addToLogs("Kliknieto Wszystkie Waluty (UserGUI)",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),224);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		table.setEditable(false);
+		for (ObjectToTableView item : list){
+		    item.SetRunProperty(false);
+		}
+		table.refresh();
+		try {
+			logi.addToLogs();
+			logi.addToLogs("Odznaczone checkboxy w tableView, tableView nieaktywne (UserGUI)",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),224);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		});
+		
+		Chosen = new RadioButton();
+		Chosen.setText("Wybrane waluty z tabeli kontynentów");
+		Chosen.setTranslateX(150);
+		Chosen.setTranslateY(-10);
+		Chosen.setToggleGroup(allOrChosenCurrencyGroup);
+		Chosen.setSelected(true);
+		Chosen.setOnAction(e ->{ 
+		table.setEditable(true);
+		try {
+			logi.addToLogs();
+			logi.addToLogs("Klikniêto wybrane waluty, tableView aktywne (UserGUI)",getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),249);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		});
+		
+		//PROGRESS BAR
+		
+		
+		
+		
+		
+		
+		
+		
 		// Button Start
 		Start = new Button();
 		Start.setTranslateX(0);
 		Start.setTranslateY(220);
 		Start.setText("Start");
+		//Change font for button Start
+		Start.setFont(Font.font("Arial", FontWeight.BOLD, 20));
 		Start.setOnAction(e ->{ 
 			try {
 				logi.addToLogs();
@@ -170,6 +299,9 @@ public class JavaFX extends Application {
 		root.getChildren().add(imgViewOpera);
 		root.getChildren().add(imgViewIE);
 		root.getChildren().add(imgViewEdge);
+		root.getChildren().add(table);
+		root.getChildren().add(All);
+		root.getChildren().add(Chosen);
 		
 		//Window
 		Scene scene = new Scene(root, 600, 500);
@@ -227,4 +359,13 @@ public class JavaFX extends Application {
 		tc.CountriesAll.addAll(tc.CountriesOfAfrica);	
 		}
 	}
+/*	private ObservableList<ObjectToTableView> getObjectList() {
+		 
+		ObjectToTableView item1 = new ObjectToTableView(true,"Europa",tc.CountriesOfEurope);
+       // Person person2 = new Person("Anne McNeil", Gender.FEMALE.getCode(), true);
+       // Person person3 = new Person("Kenvin White", Gender.MALE.getCode(), false);
+ 
+        ObservableList<ObjectToTableView> list = FXCollections.observableArrayList(item1);//, person2, person3);
+        return list;
+    }*/
 }

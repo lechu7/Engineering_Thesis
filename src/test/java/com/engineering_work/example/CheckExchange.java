@@ -66,7 +66,8 @@ public class CheckExchange {
 		switch (table) {
 		case "A":
 			if (side.charAt(42) == 'b') {
-				driver.navigate().to(REPO.linkTabelaA);
+				//driver.navigate().to(REPO.linkTabelaA);
+				driver.get(REPO.linkTabelaA);
 				System.out.println("Change side to table A");
 				logi.addToLogs("INFO Zmiana strony na tablice A.", getClass().getName().toString(),
 						Thread.currentThread().getStackTrace()[1].getMethodName(), 73);
@@ -74,7 +75,8 @@ public class CheckExchange {
 			break;
 		case "B":
 			if (side.charAt(42) == 'a') {
-				driver.navigate().to(REPO.linkTabelaB);
+				//driver.navigate().to(REPO.linkTabelaB);4
+				driver.get(REPO.linkTabelaB);
 				System.out.println("Change side to table B");
 				logi.addToLogs("INFO Zmiana strony na tablice B.", getClass().getName().toString(),
 						Thread.currentThread().getStackTrace()[1].getMethodName(), 81);
