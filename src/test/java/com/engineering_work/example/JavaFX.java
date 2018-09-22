@@ -133,7 +133,7 @@ public class JavaFX extends Application {
 		Firefox.setSelected(true);
 		Firefox.setToggleGroup(browsersGroup);
 		// Image Firefox
-		Image FirefoxImage = new javafx.scene.image.Image(getClass().getResourceAsStream("firefox.png"));
+		Image FirefoxImage = new javafx.scene.image.Image(getClass().getResourceAsStream("/Images/firefox.png"));
 		ImageView imgViewFirefox = new ImageView(FirefoxImage);
 		imgViewFirefox.setTranslateX(-220);
 		imgViewFirefox.setTranslateY(-180);
@@ -144,7 +144,7 @@ public class JavaFX extends Application {
 		Chrome.setTranslateY(-140);
 		Chrome.setToggleGroup(browsersGroup);
 		// Image Chrome
-		Image ChromeImage = new javafx.scene.image.Image(getClass().getResourceAsStream("chrome.png"));
+		Image ChromeImage = new javafx.scene.image.Image(getClass().getResourceAsStream("/Images/chrome.png"));
 		ImageView imgViewChrome = new ImageView(ChromeImage);
 		imgViewChrome.setTranslateX(-110);
 		imgViewChrome.setTranslateY(-180);
@@ -155,7 +155,7 @@ public class JavaFX extends Application {
 		Opera.setTranslateY(-140);
 		Opera.setToggleGroup(browsersGroup);
 		// Image Opera
-		Image OperaImage = new javafx.scene.image.Image(getClass().getResourceAsStream("opera.png"));
+		Image OperaImage = new javafx.scene.image.Image(getClass().getResourceAsStream("/Images/opera.png"));
 		ImageView imgViewOpera = new ImageView(OperaImage);
 		imgViewOpera.setTranslateX(0);
 		imgViewOpera.setTranslateY(-180);
@@ -166,7 +166,7 @@ public class JavaFX extends Application {
 		IE.setTranslateY(-140);
 		IE.setToggleGroup(browsersGroup);
 		// Image IE
-		Image IEImage = new javafx.scene.image.Image(getClass().getResourceAsStream("IE.png"));
+		Image IEImage = new javafx.scene.image.Image(getClass().getResourceAsStream("/Images/IE.png"));
 		ImageView imgViewIE = new ImageView(IEImage);
 		imgViewIE.setTranslateX(110);
 		imgViewIE.setTranslateY(-180);
@@ -177,7 +177,7 @@ public class JavaFX extends Application {
 		Edge.setTranslateY(-140);
 		Edge.setToggleGroup(browsersGroup);
 		// Image IE
-		Image EdgeImage = new javafx.scene.image.Image(getClass().getResourceAsStream("Edge.png"));
+		Image EdgeImage = new javafx.scene.image.Image(getClass().getResourceAsStream("/Images/Edge.png"));
 		ImageView imgViewEdge = new ImageView(EdgeImage);
 		imgViewEdge.setTranslateX(220);
 		imgViewEdge.setTranslateY(-180);
@@ -380,7 +380,7 @@ public class JavaFX extends Application {
 		});
 
 		// Icon set
-		javafx.scene.image.Image icon = new javafx.scene.image.Image(getClass().getResourceAsStream("icon.png"));
+		javafx.scene.image.Image icon = new javafx.scene.image.Image(getClass().getResourceAsStream("/Images/icon.png"));
 		primaryStage.getIcons().add(icon);
 
 		primaryStage.setTitle("NBP API Tests");
