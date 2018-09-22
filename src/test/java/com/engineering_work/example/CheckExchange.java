@@ -11,8 +11,12 @@ import org.testng.AssertJUnit;
 public class CheckExchange {
 	Rest_currency rc = new Rest_currency();
 	REPO repo = new REPO();
+	ProgressBar pbClass= new ProgressBar();
 	Logs logi = Logs.getInstance();
 	DecimalFormat df = new DecimalFormat("#.####");
+	
+	//Iterator for progress bar
+	public static double iterator=0;
 
 	// Check for gold rate
 	public void CheckExchangeGold(WebDriver driver) throws IOException {
@@ -43,6 +47,7 @@ public class CheckExchange {
 		if (exchangeFromRestAPI.compareTo(exchangeFromWebSide) == 0) {
 			logi.addToLogs("PASS- Wartoœci zgodne dla z³ota równe " + exchangeFromWebSide,
 					getClass().getName().toString(), Thread.currentThread().getStackTrace()[1].getMethodName(), 46);
+			pbClass.changedProgress(1, 1, "Z³oto");
 		} else {
 			logi.addToLogs(
 					"***FAIL- Nie zgodna wartoœæ dla z³ota :API- " + exchangeFromRestAPI + " /WebSide- "
@@ -53,8 +58,7 @@ public class CheckExchange {
 	}
 
 	// check for currency rate
-	public void CheckExchangeCurrency(WebDriver driver, String table, String code, String codeUnit, String name)
-			throws IOException {
+	public void CheckExchangeCurrency(WebDriver driver, String table, String code, String codeUnit, String name, int listCurrencySize)throws IOException {
 		String side = driver.getCurrentUrl().toString();
 		// Value of exchange from RestAPI
 		Float exchangeFromRestAPI = Float.parseFloat(rc.exchange(table, code));
@@ -115,6 +119,8 @@ public class CheckExchange {
 							"PASS- Wartoœci zgodne dla " + name + "- KOD: " + code + " równe " + exchangeFromWebSide,
 							getClass().getName().toString(), Thread.currentThread().getStackTrace()[1].getMethodName(),
 							116);
+							iterator++;
+							pbClass.changedProgress(iterator, listCurrencySize, name);
 				} else {
 					logi.addToLogs(
 							"***FAIL- Nie zgodna wartoœæ dla " + code + " :API- " + exchangeFromRestAPI + " /WebSide- "
@@ -124,7 +130,6 @@ public class CheckExchange {
 				}
 			}
 		}
-		// System.out.println("Tu dosz³o");
 	}
 
 	// function to return Multiplier for the Currency

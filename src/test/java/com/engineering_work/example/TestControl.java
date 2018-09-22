@@ -32,13 +32,15 @@ public class TestControl {
 	Logs logi=Logs.getInstance();
 	
 	
-	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfEurope;
-	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfAsia;
-	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfAustralia;
-	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfNorthAmerica;
-	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfSouthAmerica;
-	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesOfAfrica;
-	public ArrayList<ObjectAllAboutCurrencyCSV> CountriesAll;
+	public ArrayList<ObjectAllAboutCurrencyCSV> CurrencyOfEurope;
+	public ArrayList<ObjectAllAboutCurrencyCSV> CurrencyOfAsia;
+	public ArrayList<ObjectAllAboutCurrencyCSV> CurrencyOfAustralia;
+	public ArrayList<ObjectAllAboutCurrencyCSV> CurrencyOfNorthAmerica;
+	public ArrayList<ObjectAllAboutCurrencyCSV> CurrencyOfSouthAmerica;
+	public ArrayList<ObjectAllAboutCurrencyCSV> CurrencyOfAfrica;
+	public ArrayList<ObjectAllAboutCurrencyCSV> CurrencyAll;
+	public ArrayList<ObjectAllAboutCurrencyCSV> CurrencySelected;
+	
 	
 	
 	public boolean firstRun=true;
@@ -103,10 +105,29 @@ public class TestControl {
 	}
 
 	@Test
-	public void TestWeb() throws IOException {
+	public void TestWebCurrency() throws IOException {
 		driver.get(REPO.linkTabelaA);
 		//Exchange Currency
-		ArrayList<ObjectAllAboutCurrencyCSV> tmpList=CountriesOfEurope;
+		logi.addToLogs();
+		for(int i=0 ; i<CurrencySelected.size() ; i++){
+			chr.CheckExchangeCurrency(driver, CurrencySelected.get(i).Table, CurrencySelected.get(i).Code,CurrencySelected.get(i).CodeUnit, CurrencySelected.get(i).Name,CurrencySelected.size());
+			}
+		logi.addToLogs();
+		
+		//ExchangeGold
+		chr.CheckExchangeGold(driver);
+	}
+	@Test
+	public void TestWebGold() throws IOException {
+		driver.get(REPO.linkGold);
+		//ExchangeGold
+		chr.CheckExchangeGold(driver);
+	}
+	@Test
+	public void TestMobileCurrency() throws IOException {
+		/*driver.get(REPO.linkTabelaA);
+		//Exchange Currency
+		ArrayList<ObjectAllAboutCurrencyCSV> tmpList=CountriesOfAfrica;
 		logi.addToLogs();
 		for(int i=0 ; i<tmpList.size() ; i++){
 			chr.CheckExchangeCurrency(driver, tmpList.get(i).Table, tmpList.get(i).Code,tmpList.get(i).CodeUnit, tmpList.get(i).Name);
@@ -115,9 +136,10 @@ public class TestControl {
 		
 		//ExchangeGold
 		chr.CheckExchangeGold(driver);
+		logi.addToLogs();*/
 	}
 	@Test
-	public void TestMobile() throws IOException {
+	public void TestMobileGold() throws IOException {
 		/*driver.get(REPO.linkTabelaA);
 		//Exchange Currency
 		ArrayList<ObjectAllAboutCurrencyCSV> tmpList=CountriesOfAfrica;
