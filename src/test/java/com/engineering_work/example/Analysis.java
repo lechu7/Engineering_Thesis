@@ -2,6 +2,7 @@ package com.engineering_work.example;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Timer;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -21,14 +22,15 @@ public class Analysis implements Runnable {
 	boolean isSelectedGold = false;
 	boolean isSelectedCurrency = false;
 
+	Timer timer1 = new Timer();
+
 	public void run() {
 		try {
 			isSelectedGold = false;
 			isSelectedCurrency = false;
-			if	(JavaFX.goldTest.isSelected()==true)
-			{
-				isSelectedGold  =true;
-				
+			if (JavaFX.goldTest.isSelected() == true) {
+				isSelectedGold = true;
+
 			}
 			// checks if something is selected and select currency to test
 			for (ObjectToTableView item : JavaFX.list) {
@@ -57,7 +59,7 @@ public class Analysis implements Runnable {
 				}
 			}
 			// Select browser
-			if (isSelectedCurrency == true ||isSelectedGold==true) {
+			if (isSelectedCurrency == true || isSelectedGold == true) {
 				if (JavaFX.Chrome.isSelected()) {
 					tc.browser = REPO.Browsers.Chrome;
 					logi.addToLogs("Wybrano Chrome (UserGUI)", getClass().getName().toString(),
@@ -83,37 +85,52 @@ public class Analysis implements Runnable {
 
 				// Disable all elements on window after click Start
 				disable();
+
 				tc.beforeTest();
+
 				logi.addToLogs();
 				// choice between Web and Mobile test
 				if (JavaFX.WebTest.isSelected()) {
 					logi.addToLogs("Wybrano test WEB (UserGUI)", getClass().getName().toString(),
 							Thread.currentThread().getStackTrace()[1].getMethodName(), 46);
-					
-					if	(isSelectedCurrency==true)
-					{
+
+					long start = System.nanoTime();
+
+					if (isSelectedCurrency == true) {
 						tc.TestWebCurrency();
-						
+
 					}
-					if	(isSelectedGold==true)
-					{
-						//Method to set 0 in progress
+					if (isSelectedGold == true) {
+						// Method to set 0 in progress
 						disable();
-						tc.TestWebGold();				
+						tc.TestWebGold();
 					}
+					long elapsedTime = System.nanoTime() - start;
+					JavaFX.setTimer(elapsedTime);
+
 				} else {
 
 					logi.addToLogs("Wybrano test MOBILE (UserGUI)", getClass().getName().toString(),
 							Thread.currentThread().getStackTrace()[1].getMethodName(), 49);
-					tc.TestMobileCurrency();
+					long start = System.nanoTime();
+					if (isSelectedCurrency == true) {
+						tc.TestMobileCurrency();
+					}
+					if (isSelectedGold == true) {
+						// Method to set 0 in progress
+						disable();
+						tc.TestMobileGold();
+					}
+					long elapsedTime = System.nanoTime() - start;
 				}
 				logi.addToLogs();
 				tc.afterTest();
 				// Enable all elements on window
 				enable();
+			}
 
-			} else {
-				JOptionPane.showMessageDialog(null, "Nie zaznaczono ¿adnych walut do testowania!");
+			else {
+				JOptionPane.showMessageDialog(null, "Nie zaznaczono ¿adnych elementów do testowania!");
 			}
 		} catch (IOException e) {
 
@@ -135,7 +152,7 @@ public class Analysis implements Runnable {
 		for (Node node : JavaFX.root.getChildren()) {
 			node.setDisable(false);
 		}
-		//new CurrencySelected list
+		// new CurrencySelected list
 		tc.CurrencySelected = new ArrayList<ObjectAllAboutCurrencyCSV>();
 		pbClass.invisable();
 		JavaFX.MobileTest.setDisable(true);// ZASLEPKA

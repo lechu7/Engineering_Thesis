@@ -5,10 +5,12 @@
     <classes>
       <class name="com.engineering_work.example.TestControl">
         <methods>
-          <include name="TestWeb"/>
+          <include name="TestWebCurrency"/>
+          <include name="TestMobileCurrency"/>
+          <include name="TestMobileGold"/>
           <include name="afterTest"/>
+          <include name="TestWebGold"/>
           <include name="beforeTest"/>
-          <include name="TestMobile"/>
         </methods>
       </class> <!-- com.engineering_work.example.TestControl -->
     </classes>

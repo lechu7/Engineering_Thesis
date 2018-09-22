@@ -4,6 +4,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.text.Element;
 
@@ -17,6 +18,7 @@ import javafx.scene.image.ImageView;
 import java.awt.event.ActionEvent;
 import javafx.scene.control.ToggleGroup;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -57,9 +59,9 @@ public class JavaFX extends Application {
 	TestControl tc = TestControl.getInstance();
 	Logs logi = Logs.getInstance();
 	PreparationCSV pCSV = new PreparationCSV();
-	ProgressBar pbClass= new ProgressBar();
+	ProgressBar pbClass = new ProgressBar();
 
-	//Thread to analysis action after Start click
+	// Thread to analysis action after Start click
 	Thread threadAnalysis;
 	public static StackPane root;
 
@@ -82,13 +84,15 @@ public class JavaFX extends Application {
 	public static ObservableList<ObjectToTableView> list;
 	TableView<ObjectToTableView> table;
 
-	//Elements to progressbar
+	// Elements to progressbar
 	public static ProgressBar pb;
 	public static ProgressIndicator pi;
 	public static Label progress = new Label();
 	public static final Label progressCurrencyInfo = new Label();
-	
-	public static CheckBox goldTest= new CheckBox();
+	// Label with time of test after test
+	public static Label timer;
+
+	public static CheckBox goldTest = new CheckBox();
 
 	// Button Start
 	public static Button Start;
@@ -180,13 +184,13 @@ public class JavaFX extends Application {
 
 		// TableView with select the Continents with Currency
 		// Add Continents to list
-		list= FXCollections.observableArrayList();
-		list.add(new ObjectToTableView(false, "Afryka","Africa", tc.CurrencyOfAfrica));
-		list.add(new ObjectToTableView(false, "Ameryka Po³udniowa","SouthAmerica", tc.CurrencyOfSouthAmerica));
-		list.add(new ObjectToTableView(false, "Ameryka Pó³nocna","NorthAmerica", tc.CurrencyOfNorthAmerica));
-		list.add(new ObjectToTableView(false, "Australia","Australia", tc.CurrencyOfAustralia));
-		list.add(new ObjectToTableView(false, "Azja","Asia", tc.CurrencyOfAsia));
-		list.add(new ObjectToTableView(false, "Europa","Europe", tc.CurrencyOfEurope));
+		list = FXCollections.observableArrayList();
+		list.add(new ObjectToTableView(false, "Afryka", "Africa", tc.CurrencyOfAfrica));
+		list.add(new ObjectToTableView(false, "Ameryka Po³udniowa", "SouthAmerica", tc.CurrencyOfSouthAmerica));
+		list.add(new ObjectToTableView(false, "Ameryka Pó³nocna", "NorthAmerica", tc.CurrencyOfNorthAmerica));
+		list.add(new ObjectToTableView(false, "Australia", "Australia", tc.CurrencyOfAustralia));
+		list.add(new ObjectToTableView(false, "Azja", "Asia", tc.CurrencyOfAsia));
+		list.add(new ObjectToTableView(false, "Europa", "Europe", tc.CurrencyOfEurope));
 		// new table
 		table = new TableView<ObjectToTableView>();
 		table.setEditable(true);
@@ -270,15 +274,13 @@ public class JavaFX extends Application {
 			table.refresh();
 		});
 
-		
-		//CheckBox gold test
-	
+		// CheckBox gold test
 		goldTest.setText("Testowanie kursu z³ota");
 		goldTest.setTranslateX(112);
 		goldTest.setTranslateY(25);
-		
+
 		// PROGRESS BAR
-		progress.setText("Progress:");
+		progress.setText("Progres:");
 		progress.setTranslateX(0);
 		progress.setTranslateY(100);
 		progress.setFont(Font.font("Arial", FontWeight.BOLD, 20));
@@ -301,13 +303,21 @@ public class JavaFX extends Application {
 		progressCurrencyInfo.setText("Uruchamianie testu...");
 		progressCurrencyInfo.setTranslateX(0);
 		progressCurrencyInfo.setTranslateY(175);
-		progressCurrencyInfo.setFont(Font.font("Arial", 18));
+		progressCurrencyInfo.setFont(Font.font("Arial", 17));
 
-		 pb.setVisible(false);
-		 pi.setVisible(false);
-		 progress.setVisible(false);
-		 progressCurrencyInfo.setVisible(false);
-		
+		pb.setVisible(false);
+		pi.setVisible(false);
+		progress.setVisible(false);
+		progressCurrencyInfo.setVisible(false);
+
+		// Timer
+		timer = new Label();
+		timer.setText("czas");
+		timer.setFont(Font.font("Arial",FontWeight.BOLD, 25));
+		timer.setTranslateX(0);
+		timer.setTranslateY(135);
+		timer.setVisible(false);
+
 		// Button Start
 		Start = new Button();
 		Start.setTranslateX(0);
@@ -354,6 +364,7 @@ public class JavaFX extends Application {
 		root.getChildren().add(pi);
 		root.getChildren().add(progressCurrencyInfo);
 		root.getChildren().add(goldTest);
+		root.getChildren().add(timer);
 		// Window
 		Scene scene = new Scene(root, 600, 500);
 		// Event on click close (X)
@@ -384,6 +395,17 @@ public class JavaFX extends Application {
 		launch(args);
 	}
 
+	public static void setTimer(long time) {
+		DecimalFormat df = new DecimalFormat("0.000");
+		final double returnTime=time/1000000000F;
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				timer.setText("Czas wykonywania testu = "+df.format(returnTime)+" s.");
+			}
+		});
+	}
+
 	public void preparingCSVandLists() throws IOException {
 		if (tc.CurrencyOfEurope == null || tc.CurrencyOfAsia == null || tc.CurrencyOfAustralia == null
 				|| tc.CurrencyOfNorthAmerica == null || tc.CurrencyOfSouthAmerica == null
@@ -403,7 +425,6 @@ public class JavaFX extends Application {
 			tc.CurrencyOfNorthAmerica = pCSV.CSVCurrencyOfNorthAmerica;
 			tc.CurrencyOfSouthAmerica = pCSV.CSVCurrencyOfSouthAmerica;
 			tc.CurrencyOfAfrica = pCSV.CSVCurrencyOfAfrica;
-
 
 			// add all lists to CountriesAll list
 			tc.CurrencyAll.addAll(tc.CurrencyOfEurope);
