@@ -47,7 +47,7 @@ public class CheckExchange {
 		if (exchangeFromRestAPI.compareTo(exchangeFromWebSide) == 0) {
 			logi.addToLogs("PASS- Wartoœci zgodne dla z³ota równe " + exchangeFromWebSide,
 					getClass().getName().toString(), Thread.currentThread().getStackTrace()[1].getMethodName(), 46);
-			pbClass.changedProgress(1, 1, "Z³oto");
+			pbClass.changedProgress(1, 1, "Kurs z³ota: "+exchangeFromWebSide+" z³.");
 		} else {
 			logi.addToLogs(
 					"***FAIL- Nie zgodna wartoœæ dla z³ota :API- " + exchangeFromRestAPI + " /WebSide- "
@@ -120,7 +120,7 @@ public class CheckExchange {
 							getClass().getName().toString(), Thread.currentThread().getStackTrace()[1].getMethodName(),
 							116);
 							iterator++;
-							pbClass.changedProgress(iterator, listCurrencySize, name);
+							pbClass.changedProgress(iterator, listCurrencySize, "Kurs waluty "+name+": "+exchangeFromWebSide+" z³.");
 				} else {
 					logi.addToLogs(
 							"***FAIL- Nie zgodna wartoœæ dla " + code + " :API- " + exchangeFromRestAPI + " /WebSide- "

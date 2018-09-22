@@ -1,16 +1,26 @@
 package com.engineering_work.example;
 import javafx.scene.control.Label;
+
+import java.awt.EventQueue;
+
+import javax.swing.JLabel;
+
 import javafx.application.Platform;
 
 public class ProgressBar {
 	
-	
-	
-	 public void changedProgress(double new_val,double all_val,String currencyName) {
+	//Method to change progress in progressBar
+	 public void changedProgress(double new_val,double all_val,final String messageText) {
          JavaFX.pb.setProgress(new_val/all_val);
          JavaFX.pi.setProgress(new_val/all_val);
-         //JavaFX.progressCurrencyInfo.setText("Waluta "+currencyName+". ("+new_val+"/"+all_val+")");
-     }
+         //Change the text under progress bar
+         Platform.runLater(new Runnable() {
+             @Override public void run() {
+            	  JavaFX.progressCurrencyInfo.setText(messageText);
+            	  }
+       });
+       
+	 }
 	 //Visable progress bar and other elements 
 	 public void visable()
 	 {
@@ -24,6 +34,9 @@ public class ProgressBar {
 		 
 		 JavaFX.progress.setVisible(true);
 		 JavaFX.progress.setDisable(false);;
+		 
+		 JavaFX.progressCurrencyInfo.setVisible(true);
+		 JavaFX.progressCurrencyInfo.setDisable(false);;
 	 }
 	 //Visable progress bar and other elements 
 	 public void invisable()
@@ -31,7 +44,8 @@ public class ProgressBar {
 		 JavaFX.pb.setVisible(false);
 		 JavaFX.pi.setVisible(false);
 		 JavaFX.progress.setVisible(false);
+		 JavaFX.progressCurrencyInfo.setVisible(false);
 	 }
-	 
+	
 
 }

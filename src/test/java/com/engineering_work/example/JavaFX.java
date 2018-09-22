@@ -59,7 +59,7 @@ public class JavaFX extends Application {
 	PreparationCSV pCSV = new PreparationCSV();
 	ProgressBar pbClass= new ProgressBar();
 
-
+	//Thread to analysis action after Start click
 	Thread threadAnalysis;
 	public static StackPane root;
 
@@ -82,10 +82,11 @@ public class JavaFX extends Application {
 	public static ObservableList<ObjectToTableView> list;
 	TableView<ObjectToTableView> table;
 
+	//Elements to progressbar
 	public static ProgressBar pb;
 	public static ProgressIndicator pi;
 	public static Label progress = new Label();
-	public static Label progressCurrencyInfo = new Label();
+	public static final Label progressCurrencyInfo = new Label();
 	
 	public static CheckBox goldTest= new CheckBox();
 
@@ -297,7 +298,7 @@ public class JavaFX extends Application {
 		pi.setTranslateX(250);
 		pi.setTranslateY(145);
 
-		progressCurrencyInfo.setText("EURO");
+		progressCurrencyInfo.setText("Uruchamianie testu...");
 		progressCurrencyInfo.setTranslateX(0);
 		progressCurrencyInfo.setTranslateY(175);
 		progressCurrencyInfo.setFont(Font.font("Arial", 18));
@@ -305,6 +306,7 @@ public class JavaFX extends Application {
 		 pb.setVisible(false);
 		 pi.setVisible(false);
 		 progress.setVisible(false);
+		 progressCurrencyInfo.setVisible(false);
 		
 		// Button Start
 		Start = new Button();
@@ -315,6 +317,7 @@ public class JavaFX extends Application {
 		Start.setFont(Font.font("Arial", FontWeight.BOLD, 20));
 		Start.setOnAction(e -> {
 			try {
+				progressCurrencyInfo.setText("Uruchamianie testu...");
 				logi.addToLogs();
 				logi.addToLogs("Kliknieto start (UserGUI)", getClass().getName().toString(),
 						Thread.currentThread().getStackTrace()[1].getMethodName(), 144);

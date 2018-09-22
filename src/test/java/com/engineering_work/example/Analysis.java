@@ -135,6 +135,7 @@ public class Analysis implements Runnable {
 		for (Node node : JavaFX.root.getChildren()) {
 			node.setDisable(false);
 		}
+		//new CurrencySelected list
 		tc.CurrencySelected = new ArrayList<ObjectAllAboutCurrencyCSV>();
 		pbClass.invisable();
 		JavaFX.MobileTest.setDisable(true);// ZASLEPKA
