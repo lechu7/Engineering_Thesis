@@ -92,6 +92,7 @@ public class JavaFX extends Application {
 	// Label with time of test after test
 	public static Label timer;
 
+	//checkbox to test gold
 	public static CheckBox goldTest = new CheckBox();
 
 	// Button Start
@@ -123,8 +124,7 @@ public class JavaFX extends Application {
 
 		MobileTest.setDisable(true);// ZASLEPKA
 
-		// toDo Jak w GUI zaznaczy przegl¹darke której nie ma na kompie to nie robi
-		// testu tylko wyrzuca komunikat
+		
 		final ToggleGroup browsersGroup = new ToggleGroup();
 		// RadioButton Firefox
 		Firefox = new RadioButton();

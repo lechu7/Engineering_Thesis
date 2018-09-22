@@ -21,7 +21,7 @@ public class Analysis implements Runnable {
 	ProgressBar pbClass = new ProgressBar();
 	boolean isSelectedGold = false;
 	boolean isSelectedCurrency = false;
-
+    //Timer test
 	Timer timer1 = new Timer();
 
 	public void run() {
@@ -30,7 +30,6 @@ public class Analysis implements Runnable {
 			isSelectedCurrency = false;
 			if (JavaFX.goldTest.isSelected() == true) {
 				isSelectedGold = true;
-
 			}
 			// checks if something is selected and select currency to test
 			for (ObjectToTableView item : JavaFX.list) {
@@ -94,8 +93,8 @@ public class Analysis implements Runnable {
 					logi.addToLogs("Wybrano test WEB (UserGUI)", getClass().getName().toString(),
 							Thread.currentThread().getStackTrace()[1].getMethodName(), 46);
 
+					//start timer
 					long start = System.nanoTime();
-
 					if (isSelectedCurrency == true) {
 						tc.TestWebCurrency();
 
@@ -105,6 +104,7 @@ public class Analysis implements Runnable {
 						disable();
 						tc.TestWebGold();
 					}
+					//stop timer
 					long elapsedTime = System.nanoTime() - start;
 					JavaFX.setTimer(elapsedTime);
 
@@ -122,6 +122,7 @@ public class Analysis implements Runnable {
 						tc.TestMobileGold();
 					}
 					long elapsedTime = System.nanoTime() - start;
+					JavaFX.setTimer(elapsedTime);
 				}
 				logi.addToLogs();
 				tc.afterTest();
