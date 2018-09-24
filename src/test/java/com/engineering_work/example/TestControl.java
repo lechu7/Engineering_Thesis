@@ -17,6 +17,9 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
+
 public class TestControl {
 
 	// Singleton for class TestControl
@@ -41,10 +44,13 @@ public class TestControl {
 	public ArrayList<ObjectAllAboutCurrencyCSV> CurrencyOfSouthAmerica;
 	public ArrayList<ObjectAllAboutCurrencyCSV> CurrencyOfAfrica;
 	public ArrayList<ObjectAllAboutCurrencyCSV> CurrencyAll;
-	public ArrayList<ObjectAllAboutCurrencyCSV> CurrencySelected;
+	//Continent Name
+	public ArrayList<String> continentName;
+	
+	public ArrayList<ArrayList<ObjectAllAboutCurrencyCSV>> listOfListsCurrency;
 
 	public boolean firstRun = true;
-	REPO.Browsers browser;
+	public static REPO.Browsers browser;
 	//Button to messagebox in select browser
 	  public Object[] optionsOK = {"OK"};
 	  int error;
@@ -53,17 +59,17 @@ public class TestControl {
 	@BeforeTest
 	public void beforeTest() throws IOException {
 
-		// Mo¿na zrobiæ ¿e dopiero po wyborze z GUI tworzy siê odpoweidnia lista (do
-		// przemyœlenia)
-		// Preparation CSV data file and countries list
-
 		// switch the browser
-
 		switch (browser) {
 		case Firefox:
 			System.setProperty("webdriver.gecko.driver", ".\\src\\test\\resources\\drivers\\geckodriver.exe");
 			try {
+				//start timer
+				long start = System.nanoTime();
 			driver = new FirefoxDriver();
+			//stop timer
+			long elapsedTime = System.nanoTime() - start;
+			TestTimer.saveTimeToCSV("web","Uruchomienie",elapsedTime); 
 			} catch (Exception e) {
 				int error = JOptionPane.showOptionDialog(null,
 						"Najprawdopodobnie nie zainstalowano wybranej przegl¹darki: " + browser.toString()+". \nAplikacja zostanie wy³¹czona.", "B³¹d przegl¹darki "+ browser.toString()+".",
@@ -84,7 +90,12 @@ public class TestControl {
 		case Chrome:
 			System.setProperty("webdriver.chrome.driver", ".\\src\\test\\resources\\drivers\\chromedriver.exe");
 			try {
+				//start timer
+				long start = System.nanoTime();
 				driver = new ChromeDriver();
+				//stop timer
+				long elapsedTime = System.nanoTime() - start;
+				TestTimer.saveTimeToCSV("web","Uruchomienie",elapsedTime); 
 			} catch (Exception e) {
 				error = JOptionPane.showOptionDialog(null,
 						"Najprawdopodobnie nie zainstalowano wybranej przegl¹darki: " + browser.toString()+". \nAplikacja zostanie wy³¹czona.", "B³¹d przegl¹darki "+ browser.toString()+".",
@@ -108,7 +119,12 @@ public class TestControl {
 			options.setBinary("C:\\Users\\Damian\\AppData\\Local\\Programs\\Opera\\launcher.exe");
 			capabilities.setCapability(OperaOptions.CAPABILITY, options);
 			try {
+				//start timer
+				long start = System.nanoTime();
 			driver = new OperaDriver(capabilities);
+			//stop timer
+			long elapsedTime = System.nanoTime() - start;
+			TestTimer.saveTimeToCSV("web","Uruchomienie",elapsedTime); 
 			} catch (Exception e) {
 				error = JOptionPane.showOptionDialog(null,
 						"Najprawdopodobnie nie zainstalowano wybranej przegl¹darki: " + browser.toString()+". \nAplikacja zostanie wy³¹czona.", "B³¹d przegl¹darki "+ browser.toString()+".",
@@ -130,7 +146,12 @@ public class TestControl {
 			DesiredCapabilities caps = new DesiredCapabilities();
 			caps.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
 			try {
+				//start timer
+				long start = System.nanoTime();
 			driver = new InternetExplorerDriver(caps);
+			//stop timer
+			long elapsedTime = System.nanoTime() - start;
+			TestTimer.saveTimeToCSV("web","Uruchomienie",elapsedTime); 
 			} catch (Exception e) {
 			 error = JOptionPane.showOptionDialog(null,
 						"Najprawdopodobnie nie zainstalowano wybranej przegl¹darki: " + browser.toString()+". \nAplikacja zostanie wy³¹czona.", "B³¹d przegl¹darki "+ browser.toString()+".",
@@ -150,7 +171,12 @@ public class TestControl {
 		case Edge:
 			System.setProperty("webdriver.edge.driver", ".\\src\\test\\resources\\drivers\\MicrosoftWebDriver.exe");
 			try {
+				//start timer
+				long start = System.nanoTime();
 			driver = new EdgeDriver();
+			//stop timer
+			long elapsedTime = System.nanoTime() - start;
+			TestTimer.saveTimeToCSV("web","Uruchomienie",elapsedTime); 
 			} catch (Exception e) {
 			error = JOptionPane.showOptionDialog(null,
 						"Najprawdopodobnie nie zainstalowano wybranej przegl¹darki: " + browser.toString()+". \nAplikacja zostanie wy³¹czona.", "B³¹d przegl¹darki "+ browser.toString()+".",
@@ -170,7 +196,12 @@ public class TestControl {
 		default:
 			System.setProperty("webdriver.gecko.driver", ".\\src\\test\\resources\\drivers\\geckodriver.exe");
 			try {
+				//start timer
+				long start = System.nanoTime();
 			driver = new FirefoxDriver();
+			//stop timer
+			long elapsedTime = System.nanoTime() - start;
+			TestTimer.saveTimeToCSV("web","Uruchomienie",elapsedTime); 
 			} catch (Exception e) {
 				int error = JOptionPane.showOptionDialog(null,
 						"Najprawdopodobnie nie zainstalowano wybranej przegl¹darki: " + browser.toString()+". \nAplikacja zostanie wy³¹czona.", "B³¹d przegl¹darki "+ browser.toString()+".",
@@ -194,21 +225,38 @@ public class TestControl {
 		driver.get(REPO.linkTabelaA);
 		// Exchange Currency
 		logi.addToLogs();
-		for (int i = 0; i < CurrencySelected.size(); i++) {
-			chr.CheckExchangeCurrency(driver, CurrencySelected.get(i).Table, CurrencySelected.get(i).Code,
-					CurrencySelected.get(i).CodeUnit, CurrencySelected.get(i).Name, CurrencySelected.size());
+		for (int i = 0; i < listOfListsCurrency.size(); i++) {
+			//Reset the progress bar
+			CheckExchange.iterator=0;
+			//set progress
+			TestTimer.setProgressLabel(i+1, listOfListsCurrency.size()+1);
+			//start timer
+		long start = System.nanoTime();
+		for (int j = 0; j < listOfListsCurrency.get(i).size(); j++) {
+			chr.CheckExchangeCurrency(driver, listOfListsCurrency.get(i).get(j).Table, listOfListsCurrency.get(i).get(j).Code,
+					listOfListsCurrency.get(i).get(j).CodeUnit,listOfListsCurrency.get(i).get(j).Name, listOfListsCurrency.get(i).size());
 		}
-		logi.addToLogs();
+		//stop timer
+				long elapsedTime = System.nanoTime() - start;
+				TestTimer.saveTimeToCSV("web",continentName.get(i),elapsedTime);    
+	
+		}
 
-		// ExchangeGold
-		chr.CheckExchangeGold(driver);
 	}
-
 	@Test
 	public void TestWebGold() throws IOException {
 		driver.get(REPO.linkGold);
+		
+		//set progress
+		TestTimer.setProgressLabel(listOfListsCurrency.size()+1, listOfListsCurrency.size()+1);
+		
+		//start timer
+		long start = System.nanoTime();
 		// ExchangeGold
 		chr.CheckExchangeGold(driver);
+		//stop timer
+		long elapsedTime = System.nanoTime() - start;
+		TestTimer.saveTimeToCSV("web","Z³oto",elapsedTime);    
 	}
 
 	@Test
@@ -252,6 +300,7 @@ public class TestControl {
 						Thread.currentThread().getStackTrace()[1].getMethodName(), 141);
 			}
 		}
+		// Problem with closing the browser (Edge)
 		if (browser == REPO.Browsers.Edge) {
 			try {
 				Runtime.getRuntime().exec("taskkill /f /im edge.exe");
@@ -263,6 +312,11 @@ public class TestControl {
 		}
 		logi.addToLogs("Zamknieto przegladarkê " + browser.toString() + ". ", getClass().getName().toString(),
 				Thread.currentThread().getStackTrace()[1].getMethodName(), 144);
+	}
+	//Return Browser name for CSV file with time
+	public static String returnBrowserName()
+	{
+		return browser.toString();
 	}
 
 }

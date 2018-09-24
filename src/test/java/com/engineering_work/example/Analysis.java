@@ -19,43 +19,58 @@ public class Analysis implements Runnable {
 	TestControl tc = TestControl.getInstance();
 	Logs logi = Logs.getInstance();
 	ProgressBar pbClass = new ProgressBar();
+	
+	public String web_mobile;
+	public String browserName;
+	
 	boolean isSelectedGold = false;
 	boolean isSelectedCurrency = false;
-    //Timer test
+    //TestTimer test
 	Timer timer1 = new Timer();
 
 	public void run() {
 		try {
 			isSelectedGold = false;
 			isSelectedCurrency = false;
-			if (JavaFX.goldTest.isSelected() == true) {
-				isSelectedGold = true;
-			}
 			// checks if something is selected and select currency to test
 			for (ObjectToTableView item : JavaFX.list) {
 				if (item.returnBool() == true) {
 					isSelectedCurrency = true;
 					if (item.returnContinentName() == "Africa") {
-
-						tc.CurrencySelected.addAll(tc.CurrencyOfAfrica);
+						tc.listOfListsCurrency.add(tc.CurrencyOfAfrica);
+						tc.continentName.add(item.returnContinentPolishName());
+						//tc.CurrencySelected.addAll(tc.CurrencyOfAfrica);
 					}
 					if (item.returnContinentName() == "SouthAmerica") {
-						tc.CurrencySelected.addAll(tc.CurrencyOfSouthAmerica);
+						tc.listOfListsCurrency.add(tc.CurrencyOfSouthAmerica);
+						tc.continentName.add(item.returnContinentPolishName());
+						//tc.CurrencySelected.addAll(tc.CurrencyOfSouthAmerica);
 					}
 					if (item.returnContinentName() == "NorthAmerica") {
-
-						tc.CurrencySelected.addAll(tc.CurrencyOfNorthAmerica);
+						tc.listOfListsCurrency.add(tc.CurrencyOfNorthAmerica);
+						tc.continentName.add(item.returnContinentPolishName());
+						//tc.CurrencySelected.addAll(tc.CurrencyOfNorthAmerica);
 					}
 					if (item.returnContinentName() == "Australia") {
-						tc.CurrencySelected.addAll(tc.CurrencyOfAustralia);
+						tc.listOfListsCurrency.add(tc.CurrencyOfAustralia);
+						tc.continentName.add(item.returnContinentPolishName());
+						//tc.CurrencySelected.addAll(tc.CurrencyOfAustralia);
 					}
 					if (item.returnContinentName() == "Asia") {
-						tc.CurrencySelected.addAll(tc.CurrencyOfAsia);
+						tc.listOfListsCurrency.add(tc.CurrencyOfAsia);
+						tc.continentName.add(item.returnContinentPolishName());
+						//tc.CurrencySelected.addAll(tc.CurrencyOfAsia);
 					}
 					if (item.returnContinentName() == "Europe") {
-						tc.CurrencySelected.addAll(tc.CurrencyOfEurope);
+						tc.listOfListsCurrency.add(tc.CurrencyOfEurope);
+						tc.continentName.add(item.returnContinentPolishName());
+						//tc.CurrencySelected.addAll(tc.CurrencyOfEurope);
 					}
 				}
+			}
+			if (JavaFX.goldTest.isSelected() == true) {
+				isSelectedGold = true;
+				tc.continentName.add("Z³oto");
 			}
 			// Select browser
 			if (isSelectedCurrency == true || isSelectedGold == true) {
@@ -80,7 +95,6 @@ public class Analysis implements Runnable {
 					logi.addToLogs("Wybrano Mozilla Firefox (UserGUI)", getClass().getName().toString(),
 							Thread.currentThread().getStackTrace()[1].getMethodName(), 37);
 				}
-				logi.addToLogs();
 
 				// Disable all elements on window after click Start
 				disable();
@@ -106,7 +120,7 @@ public class Analysis implements Runnable {
 					}
 					//stop timer
 					long elapsedTime = System.nanoTime() - start;
-					JavaFX.setTimer(elapsedTime);
+					TestTimer.setTimer(elapsedTime);
 
 				} else {
 
@@ -122,9 +136,8 @@ public class Analysis implements Runnable {
 						tc.TestMobileGold();
 					}
 					long elapsedTime = System.nanoTime() - start;
-					JavaFX.setTimer(elapsedTime);
+					TestTimer.setTimer(elapsedTime);
 				}
-				logi.addToLogs();
 				tc.afterTest();
 				// Enable all elements on window
 				enable();
@@ -154,7 +167,8 @@ public class Analysis implements Runnable {
 			node.setDisable(false);
 		}
 		// new CurrencySelected list
-		tc.CurrencySelected = new ArrayList<ObjectAllAboutCurrencyCSV>();
+		tc.listOfListsCurrency = new ArrayList<ArrayList<ObjectAllAboutCurrencyCSV>>();
+		tc.continentName= new ArrayList<String>();
 		pbClass.invisable();
 		JavaFX.MobileTest.setDisable(true);// ZASLEPKA
 	}

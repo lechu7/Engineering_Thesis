@@ -92,7 +92,7 @@ public class JavaFX extends Application {
 	// Label with time of test after test
 	public static Label timer;
 
-	//checkbox to test gold
+	// checkbox to test gold
 	public static CheckBox goldTest = new CheckBox();
 
 	// Button Start
@@ -124,7 +124,6 @@ public class JavaFX extends Application {
 
 		MobileTest.setDisable(true);// ZASLEPKA
 
-		
 		final ToggleGroup browsersGroup = new ToggleGroup();
 		// RadioButton Firefox
 		Firefox = new RadioButton();
@@ -280,7 +279,6 @@ public class JavaFX extends Application {
 		goldTest.setTranslateY(25);
 
 		// PROGRESS BAR
-		progress.setText("Progres:");
 		progress.setTranslateX(0);
 		progress.setTranslateY(100);
 		progress.setFont(Font.font("Arial", FontWeight.BOLD, 20));
@@ -310,10 +308,10 @@ public class JavaFX extends Application {
 		progress.setVisible(false);
 		progressCurrencyInfo.setVisible(false);
 
-		// Timer
+		// TestTimer
 		timer = new Label();
 		timer.setText("czas");
-		timer.setFont(Font.font("Arial",FontWeight.BOLD, 25));
+		timer.setFont(Font.font("Arial", FontWeight.BOLD, 25));
 		timer.setTranslateX(0);
 		timer.setTranslateY(135);
 		timer.setVisible(false);
@@ -328,6 +326,7 @@ public class JavaFX extends Application {
 		Start.setOnAction(e -> {
 			try {
 				progressCurrencyInfo.setText("Uruchamianie testu...");
+				progress.setText("");
 				logi.addToLogs();
 				logi.addToLogs("Kliknieto start (UserGUI)", getClass().getName().toString(),
 						Thread.currentThread().getStackTrace()[1].getMethodName(), 144);
@@ -380,7 +379,8 @@ public class JavaFX extends Application {
 		});
 
 		// Icon set
-		javafx.scene.image.Image icon = new javafx.scene.image.Image(getClass().getResourceAsStream("/Images/icon.png"));
+		javafx.scene.image.Image icon = new javafx.scene.image.Image(
+				getClass().getResourceAsStream("/Images/icon.png"));
 		primaryStage.getIcons().add(icon);
 
 		primaryStage.setTitle("NBP API Tests");
@@ -395,17 +395,6 @@ public class JavaFX extends Application {
 		launch(args);
 	}
 
-	public static void setTimer(long time) {
-		DecimalFormat df = new DecimalFormat("0.000");
-		final double returnTime=time/1000000000F;
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				timer.setText("Czas wykonywania testu = "+df.format(returnTime)+" s.");
-			}
-		});
-	}
-
 	public void preparingCSVandLists() throws IOException {
 		if (tc.CurrencyOfEurope == null || tc.CurrencyOfAsia == null || tc.CurrencyOfAustralia == null
 				|| tc.CurrencyOfNorthAmerica == null || tc.CurrencyOfSouthAmerica == null
@@ -417,7 +406,10 @@ public class JavaFX extends Application {
 			tc.CurrencyOfSouthAmerica = new ArrayList<ObjectAllAboutCurrencyCSV>();
 			tc.CurrencyOfAfrica = new ArrayList<ObjectAllAboutCurrencyCSV>();
 			tc.CurrencyAll = new ArrayList<ObjectAllAboutCurrencyCSV>();
-			tc.CurrencySelected = new ArrayList<ObjectAllAboutCurrencyCSV>();
+
+			tc.continentName = new ArrayList<String>();
+			tc.listOfListsCurrency = new ArrayList<ArrayList<ObjectAllAboutCurrencyCSV>>();
+
 			pCSV.readCSVDate();
 			tc.CurrencyOfEurope = pCSV.CSVCurrencyOfEurope;
 			tc.CurrencyOfAsia = pCSV.CSVCurrencyOfAsia;
