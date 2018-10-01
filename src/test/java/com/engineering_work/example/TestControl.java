@@ -39,6 +39,7 @@ public class TestControl {
 	CheckExchange chr = new CheckExchange();
 	Logs logi = Logs.getInstance();
 
+<<<<<<< HEAD
 	public ArrayList<ObjectAllAboutCurrencyCSV> CurrenciesOfEurope;
 	public ArrayList<ObjectAllAboutCurrencyCSV> CurrenciesOfAsia;
 	public ArrayList<ObjectAllAboutCurrencyCSV> CurrenciesOfAustralia;
@@ -47,13 +48,27 @@ public class TestControl {
 	public ArrayList<ObjectAllAboutCurrencyCSV> CurrenciesOfAfrica;
 	public ArrayList<ObjectAllAboutCurrencyCSV> CurrenciesAll;
 	//Continent Name list
+=======
+	public ArrayList<ObjectAllAboutCurrencyCSV> CurrencyOfEurope;
+	public ArrayList<ObjectAllAboutCurrencyCSV> CurrencyOfAsia;
+	public ArrayList<ObjectAllAboutCurrencyCSV> CurrencyOfAustralia;
+	public ArrayList<ObjectAllAboutCurrencyCSV> CurrencyOfNorthAmerica;
+	public ArrayList<ObjectAllAboutCurrencyCSV> CurrencyOfSouthAmerica;
+	public ArrayList<ObjectAllAboutCurrencyCSV> CurrencyOfAfrica;
+	public ArrayList<ObjectAllAboutCurrencyCSV> CurrencyAll;
+	//Continent Name
+>>>>>>> origin/master
 	public ArrayList<String> continentName;
 	
 	public ArrayList<ArrayList<ObjectAllAboutCurrencyCSV>> listOfListsCurrency;
 
 	public boolean firstRun = true;
 	public static REPO.Browsers browser;
+<<<<<<< HEAD
 	//Button in messagebox that pops up when selection is empty
+=======
+	//Button to messagebox in select browser
+>>>>>>> origin/master
 	  public Object[] optionsOK = {"OK"};
 	  int error;
 
@@ -228,14 +243,22 @@ public class TestControl {
 		//Currency exchange rate 
 		logi.addToLogs();
 		for (int i = 0; i < listOfListsCurrency.size(); i++) {
+<<<<<<< HEAD
 			//Reset progress bar
+=======
+			//Reset the progress bar
+>>>>>>> origin/master
 			CheckExchange.iterator=0;
 			//set progress
 			TestTimer.setProgressLabel(i+1, listOfListsCurrency.size()+1);
 			//start timer
 		long start = System.nanoTime();
 		for (int j = 0; j < listOfListsCurrency.get(i).size(); j++) {
+<<<<<<< HEAD
 			chr.CheckCurrencyExchangeRate(driver, listOfListsCurrency.get(i).get(j).Table, listOfListsCurrency.get(i).get(j).Code,
+=======
+			chr.CheckExchangeCurrency(driver, listOfListsCurrency.get(i).get(j).Table, listOfListsCurrency.get(i).get(j).Code,
+>>>>>>> origin/master
 					listOfListsCurrency.get(i).get(j).CodeUnit,listOfListsCurrency.get(i).get(j).Name, listOfListsCurrency.get(i).size());
 		}
 		//stop timer
@@ -254,8 +277,13 @@ public class TestControl {
 		
 		//start timer
 		long start = System.nanoTime();
+<<<<<<< HEAD
 		// Gold exchange rate
 		chr.CheckGoldExchangeRate(driver);
+=======
+		// ExchangeGold
+		chr.CheckExchangeGold(driver);
+>>>>>>> origin/master
 		//stop timer
 		long elapsedTime = System.nanoTime() - start;
 		TestTimer.saveTimeToCSV("web","Z³oto",elapsedTime);    
@@ -317,7 +345,11 @@ public class TestControl {
 		logi.addToLogs("Zamknieto przegladarkê " + browser.toString() + ". ", getClass().getName().toString(),
 				Thread.currentThread().getStackTrace()[1].getMethodName(), 144);
 	}
+<<<<<<< HEAD
 	//Return name of Browser for CSV file with time
+=======
+	//Return Browser name for CSV file with time
+>>>>>>> origin/master
 	public static String returnBrowserName()
 	{
 		return browser.toString();

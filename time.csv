@@ -59,6 +59,7 @@ web;Firefox;Australia;15,503
 web;Firefox;Z³oto;0,937
 web;Edge;Uruchomienie;1,930
 web;Edge;Z³oto;0,721
+<<<<<<< HEAD
 web;Edge;Uruchomienie;3,223
 web;Edge;Z³oto;1,035
 web;Firefox;Uruchomienie;5,737
@@ -80,3 +81,5 @@ web;Edge;Australia;11,764
 web;Firefox;Uruchomienie;6,389
 web;Firefox;Uruchomienie;5,395
 web;Chrome;Uruchomienie;4,191
+=======
+>>>>>>> origin/master
