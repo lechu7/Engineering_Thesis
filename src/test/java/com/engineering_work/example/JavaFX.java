@@ -61,14 +61,14 @@ public class JavaFX extends Application {
 	PreparationCSV pCSV = new PreparationCSV();
 	ProgressBar pbClass = new ProgressBar();
 
-	// Thread to analysis action after click "Start" 
+	// Thread to analysis action after click "start" 
 	Thread threadAnalysis;
 	public static StackPane root;
 
-	// RadioButton WebTest
-	public static RadioButton WebTest;
-	// RadioButton MobileTest
-	public static RadioButton MobileTest;
+	// RadioButton webTest
+	public static RadioButton webTest;
+	// RadioButton mobileTest
+	public static RadioButton mobileTest;
 
 	// Radiobuttons of Browser
 	public static RadioButton Firefox;
@@ -77,9 +77,9 @@ public class JavaFX extends Application {
 	public static RadioButton IE;
 	public static RadioButton Edge;
 
-	// Radiobuttons for All Or Selected Currency test
-	public static RadioButton All;
-	public static RadioButton Selected;
+	// Radiobuttons for all Or selected Currency test
+	public static RadioButton all;
+	public static RadioButton selected;
 
 	public static ObservableList<ObjectToTableView> list;
 	TableView<ObjectToTableView> table;
@@ -87,16 +87,19 @@ public class JavaFX extends Application {
 	// Elements of progressbar
 	public static ProgressBar pb;
 	public static ProgressIndicator pi;
-	public static Label progress = new Label();
-	public static final Label progressCurrencyInfo = new Label();
+	public static Label progress;
+	public static Label progressCurrencyInfo;
 	// Label with time of test after test
 	public static Label timer;
 
 	// checkbox to test gold exchange rate
-	public static CheckBox goldTest = new CheckBox();
+	public static CheckBox goldTest;
+	
+	// checkbox to test gold exchange rate
+	public static CheckBox phisicDevice;
 
-	// Button Start
-	public static Button Start;
+	// Button start
+	public static Button start;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -107,22 +110,45 @@ public class JavaFX extends Application {
 
 		// Group for radiobuttons that select the test
 		final ToggleGroup typeOfTestGroup = new ToggleGroup();
-		// RadioButton WebTest
-		WebTest = new RadioButton();
-		WebTest.setText("Test Webowy");
-		WebTest.setTranslateX(-100);
-		WebTest.setTranslateY(-220);
-		WebTest.setSelected(true);
-		WebTest.setToggleGroup(typeOfTestGroup);
+		// RadioButton webTest
+		webTest = new RadioButton();
+		webTest.setText("Test Webowy");
+		webTest.setTranslateX(-100);
+		webTest.setTranslateY(-220);
+		webTest.setSelected(true);
+		webTest.setToggleGroup(typeOfTestGroup);
+		webTest.setOnAction(e -> {
+			Firefox.setDisable(false);
+			Chrome.setDisable(false);
+			Opera.setDisable(false);
+			IE.setDisable(false);
+			Edge.setDisable(false);
+			phisicDevice.setVisible(false);
+		});
 
-		// RadioButton MobileTest
-		MobileTest = new RadioButton();
-		MobileTest.setText("Test Mobilny");
-		MobileTest.setTranslateX(100);
-		MobileTest.setTranslateY(-220);
-		MobileTest.setToggleGroup(typeOfTestGroup);
-
-
+		// RadioButton mobileTest
+		mobileTest = new RadioButton();
+		mobileTest.setText("Test Mobilny");
+		mobileTest.setTranslateX(100);
+		mobileTest.setTranslateY(-220);
+		mobileTest.setToggleGroup(typeOfTestGroup);
+		mobileTest.setOnAction(e -> {
+			Firefox.setDisable(true);
+			Chrome.setDisable(false);
+			Opera.setDisable(true);
+			IE.setDisable(true);
+			Edge.setDisable(true);
+			
+			Chrome.setSelected(true);
+			phisicDevice.setVisible(true);
+		});
+		
+		// CheckBox- testing on phisic device.
+		phisicDevice= new CheckBox();
+		phisicDevice.setText("Urz¹dzenie fizyczne");
+		phisicDevice.setTranslateX(220);
+		phisicDevice.setTranslateY(-220);
+		phisicDevice.setVisible(false);
 
 		final ToggleGroup groupOfBrowsers = new ToggleGroup();
 		// RadioButton Firefox
@@ -219,13 +245,13 @@ public class JavaFX extends Application {
 		table.setTranslateX(-130);
 
 		final ToggleGroup allOrChosenCurrencyGroup = new ToggleGroup();
-		All = new RadioButton();
-		All.setText("Wszystkie waluty (Iloœæ: " + tc.CurrenciesAll.size() + ")");
-		All.setTranslateX(125);
-		All.setTranslateY(-65);
-		All.setToggleGroup(allOrChosenCurrencyGroup);
-		// When you click "All Currency", all CheckBoxes of tableView have been checked
-		All.setOnAction(e -> {
+		all = new RadioButton();
+		all.setText("Wszystkie waluty (Iloœæ: " + tc.CurrenciesAll.size() + ")");
+		all.setTranslateX(125);
+		all.setTranslateY(-65);
+		all.setToggleGroup(allOrChosenCurrencyGroup);
+		// When you click "all Currency", all CheckBoxes of tableView have been checked
+		all.setOnAction(e -> {
 			try {
 				logi.addToLogs();
 				logi.addToLogs("Kliknieto Wszystkie Waluty (UserGUI)", getClass().getName().toString(),
@@ -249,13 +275,13 @@ public class JavaFX extends Application {
 
 		});
 
-		Selected = new RadioButton();
-		Selected.setText("Wybrane waluty z tabeli kontynentów");
-		Selected.setTranslateX(150);
-		Selected.setTranslateY(-25);
-		Selected.setToggleGroup(allOrChosenCurrencyGroup);
-		Selected.setSelected(true);
-		Selected.setOnAction(e -> {
+		selected = new RadioButton();
+		selected.setText("Wybrane waluty z tabeli kontynentów");
+		selected.setTranslateX(150);
+		selected.setTranslateY(-25);
+		selected.setToggleGroup(allOrChosenCurrencyGroup);
+		selected.setSelected(true);
+		selected.setOnAction(e -> {
 			table.setEditable(true);
 			try {
 				logi.addToLogs();
@@ -271,11 +297,13 @@ public class JavaFX extends Application {
 		});
 
 		// CheckBox- testing of gold exchange rate.
+		goldTest= new CheckBox();
 		goldTest.setText("Testowanie kursu z³ota");
 		goldTest.setTranslateX(112);
 		goldTest.setTranslateY(25);
 
 		// PROGRESS BAR
+		progress=new Label();
 		progress.setTranslateX(0);
 		progress.setTranslateY(100);
 		progress.setFont(Font.font("Arial", FontWeight.BOLD, 20));
@@ -294,7 +322,8 @@ public class JavaFX extends Application {
 
 		pi.setTranslateX(250);
 		pi.setTranslateY(145);
-
+		
+		progressCurrencyInfo = new Label();
 		progressCurrencyInfo.setText("Uruchamianie testu...");
 		progressCurrencyInfo.setTranslateX(0);
 		progressCurrencyInfo.setTranslateY(175);
@@ -313,14 +342,14 @@ public class JavaFX extends Application {
 		timer.setTranslateY(135);
 		timer.setVisible(false);
 
-		// Button Start
-		Start = new Button();
-		Start.setTranslateX(0);
-		Start.setTranslateY(220);
-		Start.setText("Start");
-		// Change font of button Start
-		Start.setFont(Font.font("Arial", FontWeight.BOLD, 20));
-		Start.setOnAction(e -> {
+		// Button start
+		start = new Button();
+		start.setTranslateX(0);
+		start.setTranslateY(220);
+		start.setText("Start");
+		// Change font of button start
+		start.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+		start.setOnAction(e -> {
 			try {
 				progressCurrencyInfo.setText("Uruchamianie testu...");
 				progress.setText("");
@@ -338,9 +367,10 @@ public class JavaFX extends Application {
 		});
 		// Add elements to root (layout)
 		root = new StackPane();
-		root.getChildren().add(Start);
-		root.getChildren().add(WebTest);
-		root.getChildren().add(MobileTest);
+		root.getChildren().add(start);
+		root.getChildren().add(webTest);
+		root.getChildren().add(mobileTest);
+		root.getChildren().add(phisicDevice);
 		root.getChildren().add(Firefox);
 		root.getChildren().add(Chrome);
 		root.getChildren().add(Opera);
@@ -352,8 +382,8 @@ public class JavaFX extends Application {
 		root.getChildren().add(imgViewIE);
 		root.getChildren().add(imgViewEdge);
 		root.getChildren().add(table);
-		root.getChildren().add(All);
-		root.getChildren().add(Selected);
+		root.getChildren().add(all);
+		root.getChildren().add(selected);
 		root.getChildren().add(progress);
 		root.getChildren().add(pb);
 		root.getChildren().add(pi);

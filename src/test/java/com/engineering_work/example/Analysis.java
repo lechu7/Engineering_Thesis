@@ -13,7 +13,7 @@ import javafx.scene.control.Button;
 import javax.swing.JOptionPane;
 
 //New thread
-// Analysis elements after click Start, disable elements after click, 
+// Analysis elements after click start, disable elements after click, 
 //enable elements after testing
 public class Analysis implements Runnable {
 	TestControl tc = TestControl.getInstance();
@@ -69,9 +69,10 @@ public class Analysis implements Runnable {
 			// Select browser
 			if (isSelectedCurrency == true || isSelectedGold == true) {
 				if (JavaFX.Chrome.isSelected()) {
-					tc.browser = REPO.Browsers.Chrome;
-					logi.addToLogs("Wybrano Chrome (UserGUI)", getClass().getName().toString(),
-							Thread.currentThread().getStackTrace()[1].getMethodName(), 21);
+						tc.browser = REPO.Browsers.Chrome;
+						logi.addToLogs("Wybrano Chrome (UserGUI)", getClass().getName().toString(),
+								Thread.currentThread().getStackTrace()[1].getMethodName(), 21);
+				
 				} else if (JavaFX.Opera.isSelected()) {
 					tc.browser = REPO.Browsers.Opera;
 					logi.addToLogs("Wybrano Opera (UserGUI)", getClass().getName().toString(),
@@ -90,27 +91,27 @@ public class Analysis implements Runnable {
 							Thread.currentThread().getStackTrace()[1].getMethodName(), 37);
 				}
 
-				// Disable all elements on the screen after click Start
+				// Disable all elements on the screen after click start
 				disable();
 
 				tc.beforeTest();
 
 				logi.addToLogs();
 				// choice between Web and Mobile test
-				if (JavaFX.WebTest.isSelected()==true) {
+				if (JavaFX.webTest.isSelected()==true) {
 					logi.addToLogs("Wybrano test WEB (UserGUI)", getClass().getName().toString(),
 							Thread.currentThread().getStackTrace()[1].getMethodName(), 46);
 
 					//start timer
 					long start = System.nanoTime();
 					if (isSelectedCurrency == true) {
-						tc.TestWebCurrency();
+						tc.TestCurrency();
 
 					}
 					if (isSelectedGold == true) {
 						// The method sets 0 in progress
 						disable();
-						tc.TestWebGold();
+						tc.TestGold();
 					}
 					//stop timer
 					long elapsedTime = System.nanoTime() - start;
@@ -122,12 +123,12 @@ public class Analysis implements Runnable {
 							Thread.currentThread().getStackTrace()[1].getMethodName(), 49);
 					long start = System.nanoTime();
 					if (isSelectedCurrency == true) {
-						tc.TestMobileCurrency();
+						tc.TestCurrency();
 					}
 					if (isSelectedGold == true) {
 						// The method sets 0 in progress
 						disable();
-						tc.TestMobileGold();
+						tc.TestGold();
 					}
 					long elapsedTime = System.nanoTime() - start;
 					TestTimer.setTimer(elapsedTime);
@@ -147,7 +148,7 @@ public class Analysis implements Runnable {
 
 	}
 
-	// Disable all elements after click Start
+	// Disable all elements after click start
 	public void disable() {
 		for (Node node : JavaFX.root.getChildren()) {
 			node.setDisable(true);

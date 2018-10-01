@@ -19,6 +19,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
 
@@ -92,6 +94,7 @@ public class TestControl {
 			break;
 
 		case Chrome:
+			if(JavaFX.webTest.isSelected()==true) {
 			System.setProperty("webdriver.chrome.driver", ".\\src\\test\\resources\\drivers\\chromedriver.exe");
 			try {
 				//start timer
@@ -113,6 +116,35 @@ public class TestControl {
 				}
 			}
 			driver.manage().window().maximize();
+			}
+			//Physics device
+			else if(JavaFX.phisicDevice.isSelected()==true){
+				DesiredCapabilities capabilities = new DesiredCapabilities();
+				capabilities.setCapability("BROWSER_NAME", "Android");
+				capabilities.setCapability("VERSION", "4.4.2"); 
+				capabilities.setCapability("deviceName","GT-I9195");
+				capabilities.setCapability("platformName","Android");
+				
+				capabilities.setCapability("browserName", "Chrome");
+				capabilities.setCapability("noReset", true);
+
+				driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+			}
+			//Emulator
+			else {
+				DesiredCapabilities capabilities = new DesiredCapabilities();
+				capabilities.setCapability("BROWSER_NAME", "Android");
+				capabilities.setCapability("VERSION", "8.1"); 
+				capabilities.setCapability("deviceName","emulator-5554");
+				capabilities.setCapability("platformName","Android");
+				
+				capabilities.setCapability("browserName", "Chrome");
+				capabilities.setCapability("noReset", true);
+
+				driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+
+			}
+
 			logi.addToLogs("Uruchomiono Chrome", getClass().getName().toString(),
 					Thread.currentThread().getStackTrace()[1].getMethodName(), 81);
 			break;
@@ -225,7 +257,7 @@ public class TestControl {
 	}
 
 	@Test
-	public void TestWebCurrency() throws IOException {
+	public void TestCurrency() throws IOException {
 		driver.get(REPO.linkTabelaA);
 		//Currency exchange rate 
 		logi.addToLogs();
@@ -248,7 +280,7 @@ public class TestControl {
 
 	}
 	@Test
-	public void TestWebGold() throws IOException {
+	public void TestGold() throws IOException {
 		driver.get(REPO.linkGold);
 		
 		//set progress
@@ -261,36 +293,6 @@ public class TestControl {
 		//stop timer
 		long elapsedTime = System.nanoTime() - start;
 		TestTimer.saveTimeToCSV("web","Z³oto",elapsedTime);    
-	}
-
-	@Test
-	public void TestMobileCurrency() throws IOException {
-		/*
-		 * driver.get(REPO.linkTabelaA); //Exchange Currency
-		 * ArrayList<ObjectAllAboutCurrencyCSV> tmpList=CountriesOfAfrica;
-		 * logi.addToLogs(); for(int i=0 ; i<tmpList.size() ; i++){
-		 * chr.CheckExchangeCurrency(driver, tmpList.get(i).Table,
-		 * tmpList.get(i).Code,tmpList.get(i).CodeUnit, tmpList.get(i).Name); }
-		 * logi.addToLogs();
-		 * 
-		 * //ExchangeGold chr.CheckExchangeGold(driver); logi.addToLogs();
-		 */
-	}
-
-	@Test
-	public void TestMobileGold() throws IOException {
-		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability("BROWSER_NAME", "Android");
-		capabilities.setCapability("VERSION", "4.4.2"); 
-		capabilities.setCapability("deviceName","GT-I9195");
-		capabilities.setCapability("platformName","Android");
-		
-		capabilities.setCapability("browserName", "Chrome");
-		capabilities.setCapability("noReset", true);
-
-		driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-		driver.get(REPO.link);
-		driver.close();
 	}
 
 	@AfterTest
