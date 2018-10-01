@@ -29,4 +29,5 @@ public class ObjectToTableView {
 	    
 		public Boolean returnBool() { return run.getValue(); }  
 		public String returnContinentName() { return ContinentNameEnglish.getValue();}
+		public String returnContinentPolishName() { return ContinentName.getValue();}
 }

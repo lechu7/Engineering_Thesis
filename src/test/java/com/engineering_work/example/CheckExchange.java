@@ -18,60 +18,61 @@ public class CheckExchange {
 	//Iterator for progress bar
 	public static double iterator=0;
 
-	// Check for gold rate
-	public void CheckExchangeGold(WebDriver driver) throws IOException {
+	// Check gold exchange rate  
+	public void CheckGoldExchangeRate(WebDriver driver) throws IOException {
 		driver.navigate().to(REPO.linkGold);
-		System.out.println("Change side to table gold");
+		System.out.println("Change side to table of gold");
 		logi.addToLogs("INFO Zmiana strony na tablice ze zlotem.", getClass().getName().toString(),
 				Thread.currentThread().getStackTrace()[1].getMethodName(), 22);
 
-		// Value of exchange from RestAPI
+		// Value of gold exchange rate from RestAPI
 		String tmp = rc.exchange();
-		Float exchangeFromRestAPI = Float.parseFloat(tmp);
-		// Round value to four decimal places
-		exchangeFromRestAPI = round(exchangeFromRestAPI, 2);
+		Float goldExchangeRateFromRestAPI = Float.parseFloat(tmp);
+		// Rounding value to two decimal places
+		goldExchangeRateFromRestAPI = round(goldExchangeRateFromRestAPI, 2);
 
-		// Value of exchange from WebSides
-		// Replace because in webside we have ',' but in CSV we have '.'
-		String exchangeFromWebSideString = driver
+		// Value of exchange rate from WebSides
+		// Replacement because in webside there is ',' but in CSV there is '.'
+		String goldExchangeRateFromWebSideString = driver
 				.findElement(By.xpath(".//*[@id='contentholder']/table/tbody/tr[2]/td/table/tbody/tr[2]/td[2]"))
 				.getText().toString().replace(',', '.');
-		Float exchangeFromWebSide = Float.parseFloat(exchangeFromWebSideString);
+		Float goldExchangeRateFromWebSide = Float.parseFloat(goldExchangeRateFromWebSideString);
 
 		// System.out.println(exchangeFromRestAPI);
 		// System.out.println(exchangeFromWebSide);
 
 		// System.out.println(exchangeFromRestAPI.compareTo(exchangeFromWebSide));
-		AssertJUnit.assertEquals("Porownanie kursu z REST API i strony dla zlota.", exchangeFromRestAPI,
-				exchangeFromWebSide);
-		if (exchangeFromRestAPI.compareTo(exchangeFromWebSide) == 0) {
-			logi.addToLogs("PASS- Wartoœci zgodne dla z³ota równe " + exchangeFromWebSide,
+		AssertJUnit.assertEquals("Porownanie kursu z REST API i strony dla zlota.", goldExchangeRateFromRestAPI,
+				goldExchangeRateFromWebSide);
+		if (goldExchangeRateFromRestAPI.compareTo(goldExchangeRateFromWebSide) == 0) {
+			logi.addToLogs("PASS- Wartoœci zgodne dla z³ota równe " + goldExchangeRateFromWebSide,
 					getClass().getName().toString(), Thread.currentThread().getStackTrace()[1].getMethodName(), 46);
-			pbClass.changedProgress(1, 1, "Kurs z³ota: "+exchangeFromWebSide+" z³.");
+			pbClass.changedProgress(1, 1, "Kurs z³ota: "+goldExchangeRateFromWebSide+" z³.");
 		} else {
 			logi.addToLogs(
-					"***FAIL- Nie zgodna wartoœæ dla z³ota :API- " + exchangeFromRestAPI + " /WebSide- "
-							+ exchangeFromWebSide,
+					"***FAIL- Nie zgodna wartoœæ dla z³ota :API- " + goldExchangeRateFromRestAPI + " /WebSide- "
+							+ goldExchangeRateFromWebSide,
 					getClass().getName().toString(), Thread.currentThread().getStackTrace()[1].getMethodName(), 51);
 		}
 
 	}
 
-	// check for currency rate
-	public void CheckExchangeCurrency(WebDriver driver, String table, String code, String codeUnit, String name, int listCurrencySize)throws IOException {
+	// check currency exchange rate
+	
+	public void CheckCurrencyExchangeRate(WebDriver driver, String table, String code, String codeUnit, String name, int listCurrencySize)throws IOException {
 		String side = driver.getCurrentUrl().toString();
-		// Value of exchange from RestAPI
-		Float exchangeFromRestAPI = Float.parseFloat(rc.exchange(table, code));
-		// Multipler and round value to four decimal places
-		exchangeFromRestAPI = exchangeFromRestAPI * returnMultiplier(codeUnit);
-		exchangeFromRestAPI = round(exchangeFromRestAPI, 4);
+		// Value currency exchange rate from RestAPI
+		Float currencyExchangeRateFromRestAPI = Float.parseFloat(rc.exchange(table, code));
+		// Multipler and rounding value to four decimal places
+		currencyExchangeRateFromRestAPI = currencyExchangeRateFromRestAPI * returnMultiplier(codeUnit);
+		currencyExchangeRateFromRestAPI = round(currencyExchangeRateFromRestAPI, 4);
 
-		// change side to currency exchange check
+		// change side depends on currency data from CSV 
 		switch (table) {
+		
 		case "A":
 			if (side.charAt(42) == 'b') {
 				driver.navigate().to(REPO.linkTabelaA);
-				//driver.get(REPO.linkTabelaA);
 				System.out.println("Change side to table A");
 				logi.addToLogs("INFO Zmiana strony na tablice A.", getClass().getName().toString(),
 						Thread.currentThread().getStackTrace()[1].getMethodName(), 73);
@@ -80,7 +81,6 @@ public class CheckExchange {
 		case "B":
 			if (side.charAt(42) == 'a') {
 				driver.navigate().to(REPO.linkTabelaB);
-				//driver.get(REPO.linkTabelaB);
 				System.out.println("Change side to table B");
 				logi.addToLogs("INFO Zmiana strony na tablice B.", getClass().getName().toString(),
 						Thread.currentThread().getStackTrace()[1].getMethodName(), 81);
@@ -94,37 +94,37 @@ public class CheckExchange {
 		// XPath to table
 		String tableXPath = ".//*[@id='article']/table/tbody/tr/td/center/table[1]";
 		// Count elements in table from side
-		int countListOnSide = repo.returnRowsCount(driver, tableXPath + "/tbody/tr");
-		// Loop through all elements from side until find element witch looking for
+		int countListOnWebSide = repo.returnNumberOfRows(driver, tableXPath + "/tbody/tr");
+		// Loop through all elements from webside until find element which looking for
 		// i = 2 because index of first element is equal 2
-		for (int i = 2; i <= countListOnSide; i++) {
-			// If "Kod waluty" from side is equel CodeUnit form CSV file
+		for (int i = 2; i <= countListOnWebSide; i++) {
+			// If "Kod waluty" from webside is equel CodeUnit form CSV file
 			if (driver.findElement(By.xpath(tableXPath + "/tbody/tr[" + i + "]/td[2]")).getText()
 					.compareTo(codeUnit) == 0) {
-				// Value of exchange from WebSides
-				// Replace because in webside we have ',' but in CSV we have '.'
-				String exchangeFromWebSideString = driver
+				// Value of currency exchange rate from WebSides
+				// Replace because in webside there is ',' but in CSV there is '.'
+				String currencyExchangeRateFromWebSideString = driver
 						.findElement(By.xpath(tableXPath + "/tbody/tr[" + i + "]/td[3]")).getText().toString()
 						.replace(',', '.');
-				Float exchangeFromWebSide = Float.parseFloat(exchangeFromWebSideString);
+				Float currencyExchangeRateFromWebSide = Float.parseFloat(currencyExchangeRateFromWebSideString);
 
 				// System.out.println(exchangeFromRestAPI);
 				// System.out.println(exchangeFromWebSide);
 
 				// System.out.println(exchangeFromRestAPI.compareTo(exchangeFromWebSide));
-				AssertJUnit.assertEquals("Porownanie kursu z REST API i strony.", exchangeFromRestAPI,
-						exchangeFromWebSide);
-				if (exchangeFromRestAPI.compareTo(exchangeFromWebSide) == 0) {
+				AssertJUnit.assertEquals("Porownanie kursu z REST API i strony.", currencyExchangeRateFromRestAPI,
+						currencyExchangeRateFromWebSide);
+				if (currencyExchangeRateFromRestAPI.compareTo(currencyExchangeRateFromWebSide) == 0) {
 					logi.addToLogs(
-							"PASS- Wartoœci zgodne dla " + name + "- KOD: " + code + " równe " + exchangeFromWebSide,
+							"PASS- Wartoœci zgodne dla " + name + "- KOD: " + code + " równe " + currencyExchangeRateFromWebSide,
 							getClass().getName().toString(), Thread.currentThread().getStackTrace()[1].getMethodName(),
 							116);
 							iterator++;
-							pbClass.changedProgress(iterator, listCurrencySize, "Kurs waluty "+name+": "+exchangeFromWebSide+" z³.");
+							pbClass.changedProgress(iterator, listCurrencySize, "Kurs waluty "+name+": "+currencyExchangeRateFromWebSide+" z³.");
 				} else {
 					logi.addToLogs(
-							"***FAIL- Nie zgodna wartoœæ dla " + code + " :API- " + exchangeFromRestAPI + " /WebSide- "
-									+ exchangeFromWebSide,
+							"***FAIL- Nie zgodna wartoœæ dla " + code + " :API- " + currencyExchangeRateFromRestAPI + " /WebSide- "
+									+ currencyExchangeRateFromWebSide,
 							getClass().getName().toString(), Thread.currentThread().getStackTrace()[1].getMethodName(),
 							122);
 				}
@@ -132,14 +132,14 @@ public class CheckExchange {
 		}
 	}
 
-	// function to return Multiplier for the Currency
+	// function which returns Multiplier for the Currency
 	float returnMultiplier(String codeUnit) {
 		String[] tmp = codeUnit.split(" ");
 		return Float.parseFloat(tmp[0]);
 	}
 
 	@SuppressWarnings("deprecation")
-	// function to round value from REST API to four decimal places
+	// function which rounds value from REST API to four decimal places
 	public static float round(float d, int decimalPlace) {
 		return BigDecimal.valueOf(d).setScale(decimalPlace, BigDecimal.ROUND_HALF_UP).floatValue();
 	}

@@ -11,11 +11,11 @@ public class ProgressBar {
 	
 
 	
-	//Method to change progress in progressBar
+	//Method that you change progress for progressBar
 	 public void changedProgress(double new_val,double all_val,final String messageText) {
          JavaFX.pb.setProgress(new_val/all_val);
          JavaFX.pi.setProgress(new_val/all_val);
-         //Change the text under progress bar
+         //Changing the text under progress bar
          Platform.runLater(new Runnable() {
              @Override public void run() {
             	  JavaFX.progressCurrencyInfo.setText(messageText+" ("+(int)new_val+"/"+(int)all_val+")");
@@ -23,7 +23,7 @@ public class ProgressBar {
        });
        
 	 }
-	 //Visable progress bar and other elements 
+	 //Visible progress bar and other elements 
 	 public void visable()
 	 {
 		 CheckExchange.iterator=0;
@@ -40,10 +40,10 @@ public class ProgressBar {
 		 JavaFX.progressCurrencyInfo.setVisible(true);
 		 JavaFX.progressCurrencyInfo.setDisable(false);
 		 
-		 //Set visible to label timer
+		 //Setting invisible for label timer
 		 JavaFX.timer.setVisible(false);
 	 }
-	 //Visable progress bar and other elements 
+	 //Invisible progress bar and other elements 
 	 public void invisable()
 	 {
 		 JavaFX.pb.setVisible(false);
@@ -51,7 +51,7 @@ public class ProgressBar {
 		 JavaFX.progress.setVisible(false);
 		 JavaFX.progressCurrencyInfo.setVisible(false);
 		 
-		 //Set invisible to label timer
+		//Setting visible for label timer
 		 JavaFX.timer.setVisible(true);
 	 }
 	

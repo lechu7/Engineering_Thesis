@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="4" passed="0" failed="0" skipped="4">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2018-09-22T16:11:12Z" name="Default suite" finished-at="2018-09-22T16:11:12Z" duration-ms="81">
+  <suite started-at="2018-10-01T14:01:26Z" name="Default suite" finished-at="2018-10-01T14:01:26Z" duration-ms="256">
     <groups>
     </groups>
-    <test started-at="2018-09-22T16:11:12Z" name="Default test" finished-at="2018-09-22T16:11:12Z" duration-ms="81">
+    <test started-at="2018-10-01T14:01:26Z" name="Default test" finished-at="2018-10-01T14:01:26Z" duration-ms="256">
       <class name="com.engineering_work.example.TestControl">
-        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.engineering_work.example.TestControl@11fc564b]" started-at="2018-09-22T16:11:12Z" name="beforeTest" finished-at="2018-09-22T16:11:12Z" duration-ms="24" status="FAIL">
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.engineering_work.example.TestControl@7c1e2a9e]" started-at="2018-10-01T14:01:26Z" name="beforeTest" finished-at="2018-10-01T14:01:26Z" duration-ms="31" status="FAIL">
           <exception class="java.lang.NullPointerException">
             <full-stacktrace>
               <![CDATA[java.lang.NullPointerException
-at com.engineering_work.example.TestControl.beforeTest(TestControl.java:62)
+at com.engineering_work.example.TestControl.beforeTest(TestControl.java:65)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -42,11 +42,11 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method signature="TestMobileCurrency()[pri:0, instance:com.engineering_work.example.TestControl@11fc564b]" started-at="2018-09-22T16:11:12Z" name="TestMobileCurrency" finished-at="2018-09-22T16:11:12Z" duration-ms="0" status="SKIP">
+        <test-method signature="TestMobileCurrency()[pri:0, instance:com.engineering_work.example.TestControl@7c1e2a9e]" started-at="2018-10-01T14:01:26Z" name="TestMobileCurrency" finished-at="2018-10-01T14:01:26Z" duration-ms="0" status="SKIP">
           <exception class="java.lang.NullPointerException">
             <full-stacktrace>
               <![CDATA[java.lang.NullPointerException
-at com.engineering_work.example.TestControl.beforeTest(TestControl.java:62)
+at com.engineering_work.example.TestControl.beforeTest(TestControl.java:65)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -77,11 +77,11 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TestMobileCurrency -->
-        <test-method signature="TestMobileGold()[pri:0, instance:com.engineering_work.example.TestControl@11fc564b]" started-at="2018-09-22T16:11:12Z" name="TestMobileGold" finished-at="2018-09-22T16:11:12Z" duration-ms="0" status="SKIP">
+        <test-method signature="TestMobileGold()[pri:0, instance:com.engineering_work.example.TestControl@7c1e2a9e]" started-at="2018-10-01T14:01:26Z" name="TestMobileGold" finished-at="2018-10-01T14:01:26Z" duration-ms="0" status="SKIP">
           <exception class="java.lang.NullPointerException">
             <full-stacktrace>
               <![CDATA[java.lang.NullPointerException
-at com.engineering_work.example.TestControl.beforeTest(TestControl.java:62)
+at com.engineering_work.example.TestControl.beforeTest(TestControl.java:65)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -112,11 +112,11 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TestMobileGold -->
-        <test-method signature="TestWebCurrency()[pri:0, instance:com.engineering_work.example.TestControl@11fc564b]" started-at="2018-09-22T16:11:12Z" name="TestWebCurrency" finished-at="2018-09-22T16:11:12Z" duration-ms="0" status="SKIP">
+        <test-method signature="TestWebCurrency()[pri:0, instance:com.engineering_work.example.TestControl@7c1e2a9e]" started-at="2018-10-01T14:01:26Z" name="TestWebCurrency" finished-at="2018-10-01T14:01:26Z" duration-ms="0" status="SKIP">
           <exception class="java.lang.NullPointerException">
             <full-stacktrace>
               <![CDATA[java.lang.NullPointerException
-at com.engineering_work.example.TestControl.beforeTest(TestControl.java:62)
+at com.engineering_work.example.TestControl.beforeTest(TestControl.java:65)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -147,11 +147,11 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TestWebCurrency -->
-        <test-method signature="TestWebGold()[pri:0, instance:com.engineering_work.example.TestControl@11fc564b]" started-at="2018-09-22T16:11:12Z" name="TestWebGold" finished-at="2018-09-22T16:11:12Z" duration-ms="0" status="SKIP">
+        <test-method signature="TestWebGold()[pri:0, instance:com.engineering_work.example.TestControl@7c1e2a9e]" started-at="2018-10-01T14:01:26Z" name="TestWebGold" finished-at="2018-10-01T14:01:26Z" duration-ms="0" status="SKIP">
           <exception class="java.lang.NullPointerException">
             <full-stacktrace>
               <![CDATA[java.lang.NullPointerException
-at com.engineering_work.example.TestControl.beforeTest(TestControl.java:62)
+at com.engineering_work.example.TestControl.beforeTest(TestControl.java:65)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -182,7 +182,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TestWebGold -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.engineering_work.example.TestControl@11fc564b]" started-at="2018-09-22T16:11:12Z" name="afterTest" finished-at="2018-09-22T16:11:12Z" duration-ms="0" status="SKIP">
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.engineering_work.example.TestControl@7c1e2a9e]" started-at="2018-10-01T14:01:26Z" name="afterTest" finished-at="2018-10-01T14:01:26Z" duration-ms="0" status="SKIP">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->

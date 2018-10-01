@@ -8,7 +8,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.text.Element;
 
-import org.apache.commons.collections.functors.PrototypeFactory;
+//import org.apache.commons.collections.functors.PrototypeFactory;
 
 import com.google.common.collect.Table;
 
@@ -61,7 +61,7 @@ public class JavaFX extends Application {
 	PreparationCSV pCSV = new PreparationCSV();
 	ProgressBar pbClass = new ProgressBar();
 
-	// Thread to analysis action after Start click
+	// Thread to analysis action after click "Start" 
 	Thread threadAnalysis;
 	public static StackPane root;
 
@@ -70,21 +70,21 @@ public class JavaFX extends Application {
 	// RadioButton MobileTest
 	public static RadioButton MobileTest;
 
-	// Radiobuttons Browsers
+	// Radiobuttons of Browser
 	public static RadioButton Firefox;
 	public static RadioButton Chrome;
 	public static RadioButton Opera;
 	public static RadioButton IE;
 	public static RadioButton Edge;
 
-	// Radiobuttons All Or Chosen Currency test
+	// Radiobuttons for All Or Selected Currency test
 	public static RadioButton All;
-	public static RadioButton Chosen;
+	public static RadioButton Selected;
 
 	public static ObservableList<ObjectToTableView> list;
 	TableView<ObjectToTableView> table;
 
-	// Elements to progressbar
+	// Elements of progressbar
 	public static ProgressBar pb;
 	public static ProgressIndicator pi;
 	public static Label progress = new Label();
@@ -92,7 +92,7 @@ public class JavaFX extends Application {
 	// Label with time of test after test
 	public static Label timer;
 
-	//checkbox to test gold
+	// checkbox to test gold exchange rate
 	public static CheckBox goldTest = new CheckBox();
 
 	// Button Start
@@ -105,7 +105,7 @@ public class JavaFX extends Application {
 		// Preparing lists from CSV
 		preparingCSVandLists();
 
-		// Group for radiobutton that select the test
+		// Group for radiobuttons that select the test
 		final ToggleGroup typeOfTestGroup = new ToggleGroup();
 		// RadioButton WebTest
 		WebTest = new RadioButton();
@@ -122,16 +122,14 @@ public class JavaFX extends Application {
 		MobileTest.setTranslateY(-220);
 		MobileTest.setToggleGroup(typeOfTestGroup);
 
-		MobileTest.setDisable(true);// ZASLEPKA
 
-		
-		final ToggleGroup browsersGroup = new ToggleGroup();
+		final ToggleGroup groupOfBrowsers = new ToggleGroup();
 		// RadioButton Firefox
 		Firefox = new RadioButton();
 		Firefox.setTranslateX(-220);
 		Firefox.setTranslateY(-140);
 		Firefox.setSelected(true);
-		Firefox.setToggleGroup(browsersGroup);
+		Firefox.setToggleGroup(groupOfBrowsers);
 		// Image Firefox
 		Image FirefoxImage = new javafx.scene.image.Image(getClass().getResourceAsStream("/Images/firefox.png"));
 		ImageView imgViewFirefox = new ImageView(FirefoxImage);
@@ -142,7 +140,7 @@ public class JavaFX extends Application {
 		Chrome = new RadioButton();
 		Chrome.setTranslateX(-110);
 		Chrome.setTranslateY(-140);
-		Chrome.setToggleGroup(browsersGroup);
+		Chrome.setToggleGroup(groupOfBrowsers);
 		// Image Chrome
 		Image ChromeImage = new javafx.scene.image.Image(getClass().getResourceAsStream("/Images/chrome.png"));
 		ImageView imgViewChrome = new ImageView(ChromeImage);
@@ -153,7 +151,7 @@ public class JavaFX extends Application {
 		Opera = new RadioButton();
 		Opera.setTranslateX(0);
 		Opera.setTranslateY(-140);
-		Opera.setToggleGroup(browsersGroup);
+		Opera.setToggleGroup(groupOfBrowsers);
 		// Image Opera
 		Image OperaImage = new javafx.scene.image.Image(getClass().getResourceAsStream("/Images/opera.png"));
 		ImageView imgViewOpera = new ImageView(OperaImage);
@@ -164,7 +162,7 @@ public class JavaFX extends Application {
 		IE = new RadioButton();
 		IE.setTranslateX(110);
 		IE.setTranslateY(-140);
-		IE.setToggleGroup(browsersGroup);
+		IE.setToggleGroup(groupOfBrowsers);
 		// Image IE
 		Image IEImage = new javafx.scene.image.Image(getClass().getResourceAsStream("/Images/IE.png"));
 		ImageView imgViewIE = new ImageView(IEImage);
@@ -175,64 +173,63 @@ public class JavaFX extends Application {
 		Edge = new RadioButton();
 		Edge.setTranslateX(220);
 		Edge.setTranslateY(-140);
-		Edge.setToggleGroup(browsersGroup);
+		Edge.setToggleGroup(groupOfBrowsers);
 		// Image IE
 		Image EdgeImage = new javafx.scene.image.Image(getClass().getResourceAsStream("/Images/Edge.png"));
 		ImageView imgViewEdge = new ImageView(EdgeImage);
 		imgViewEdge.setTranslateX(220);
 		imgViewEdge.setTranslateY(-180);
 
-		// TableView with select the Continents with Currency
-		// Add Continents to list
+		// TableView with selection of Continents that include Currency
+		// Add continents to list
 		list = FXCollections.observableArrayList();
-		list.add(new ObjectToTableView(false, "Afryka", "Africa", tc.CurrencyOfAfrica));
-		list.add(new ObjectToTableView(false, "Ameryka Po³udniowa", "SouthAmerica", tc.CurrencyOfSouthAmerica));
-		list.add(new ObjectToTableView(false, "Ameryka Pó³nocna", "NorthAmerica", tc.CurrencyOfNorthAmerica));
-		list.add(new ObjectToTableView(false, "Australia", "Australia", tc.CurrencyOfAustralia));
-		list.add(new ObjectToTableView(false, "Azja", "Asia", tc.CurrencyOfAsia));
-		list.add(new ObjectToTableView(false, "Europa", "Europe", tc.CurrencyOfEurope));
+		list.add(new ObjectToTableView(false, "Afryka", "Africa", tc.CurrenciesOfAfrica));
+		list.add(new ObjectToTableView(false, "Ameryka Po³udniowa", "SouthAmerica", tc.CurrenciesOfSouthAmerica));
+		list.add(new ObjectToTableView(false, "Ameryka Pó³nocna", "NorthAmerica", tc.CurrenciesOfNorthAmerica));
+		list.add(new ObjectToTableView(false, "Australia", "Australia", tc.CurrenciesOfAustralia));
+		list.add(new ObjectToTableView(false, "Azja", "Asia", tc.CurrenciesOfAsia));
+		list.add(new ObjectToTableView(false, "Europa", "Europe", tc.CurrenciesOfEurope));
 		// new table
 		table = new TableView<ObjectToTableView>();
 		table.setEditable(true);
 		table.setItems(list);
-		// Create and add column1 with CheckBox
+		// Create and add column1 with CheckBoxes
 		TableColumn<ObjectToTableView, Boolean> Column1 = new TableColumn<ObjectToTableView, Boolean>("Testowanie");
 		Column1.setCellValueFactory(new PropertyValueFactory<ObjectToTableView, Boolean>("run"));
 		Column1.setCellFactory(column -> new CheckBoxTableCell());
 		table.getColumns().add(Column1);
-		// Create and add column2 with Continent name
+		// Create and add column2 with name of continents
 		TableColumn<ObjectToTableView, String> Column2 = new TableColumn<ObjectToTableView, String>("Nazwa kontynentu");
 		Column2.setCellValueFactory(new PropertyValueFactory<ObjectToTableView, String>("ContinentName"));
 		table.getColumns().add(Column2);
-		// Create and add column3 with currency count
+		// Create and add column3 with number of currencies
 		TableColumn<ObjectToTableView, Integer> Column3 = new TableColumn<ObjectToTableView, Integer>("Liczba walut");
 		Column3.setCellValueFactory(new PropertyValueFactory<ObjectToTableView, Integer>("CurrencyCountContinent"));
 		table.getColumns().add(Column3);
-		// Set size tableView
+		// Set size of tableView
 		double Xsize = 296;
 		double Ysize = 180;
 		table.setMinWidth(Xsize);
 		table.setMaxWidth(Xsize);
 		table.setMinHeight(Ysize);
 		table.setMaxHeight(Ysize);
-		// Set position tableView
+		// Set position of tableView
 		table.setTranslateY(-20);
 		table.setTranslateX(-130);
 
 		final ToggleGroup allOrChosenCurrencyGroup = new ToggleGroup();
 		All = new RadioButton();
-		All.setText("Wszystkie waluty (Iloœæ: " + tc.CurrencyAll.size() + ")");
+		All.setText("Wszystkie waluty (Iloœæ: " + tc.CurrenciesAll.size() + ")");
 		All.setTranslateX(125);
 		All.setTranslateY(-65);
 		All.setToggleGroup(allOrChosenCurrencyGroup);
-		// Event after click All Currency. CheckBoxes in tableView unchecked
+		// When you click "All Currency", all CheckBoxes of tableView have been checked
 		All.setOnAction(e -> {
 			try {
 				logi.addToLogs();
 				logi.addToLogs("Kliknieto Wszystkie Waluty (UserGUI)", getClass().getName().toString(),
 						Thread.currentThread().getStackTrace()[1].getMethodName(), 224);
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			table.setEditable(false);
@@ -246,26 +243,24 @@ public class JavaFX extends Application {
 						getClass().getName().toString(), Thread.currentThread().getStackTrace()[1].getMethodName(),
 						224);
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 
 		});
 
-		Chosen = new RadioButton();
-		Chosen.setText("Wybrane waluty z tabeli kontynentów");
-		Chosen.setTranslateX(150);
-		Chosen.setTranslateY(-25);
-		Chosen.setToggleGroup(allOrChosenCurrencyGroup);
-		Chosen.setSelected(true);
-		Chosen.setOnAction(e -> {
+		Selected = new RadioButton();
+		Selected.setText("Wybrane waluty z tabeli kontynentów");
+		Selected.setTranslateX(150);
+		Selected.setTranslateY(-25);
+		Selected.setToggleGroup(allOrChosenCurrencyGroup);
+		Selected.setSelected(true);
+		Selected.setOnAction(e -> {
 			table.setEditable(true);
 			try {
 				logi.addToLogs();
 				logi.addToLogs("Klikniêto wybrane waluty, tableView aktywne (UserGUI)", getClass().getName().toString(),
 						Thread.currentThread().getStackTrace()[1].getMethodName(), 249);
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			for (ObjectToTableView item : list) {
@@ -274,13 +269,12 @@ public class JavaFX extends Application {
 			table.refresh();
 		});
 
-		// CheckBox gold test
+		// CheckBox- testing of gold exchange rate.
 		goldTest.setText("Testowanie kursu z³ota");
 		goldTest.setTranslateX(112);
 		goldTest.setTranslateY(25);
 
 		// PROGRESS BAR
-		progress.setText("Progres:");
 		progress.setTranslateX(0);
 		progress.setTranslateY(100);
 		progress.setFont(Font.font("Arial", FontWeight.BOLD, 20));
@@ -310,10 +304,10 @@ public class JavaFX extends Application {
 		progress.setVisible(false);
 		progressCurrencyInfo.setVisible(false);
 
-		// Timer
+		// TestTimer
 		timer = new Label();
 		timer.setText("czas");
-		timer.setFont(Font.font("Arial",FontWeight.BOLD, 25));
+		timer.setFont(Font.font("Arial", FontWeight.BOLD, 25));
 		timer.setTranslateX(0);
 		timer.setTranslateY(135);
 		timer.setVisible(false);
@@ -323,11 +317,12 @@ public class JavaFX extends Application {
 		Start.setTranslateX(0);
 		Start.setTranslateY(220);
 		Start.setText("Start");
-		// Change font for button Start
+		// Change font of button Start
 		Start.setFont(Font.font("Arial", FontWeight.BOLD, 20));
 		Start.setOnAction(e -> {
 			try {
 				progressCurrencyInfo.setText("Uruchamianie testu...");
+				progress.setText("");
 				logi.addToLogs();
 				logi.addToLogs("Kliknieto start (UserGUI)", getClass().getName().toString(),
 						Thread.currentThread().getStackTrace()[1].getMethodName(), 144);
@@ -335,7 +330,6 @@ public class JavaFX extends Application {
 				// Preparing lists from CSV
 				preparingCSVandLists();
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			threadAnalysis = new Thread(new Analysis());
@@ -358,16 +352,16 @@ public class JavaFX extends Application {
 		root.getChildren().add(imgViewEdge);
 		root.getChildren().add(table);
 		root.getChildren().add(All);
-		root.getChildren().add(Chosen);
+		root.getChildren().add(Selected);
 		root.getChildren().add(progress);
 		root.getChildren().add(pb);
 		root.getChildren().add(pi);
 		root.getChildren().add(progressCurrencyInfo);
 		root.getChildren().add(goldTest);
 		root.getChildren().add(timer);
-		// Window
+		// screen
 		Scene scene = new Scene(root, 600, 500);
-		// Event on click close (X)
+		// when you click close (X)
 		primaryStage.setOnCloseRequest(event -> {
 			try {
 				logi.addToLogs();
@@ -380,7 +374,8 @@ public class JavaFX extends Application {
 		});
 
 		// Icon set
-		javafx.scene.image.Image icon = new javafx.scene.image.Image(getClass().getResourceAsStream("/Images/icon.png"));
+		javafx.scene.image.Image icon = new javafx.scene.image.Image(
+				getClass().getResourceAsStream("/Images/icon.png"));
 		primaryStage.getIcons().add(icon);
 
 		primaryStage.setTitle("NBP API Tests");
@@ -395,44 +390,36 @@ public class JavaFX extends Application {
 		launch(args);
 	}
 
-	public static void setTimer(long time) {
-		DecimalFormat df = new DecimalFormat("0.000");
-		final double returnTime=time/1000000000F;
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				timer.setText("Czas wykonywania testu = "+df.format(returnTime)+" s.");
-			}
-		});
-	}
-
 	public void preparingCSVandLists() throws IOException {
-		if (tc.CurrencyOfEurope == null || tc.CurrencyOfAsia == null || tc.CurrencyOfAustralia == null
-				|| tc.CurrencyOfNorthAmerica == null || tc.CurrencyOfSouthAmerica == null
-				|| tc.CurrencyOfAfrica == null) {
-			tc.CurrencyOfEurope = new ArrayList<ObjectAllAboutCurrencyCSV>();
-			tc.CurrencyOfAsia = new ArrayList<ObjectAllAboutCurrencyCSV>();
-			tc.CurrencyOfAustralia = new ArrayList<ObjectAllAboutCurrencyCSV>();
-			tc.CurrencyOfNorthAmerica = new ArrayList<ObjectAllAboutCurrencyCSV>();
-			tc.CurrencyOfSouthAmerica = new ArrayList<ObjectAllAboutCurrencyCSV>();
-			tc.CurrencyOfAfrica = new ArrayList<ObjectAllAboutCurrencyCSV>();
-			tc.CurrencyAll = new ArrayList<ObjectAllAboutCurrencyCSV>();
-			tc.CurrencySelected = new ArrayList<ObjectAllAboutCurrencyCSV>();
-			pCSV.readCSVDate();
-			tc.CurrencyOfEurope = pCSV.CSVCurrencyOfEurope;
-			tc.CurrencyOfAsia = pCSV.CSVCurrencyOfAsia;
-			tc.CurrencyOfAustralia = pCSV.CSVCurrencyOfAustralia;
-			tc.CurrencyOfNorthAmerica = pCSV.CSVCurrencyOfNorthAmerica;
-			tc.CurrencyOfSouthAmerica = pCSV.CSVCurrencyOfSouthAmerica;
-			tc.CurrencyOfAfrica = pCSV.CSVCurrencyOfAfrica;
+		if (tc.CurrenciesOfEurope == null || tc.CurrenciesOfAsia == null || tc.CurrenciesOfAustralia == null
+				|| tc.CurrenciesOfNorthAmerica == null || tc.CurrenciesOfSouthAmerica == null
+				|| tc.CurrenciesOfAfrica == null) {
+			tc.CurrenciesOfEurope = new ArrayList<ObjectAllAboutCurrencyCSV>();
+			tc.CurrenciesOfAsia = new ArrayList<ObjectAllAboutCurrencyCSV>();
+			tc.CurrenciesOfAustralia = new ArrayList<ObjectAllAboutCurrencyCSV>();
+			tc.CurrenciesOfNorthAmerica = new ArrayList<ObjectAllAboutCurrencyCSV>();
+			tc.CurrenciesOfSouthAmerica = new ArrayList<ObjectAllAboutCurrencyCSV>();
+			tc.CurrenciesOfAfrica = new ArrayList<ObjectAllAboutCurrencyCSV>();
+			tc.CurrenciesAll = new ArrayList<ObjectAllAboutCurrencyCSV>();
 
-			// add all lists to CountriesAll list
-			tc.CurrencyAll.addAll(tc.CurrencyOfEurope);
-			tc.CurrencyAll.addAll(tc.CurrencyOfAsia);
-			tc.CurrencyAll.addAll(tc.CurrencyOfAustralia);
-			tc.CurrencyAll.addAll(tc.CurrencyOfNorthAmerica);
-			tc.CurrencyAll.addAll(tc.CurrencyOfSouthAmerica);
-			tc.CurrencyAll.addAll(tc.CurrencyOfAfrica);
+			tc.continentName = new ArrayList<String>();
+			tc.listOfListsCurrency = new ArrayList<ArrayList<ObjectAllAboutCurrencyCSV>>();
+
+			pCSV.readCSVDate();
+			tc.CurrenciesOfEurope = pCSV.CSVCurrenciesOfEurope;
+			tc.CurrenciesOfAsia = pCSV.CSVCurrenciesOfAsia;
+			tc.CurrenciesOfAustralia = pCSV.CSVCurrenciesOfAustralia;
+			tc.CurrenciesOfNorthAmerica = pCSV.CSVCurrenciesOfNorthAmerica;
+			tc.CurrenciesOfSouthAmerica = pCSV.CSVCurrenciesOfSouthAmerica;
+			tc.CurrenciesOfAfrica = pCSV.CSVCurrenciesOfAfrica;
+
+			// add all lists to "CountriesAll" list
+			tc.CurrenciesAll.addAll(tc.CurrenciesOfEurope);
+			tc.CurrenciesAll.addAll(tc.CurrenciesOfAsia);
+			tc.CurrenciesAll.addAll(tc.CurrenciesOfAustralia);
+			tc.CurrenciesAll.addAll(tc.CurrenciesOfNorthAmerica);
+			tc.CurrenciesAll.addAll(tc.CurrenciesOfSouthAmerica);
+			tc.CurrenciesAll.addAll(tc.CurrenciesOfAfrica);
 		}
 	}
 

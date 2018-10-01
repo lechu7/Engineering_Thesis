@@ -9,20 +9,21 @@ import com.opencsv.CSVReader;
 public class PreparationCSV {
 	Logs logi = Logs.getInstance();
 
-	public ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrencyOfEurope = new ArrayList<ObjectAllAboutCurrencyCSV>();
-	public ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrencyOfAsia = new ArrayList<ObjectAllAboutCurrencyCSV>();
-	public ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrencyOfAustralia = new ArrayList<ObjectAllAboutCurrencyCSV>();
-	public ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrencyOfNorthAmerica = new ArrayList<ObjectAllAboutCurrencyCSV>();
-	public ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrencyOfSouthAmerica = new ArrayList<ObjectAllAboutCurrencyCSV>();
-	public ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrencyOfAfrica = new ArrayList<ObjectAllAboutCurrencyCSV>();
+	public ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrenciesOfEurope = new ArrayList<ObjectAllAboutCurrencyCSV>();
+	public ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrenciesOfAsia = new ArrayList<ObjectAllAboutCurrencyCSV>();
+	public ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrenciesOfAustralia = new ArrayList<ObjectAllAboutCurrencyCSV>();
+	public ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrenciesOfNorthAmerica = new ArrayList<ObjectAllAboutCurrencyCSV>();
+	public ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrenciesOfSouthAmerica = new ArrayList<ObjectAllAboutCurrencyCSV>();
+	public ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrenciesOfAfrica = new ArrayList<ObjectAllAboutCurrencyCSV>();
 
 	public ArrayList<ObjectAllAboutCurrencyCSV> readCSVDate() throws IOException {
 		CSVReader reader = new CSVReader(new FileReader("data.csv"));
 		ArrayList<ObjectAllAboutCurrencyCSV> listCSV = new ArrayList<ObjectAllAboutCurrencyCSV>();
 		String[] csvCell = null;
 
-		// Read the columnsName
+		// Read the name of columns 
 		reader.readNext();
+		
 		while ((csvCell = reader.readNext()) != null) {
 			listCSV.add(readCellCSV(reader, csvCell));
 		}
@@ -42,7 +43,7 @@ public class PreparationCSV {
 		logi.addToLogs("Pobrano dane z pliku CSV dla " + TMPArray[0].toString(), getClass().getName().toString(),
 				Thread.currentThread().getStackTrace()[1].getMethodName(), 42);
 
-		// Preparation list countries in terms of continents
+		// Preparation lists of currencies on the basis of continents
 		int continentIndex = -1;
 		for (int i = 0; i < TMPArray.length; i++) {
 			int tmp = TMPArray[i].compareTo("X");
@@ -56,40 +57,40 @@ public class PreparationCSV {
 							54);
 					break;
 				case 3:
-					CSVCurrencyOfEurope.add(tmpCell);
+					CSVCurrenciesOfEurope.add(tmpCell);
 					logi.addToLogs("Znaleziono indeks kontynentu dla waluty " + TMPArray[1] + "-Europa".toString(),
 							getClass().getName().toString(), Thread.currentThread().getStackTrace()[1].getMethodName(),
 							60);
 					break;
 
 				case 4:
-					CSVCurrencyOfAsia.add(tmpCell);
+					CSVCurrenciesOfAsia.add(tmpCell);
 					logi.addToLogs("Znaleziono indeks kontynentu dla waluty " + TMPArray[1] + "-Azja".toString(),
 							getClass().getName().toString(), Thread.currentThread().getStackTrace()[1].getMethodName(),
 							66);
 					break;
 				case 5:
-					CSVCurrencyOfAustralia.add(tmpCell);
+					CSVCurrenciesOfAustralia.add(tmpCell);
 					logi.addToLogs("Znaleziono indeks kontynentu dla waluty " + TMPArray[1] + "-Australia".toString(),
 							getClass().getName().toString(), Thread.currentThread().getStackTrace()[1].getMethodName(),
 							73);
 					break;
 				case 6:
-					CSVCurrencyOfNorthAmerica.add(tmpCell);
+					CSVCurrenciesOfNorthAmerica.add(tmpCell);
 					logi.addToLogs(
 							"Znaleziono indeks kontynentu dla waluty " + TMPArray[1] + "-Płn. Ameryka".toString(),
 							getClass().getName().toString(), Thread.currentThread().getStackTrace()[1].getMethodName(),
 							79);
 					break;
 				case 7:
-					CSVCurrencyOfSouthAmerica.add(tmpCell);
+					CSVCurrenciesOfSouthAmerica.add(tmpCell);
 					logi.addToLogs(
 							"Znaleziono indeks kontynentu dla waluty " + TMPArray[1] + "-Płd. Ameryka".toString(),
 							getClass().getName().toString(), Thread.currentThread().getStackTrace()[1].getMethodName(),
 							86);
 					break;
 				case 8:
-					CSVCurrencyOfAfrica.add(tmpCell);
+					CSVCurrenciesOfAfrica.add(tmpCell);
 					logi.addToLogs("Znaleziono indeks kontynentu dla waluty " + TMPArray[1] + "-Afryka".toString(),
 							getClass().getName().toString(), Thread.currentThread().getStackTrace()[1].getMethodName(),
 							79);

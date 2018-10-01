@@ -23,7 +23,7 @@ public class Logs {
 		try		
 		{
 			FileOutputStream fileStream = new FileOutputStream(new File("logs.txt"),true);
-			//Changed iso-8859-2 encoding for polish chars
+			//You use iso-8859-2 encoding to have polish chars
 			OutputStreamWriter writer = new OutputStreamWriter(fileStream, "ISO-8859-2");
 			writer.write("\n--------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 			writer.close();
@@ -33,13 +33,13 @@ public class Logs {
 			System.out.println(e.getMessage());
 		}
 	}
-	 //Add logs and automatically save to logs.txt in format ISO-8859-2
+	 //Adding log and automatically saving to logs.txt in format ISO-8859-2
 	public void addToLogs(String log, String className, String methodName, int line)throws IOException
 	{
 		try		
 		{
 			FileOutputStream fileStream = new FileOutputStream(new File("logs.txt"),true);
-			//Changed iso-8859-2 encoding for polish chars
+			//You use iso-8859-2 encoding to have polish chars
 			OutputStreamWriter writer = new OutputStreamWriter(fileStream, "ISO-8859-2");
 			writer.write("\n"+getCurrentData()+" "+log+" [*C*:"+className+";/*M*:"+methodName+";/*L*:"+line+"]");
 			writer.close();
@@ -55,7 +55,7 @@ public class Logs {
 		try		
 		{
 			FileOutputStream fileStream = new FileOutputStream(new File("logs.txt"),false);
-			//Changed iso-8859-2 encoding for polish chars
+			//You use iso-8859-2 encoding to have polish chars
 			OutputStreamWriter writer = new OutputStreamWriter(fileStream,"ISO-8859-2");
 			writer.write("");
 			writer.close();
@@ -67,7 +67,7 @@ public class Logs {
 		}
 		
 	}
-	//Method to get current data to logs
+	//Method that you give current data to logs
 	String getCurrentData()
 	{
 		   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss:SSS");  

@@ -7,7 +7,7 @@ public class ObjectGold {
 		this.cena = cena;
 	}
 
-	// return gold exchange
+	// return gold exchange rate
 	public Double Get_gold_exchange() {
 		return this.cena;
 	}

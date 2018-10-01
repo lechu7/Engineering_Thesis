@@ -1,4 +1,4 @@
-//Object with rates table for ObjectCurrency
+//Object with Currency Rates Table for "ObjectCurrency"
 package com.engineering_work.example;
 
 public class ObjectRate {
@@ -8,7 +8,7 @@ public class ObjectRate {
 		this.mid = mid;
 	}
 
-	// return currency exchange
+	// return currency exchange rate
 	public Double Get_currency_exchange() {
 		return this.mid;
 	}

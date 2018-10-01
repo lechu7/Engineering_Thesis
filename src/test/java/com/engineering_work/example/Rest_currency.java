@@ -1,4 +1,4 @@
-//The class that download the current exchange rate with the API
+//The class that downloads the current exchange rate from the API
 package com.engineering_work.example;
 
 import java.io.BufferedReader;
@@ -39,23 +39,23 @@ public class Rest_currency {
 			while ((Line = Reader.readLine()) != null) {
 				sbResponse.append(Line);
 			}
-			// writing to console JSON
+			// message including JSON on console 
 			System.out.println(sbResponse.toString());
 
 			Gson gson = new Gson();
 			ObjectCurrency cur = gson.fromJson(sbResponse.toString(), ObjectCurrency.class);
 			Response = cur.Get_currency_exchange().toString();
 
-			// writing to console values for the currency
+			// message including values for the currency on console 
 			String tmpConsole = "Values for the currency " + cur.Get_currency_name().toString() + " is "
-					+ Response + " z³otych.";
+					+ Response + " zlotych.";
 			System.out.println(tmpConsole);
-			//writing to logs
+			//adding logs
 			logi.addToLogs("Pobrano kurs waluty: "+code+": "+Response+ " zlotych." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),54);
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			//writing to logs
+			//adding logs
 			logi.addToLogs("***ERROR***Nie pobrano kursu waluty- "+code+"." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),59);
 
 		}
@@ -87,20 +87,20 @@ public class Rest_currency {
 			while ((Line = Reader.readLine()) != null) {
 				sbResponse.append(Line);
 			}
-			// writing to console JSON
+			// message including JSON on console 
 			System.out.println(sbResponse.toString());
 			Gson gson = new Gson();
 			ObjectGold[] gold = gson.fromJson(sbResponse.toString(), ObjectGold[].class);
 			Response = gold[0].Get_gold_exchange().toString();
 			
-			// writing to console values for the gold
-			String tmpConsole = "Values for the gold is " + gold[0].Get_gold_exchange() + " z³otych.";
+			// message including values for the gold on console 
+			String tmpConsole = "Values for the gold is " + gold[0].Get_gold_exchange() + " z?otych.";
 			System.out.println(tmpConsole);
-			//writing to logs
+			//adding to logs
 			logi.addToLogs("Pobrano kurs zlota- "+gold[0].Get_gold_exchange()+ " zlotych." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),99);
 		} catch (Exception e) {
 			e.printStackTrace();
-			//writing to logs
+			//adding to logs
 			logi.addToLogs("***ERROR***Nie pobrano kursu zlota- "+Response+ "zlotych." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),103);
 
 		}

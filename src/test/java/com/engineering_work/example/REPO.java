@@ -16,7 +16,7 @@ public class REPO {
 	public Browsers browser;
 	
 	
-	public int returnRowsCount(WebDriver driver,String tableXPath)
+	public int returnNumberOfRows(WebDriver driver,String tableXPath)
 	{
 		return driver.findElements(By.xpath(tableXPath)).size();
 	}
