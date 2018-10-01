@@ -92,11 +92,7 @@ public class JavaFX extends Application {
 	// Label with time of test after test
 	public static Label timer;
 
-<<<<<<< HEAD
 	// checkbox to test gold exchange rate
-=======
-	// checkbox to test gold
->>>>>>> origin/master
 	public static CheckBox goldTest = new CheckBox();
 
 	// Button Start
@@ -127,11 +123,8 @@ public class JavaFX extends Application {
 		MobileTest.setToggleGroup(typeOfTestGroup);
 
 
-<<<<<<< HEAD
+
 		final ToggleGroup groupOfBrowsers = new ToggleGroup();
-=======
-		final ToggleGroup browsersGroup = new ToggleGroup();
->>>>>>> origin/master
 		// RadioButton Firefox
 		Firefox = new RadioButton();
 		Firefox.setTranslateX(-220);
@@ -399,7 +392,7 @@ public class JavaFX extends Application {
 	}
 
 	public void preparingCSVandLists() throws IOException {
-<<<<<<< HEAD
+
 		if (tc.CurrenciesOfEurope == null || tc.CurrenciesOfAsia == null || tc.CurrenciesOfAustralia == null
 				|| tc.CurrenciesOfNorthAmerica == null || tc.CurrenciesOfSouthAmerica == null
 				|| tc.CurrenciesOfAfrica == null) {
@@ -410,18 +403,6 @@ public class JavaFX extends Application {
 			tc.CurrenciesOfSouthAmerica = new ArrayList<ObjectAllAboutCurrencyCSV>();
 			tc.CurrenciesOfAfrica = new ArrayList<ObjectAllAboutCurrencyCSV>();
 			tc.CurrenciesAll = new ArrayList<ObjectAllAboutCurrencyCSV>();
-=======
-		if (tc.CurrencyOfEurope == null || tc.CurrencyOfAsia == null || tc.CurrencyOfAustralia == null
-				|| tc.CurrencyOfNorthAmerica == null || tc.CurrencyOfSouthAmerica == null
-				|| tc.CurrencyOfAfrica == null) {
-			tc.CurrencyOfEurope = new ArrayList<ObjectAllAboutCurrencyCSV>();
-			tc.CurrencyOfAsia = new ArrayList<ObjectAllAboutCurrencyCSV>();
-			tc.CurrencyOfAustralia = new ArrayList<ObjectAllAboutCurrencyCSV>();
-			tc.CurrencyOfNorthAmerica = new ArrayList<ObjectAllAboutCurrencyCSV>();
-			tc.CurrencyOfSouthAmerica = new ArrayList<ObjectAllAboutCurrencyCSV>();
-			tc.CurrencyOfAfrica = new ArrayList<ObjectAllAboutCurrencyCSV>();
-			tc.CurrencyAll = new ArrayList<ObjectAllAboutCurrencyCSV>();
->>>>>>> origin/master
 
 			tc.continentName = new ArrayList<String>();
 			tc.listOfListsCurrency = new ArrayList<ArrayList<ObjectAllAboutCurrencyCSV>>();

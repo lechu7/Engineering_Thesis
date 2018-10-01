@@ -1,10 +1,8 @@
 package com.engineering_work.example;
 
-<<<<<<< HEAD
-=======
+
 import java.io.File;
 import java.io.FileNotFoundException;
->>>>>>> origin/master
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,11 +15,7 @@ public class TestTimer {
 	TestControl tc = TestControl.getInstance();
 	static Logs logi = Logs.getInstance();
 	
-<<<<<<< HEAD
 	//The method that shows on the label, which part of tests is being done 
-=======
-	//Method to set on the label parts of tests
->>>>>>> origin/master
 	public static void setProgressLabel(int progress, int maxProgress) {
 		Platform.runLater(new Runnable() {
 			@Override
@@ -30,11 +24,7 @@ public class TestTimer {
 			}
 		});
 	}
-<<<<<<< HEAD
 	//The method that shows time of all tests on the label 
-=======
-	//Method to set on the label time of all tests
->>>>>>> origin/master
 	public static void setTimer(long time) {
 		final double returnTime=time/1000000000F;
 		Platform.runLater(new Runnable() {
@@ -44,11 +34,7 @@ public class TestTimer {
 			}
 		});
 	}
-<<<<<<< HEAD
 	//Method that saves value of test time to file CSV
-=======
-	//Method to save to file CSV value of test time
->>>>>>> origin/master
 	public static void saveTimeToCSV(String Web_Mobile, String continent,long elapsedTime) throws IOException
 	{
 		final double returnTime=elapsedTime/1000000000F;

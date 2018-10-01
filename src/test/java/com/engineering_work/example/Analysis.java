@@ -31,17 +31,12 @@ public class Analysis implements Runnable {
 	public void run() {
 		try {
 			isSelectedGold = false;
-			isSelectedCurrency = false;
-<<<<<<< HEAD
+			isSelectedCurrency = false;			
 			// check continents which are marked
-=======
-			// checks if something is selected and select currency to test
->>>>>>> origin/master
 			for (ObjectToTableView item : JavaFX.list) {
 				if (item.returnBool() == true) {
 					isSelectedCurrency = true;
 					if (item.returnContinentName() == "Africa") {
-<<<<<<< HEAD
 						tc.listOfListsCurrency.add(tc.CurrenciesOfAfrica);
 						tc.continentName.add(item.returnContinentPolishName());
 					}
@@ -64,36 +59,6 @@ public class Analysis implements Runnable {
 					if (item.returnContinentName() == "Europe") {
 						tc.listOfListsCurrency.add(tc.CurrenciesOfEurope);
 						tc.continentName.add(item.returnContinentPolishName());
-=======
-						tc.listOfListsCurrency.add(tc.CurrencyOfAfrica);
-						tc.continentName.add(item.returnContinentPolishName());
-						//tc.CurrencySelected.addAll(tc.CurrencyOfAfrica);
-					}
-					if (item.returnContinentName() == "SouthAmerica") {
-						tc.listOfListsCurrency.add(tc.CurrencyOfSouthAmerica);
-						tc.continentName.add(item.returnContinentPolishName());
-						//tc.CurrencySelected.addAll(tc.CurrencyOfSouthAmerica);
-					}
-					if (item.returnContinentName() == "NorthAmerica") {
-						tc.listOfListsCurrency.add(tc.CurrencyOfNorthAmerica);
-						tc.continentName.add(item.returnContinentPolishName());
-						//tc.CurrencySelected.addAll(tc.CurrencyOfNorthAmerica);
-					}
-					if (item.returnContinentName() == "Australia") {
-						tc.listOfListsCurrency.add(tc.CurrencyOfAustralia);
-						tc.continentName.add(item.returnContinentPolishName());
-						//tc.CurrencySelected.addAll(tc.CurrencyOfAustralia);
-					}
-					if (item.returnContinentName() == "Asia") {
-						tc.listOfListsCurrency.add(tc.CurrencyOfAsia);
-						tc.continentName.add(item.returnContinentPolishName());
-						//tc.CurrencySelected.addAll(tc.CurrencyOfAsia);
-					}
-					if (item.returnContinentName() == "Europe") {
-						tc.listOfListsCurrency.add(tc.CurrencyOfEurope);
-						tc.continentName.add(item.returnContinentPolishName());
-						//tc.CurrencySelected.addAll(tc.CurrencyOfEurope);
->>>>>>> origin/master
 					}
 				}
 			}
@@ -195,11 +160,7 @@ public class Analysis implements Runnable {
 		for (Node node : JavaFX.root.getChildren()) {
 			node.setDisable(false);
 		}
-<<<<<<< HEAD
 		// new list of lists with marked currency
-=======
-		// new CurrencySelected list
->>>>>>> origin/master
 		tc.listOfListsCurrency = new ArrayList<ArrayList<ObjectAllAboutCurrencyCSV>>();
 		tc.continentName= new ArrayList<String>();
 		pbClass.invisable();
