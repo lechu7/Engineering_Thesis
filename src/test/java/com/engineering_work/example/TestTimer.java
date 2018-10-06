@@ -14,7 +14,7 @@ public abstract class TestTimer extends ProgressBar{
 	static DecimalFormat df = new DecimalFormat("0.000");
 	
 	//The method that shows on the label, which part of tests is being done 
-	public  void setProgressLabel(int progress, int maxProgress) {
+	protected  void setProgressLabel(int progress, int maxProgress) {
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
@@ -23,7 +23,7 @@ public abstract class TestTimer extends ProgressBar{
 		});
 	}
 	//The method that shows time of all tests on the label 
-	public  void setTimer(long time) {
+	protected  void setTimer(long time) {
 		final double returnTime=time/1000000000F;
 		Platform.runLater(new Runnable() {
 			@Override
@@ -33,7 +33,7 @@ public abstract class TestTimer extends ProgressBar{
 		});
 	}
 	//Method that saves value of test time to file CSV
-	public void saveTimeToCSV(String Web_Mobile, String continent,long elapsedTime) throws IOException
+	protected void saveTimeToCSV(String Web_Mobile, String continent,long elapsedTime) throws IOException
 	{
 		final double returnTime=elapsedTime/1000000000F;
 		
@@ -51,7 +51,8 @@ public abstract class TestTimer extends ProgressBar{
 	        pw.write(sb.toString());
 	        pw.close();
 	        super.addToLogs();
-	    	super.addToLogs("Zapisano czas dla "+continent,"TestTimer","saveTimeToCSV", 51);
+	    	super.addToLogs("Zapisano czas dla "+continent+" "+TestControl.browser.toString(), getClass().getName().toString(),
+					Thread.currentThread().getStackTrace()[1].getMethodName(), 144);
 	    	super.addToLogs();
 	}
 }

@@ -9,14 +9,21 @@ import com.opencsv.CSVReader;
 public abstract class PreparationCSV  extends TestControl{
 
 
-	public ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrenciesOfEurope = new ArrayList<ObjectAllAboutCurrencyCSV>();
-	public ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrenciesOfAsia = new ArrayList<ObjectAllAboutCurrencyCSV>();
-	public ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrenciesOfAustralia = new ArrayList<ObjectAllAboutCurrencyCSV>();
-	public ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrenciesOfNorthAmerica = new ArrayList<ObjectAllAboutCurrencyCSV>();
-	public ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrenciesOfSouthAmerica = new ArrayList<ObjectAllAboutCurrencyCSV>();
-	public ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrenciesOfAfrica = new ArrayList<ObjectAllAboutCurrencyCSV>();
+	protected static ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrenciesOfEurope;
+	protected static ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrenciesOfAsia;
+	protected static ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrenciesOfAustralia;
+	protected static ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrenciesOfNorthAmerica;
+	protected static ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrenciesOfSouthAmerica;
+	protected static ArrayList<ObjectAllAboutCurrencyCSV> CSVCurrenciesOfAfrica;
 
-	public ArrayList<ObjectAllAboutCurrencyCSV> readCSVDate() throws IOException {
+	protected ArrayList<ObjectAllAboutCurrencyCSV> readCSVDate() throws IOException {
+		CSVCurrenciesOfEurope = new ArrayList<ObjectAllAboutCurrencyCSV>();
+		CSVCurrenciesOfAsia = new ArrayList<ObjectAllAboutCurrencyCSV>();
+		CSVCurrenciesOfAustralia = new ArrayList<ObjectAllAboutCurrencyCSV>();
+		CSVCurrenciesOfNorthAmerica = new ArrayList<ObjectAllAboutCurrencyCSV>();
+		CSVCurrenciesOfSouthAmerica = new ArrayList<ObjectAllAboutCurrencyCSV>();
+		CSVCurrenciesOfAfrica = new ArrayList<ObjectAllAboutCurrencyCSV>();
+		
 		CSVReader reader = new CSVReader(new FileReader("data.csv"));
 		ArrayList<ObjectAllAboutCurrencyCSV> listCSV = new ArrayList<ObjectAllAboutCurrencyCSV>();
 		String[] csvCell = null;

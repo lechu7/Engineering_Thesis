@@ -13,10 +13,10 @@ public abstract class CheckExchange extends Rest_currency  {
 	DecimalFormat df = new DecimalFormat("#.####");
 	
 	//Iterator for progress bar
-	public static double iterator=0;
+	protected static double iterator=0;
 
 	// Check gold exchange rate  
-	public void CheckGoldExchangeRate(WebDriver driver) throws IOException {
+	protected void CheckGoldExchangeRate(WebDriver driver) throws IOException {
 		driver.navigate().to(REPO.linkGold);
 		System.out.println("Change side to table of gold");
 		super.addToLogs("INFO Zmiana strony na tablice ze zlotem.", getClass().getName().toString(),
@@ -56,7 +56,7 @@ public abstract class CheckExchange extends Rest_currency  {
 
 	// check currency exchange rate
 	
-	public void CheckCurrencyExchangeRate(WebDriver driver, String table, String code, String codeUnit, String name, int listCurrencySize)throws IOException {
+	protected void CheckCurrencyExchangeRate(WebDriver driver, String table, String code, String codeUnit, String name, int listCurrencySize)throws IOException {
 		String side = driver.getCurrentUrl().toString();
 		// Value currency exchange rate from RestAPI
 		Float currencyExchangeRateFromRestAPI = Float.parseFloat(super.exchange(table, code));
@@ -137,7 +137,7 @@ public abstract class CheckExchange extends Rest_currency  {
 
 	@SuppressWarnings("deprecation")
 	// function which rounds value from REST API to four decimal places
-	public static float round(float d, int decimalPlace) {
+	protected static float round(float d, int decimalPlace) {
 		return BigDecimal.valueOf(d).setScale(decimalPlace, BigDecimal.ROUND_HALF_UP).floatValue();
 	}
 

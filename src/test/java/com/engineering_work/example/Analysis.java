@@ -18,8 +18,8 @@ import javax.swing.JOptionPane;
 public class Analysis extends JavaFX implements Runnable  {
 
 	
-	public String web_mobile;
-	public String browserName;
+	protected String web_mobile;
+	protected String browserName;
 	
 	boolean isSelectedGold = false;
 	boolean isSelectedCurrency = false;
@@ -29,7 +29,7 @@ public class Analysis extends JavaFX implements Runnable  {
 	public void run() {
 		try {
 			isSelectedGold = false;
-			isSelectedCurrency = false;			
+			isSelectedCurrency = false;	
 			// check continents which are marked
 			for (ObjectToTableView item : JavaFX.list) {
 				if (item.returnBool() == true) {
@@ -147,7 +147,7 @@ public class Analysis extends JavaFX implements Runnable  {
 	}
 
 	// Disable all elements after click start
-	public void disable() {
+	protected void disable() {
 		for (Node node : JavaFX.root.getChildren()) {
 			node.setDisable(true);
 			super.visable();
@@ -155,7 +155,7 @@ public class Analysis extends JavaFX implements Runnable  {
 	}
 
 	// Enable all elements after tests
-	public void enable() {
+	protected void enable() {
 		for (Node node : JavaFX.root.getChildren()) {
 			node.setDisable(false);
 		}

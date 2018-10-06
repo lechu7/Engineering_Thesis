@@ -13,7 +13,7 @@ import com.google.gson.Gson;
 public abstract class Rest_currency extends TestTimer{
 
 	// Method for currency
-	public String exchange(String table, String code) throws IOException {
+	protected String exchange(String table, String code) throws IOException {
 		
 		
 		// address url in string
@@ -63,7 +63,7 @@ public abstract class Rest_currency extends TestTimer{
 	}
 
 	// Method for gold
-	public String exchange() throws IOException {
+	protected String exchange() throws IOException {
 		// address url in string
 		String url;
 		// address url

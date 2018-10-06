@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 
 public abstract class Logs extends Application {
 	 //Add empty line to file logs
-	public void addToLogs()throws IOException
+	protected void addToLogs()throws IOException
 	{
 		try		
 		{

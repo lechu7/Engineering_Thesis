@@ -11,7 +11,7 @@ public abstract class ProgressBar extends Logs  {
 	
 	
 	//Method that you change progress for progressBar
-	 public void changedProgress(double new_val,double all_val,final String messageText) {
+	 protected void changedProgress(double new_val,double all_val,final String messageText) {
 		 JavaFX.pb.setProgress(new_val/all_val);
 		 JavaFX.pi.setProgress(new_val/all_val);
          //Changing the text under progress bar
@@ -23,7 +23,7 @@ public abstract class ProgressBar extends Logs  {
        
 	 }
 	 //Visible progress bar and other elements 
-	 public void visable()
+	 protected void visable()
 	 {
 		 CheckExchange.iterator=0;
 		 JavaFX.pb.setProgress(0);
@@ -40,9 +40,10 @@ public abstract class ProgressBar extends Logs  {
 		 
 		 //Setting invisible for label timer
 		 JavaFX.timer.setVisible(false);
+
 	 }
 	 //Invisible progress bar and other elements 
-	 public void invisable()
+	 protected void invisable()
 	 {
 		 JavaFX.pb.setVisible(false);
 		 JavaFX.pi.setVisible(false);
@@ -51,6 +52,10 @@ public abstract class ProgressBar extends Logs  {
 		 
 		//Setting visible for label timer
 		 JavaFX.timer.setVisible(true);
+		 
+		//Setting invisible chbox physicsDevice and deselect mobile test
+		 JavaFX.webTest.setSelected(true);
+		 JavaFX.physicsDevice.setVisible(false);
 	 }
 	
 

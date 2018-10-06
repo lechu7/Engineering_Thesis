@@ -5,7 +5,6 @@ import javafx.scene.control.RadioButton;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -27,50 +26,51 @@ import javafx.scene.control.Label;
 
 public class JavaFX extends PreparationCSV {
 
-	// Thread to analysis action after click "start" 
+	// Thread to analysis action after click "start"
 	Thread threadAnalysis;
-	public static StackPane root;
+	protected static StackPane root;
 
 	// RadioButton webTest
-	public static RadioButton webTest;
+	protected static RadioButton webTest;
 	// RadioButton mobileTest
-	public static RadioButton mobileTest;
+	protected static RadioButton mobileTest;
 
 	// Radiobuttons of Browser
-	public static RadioButton Firefox;
-	public static RadioButton Chrome;
-	public static RadioButton Opera;
-	public static RadioButton IE;
-	public static RadioButton Edge;
+	protected static RadioButton Firefox;
+	protected static RadioButton Chrome;
+	protected static RadioButton Opera;
+	protected static RadioButton IE;
+	protected static RadioButton Edge;
 
 	// Radiobuttons for all Or selected Currency test
-	public static RadioButton all;
-	public static RadioButton selected;
+	protected static RadioButton all;
+	protected static RadioButton selected;
 
-	public static ObservableList<ObjectToTableView> list;
+	protected static ObservableList<ObjectToTableView> list;
 	TableView<ObjectToTableView> table;
 
 	// Elements of progressbar
-	public static ProgressBar pb;
-	public static ProgressIndicator pi;
-	public static Label progress;
-	public static Label progressCurrencyInfo;
+	protected static ProgressBar pb;
+	protected static ProgressIndicator pi;
+	protected static Label progress;
+	protected static Label progressCurrencyInfo;
 	// Label with time of test after test
-	public static Label timer;
+	protected static Label timer;
 
 	// checkbox to test gold exchange rate
-	public static CheckBox goldTest;
-	
+	protected static CheckBox goldTest;
+
 	// checkbox to test gold exchange rate
-	public static CheckBox phisicDevice;
+	protected static CheckBox physicsDevice;
 
 	// Button start
-	public static Button start;
+	protected static Button start;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// clear the file logs.txt
 		super.clearFileLogs();
+
 		// Preparing lists from CSV
 		preparingCSVandLists();
 
@@ -89,7 +89,7 @@ public class JavaFX extends PreparationCSV {
 			Opera.setDisable(false);
 			IE.setDisable(false);
 			Edge.setDisable(false);
-			phisicDevice.setVisible(false);
+			physicsDevice.setVisible(false);
 		});
 
 		// RadioButton mobileTest
@@ -104,17 +104,17 @@ public class JavaFX extends PreparationCSV {
 			Opera.setDisable(true);
 			IE.setDisable(true);
 			Edge.setDisable(true);
-			
+
 			Chrome.setSelected(true);
-			phisicDevice.setVisible(true);
+			physicsDevice.setVisible(true);
 		});
-		
+
 		// CheckBox- testing on phisic device.
-		phisicDevice= new CheckBox();
-		phisicDevice.setText("Urz¹dzenie fizyczne");
-		phisicDevice.setTranslateX(220);
-		phisicDevice.setTranslateY(-220);
-		phisicDevice.setVisible(false);
+		physicsDevice = new CheckBox();
+		physicsDevice.setText("Urz¹dzenie fizyczne");
+		physicsDevice.setTranslateX(220);
+		physicsDevice.setTranslateY(-220);
+		physicsDevice.setVisible(false);
 
 		final ToggleGroup groupOfBrowsers = new ToggleGroup();
 		// RadioButton Firefox
@@ -251,8 +251,9 @@ public class JavaFX extends PreparationCSV {
 			table.setEditable(true);
 			try {
 				super.addToLogs();
-				super.addToLogs("Klikniêto wybrane waluty, tableView aktywne (UserGUI)", getClass().getName().toString(),
-						Thread.currentThread().getStackTrace()[1].getMethodName(), 249);
+				super.addToLogs("Klikniêto wybrane waluty, tableView aktywne (UserGUI)",
+						getClass().getName().toString(), Thread.currentThread().getStackTrace()[1].getMethodName(),
+						249);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
@@ -263,13 +264,13 @@ public class JavaFX extends PreparationCSV {
 		});
 
 		// CheckBox- testing of gold exchange rate.
-		goldTest= new CheckBox();
+		goldTest = new CheckBox();
 		goldTest.setText("Testowanie kursu z³ota");
 		goldTest.setTranslateX(112);
 		goldTest.setTranslateY(25);
 
 		// PROGRESS BAR
-		progress=new Label();
+		progress = new Label();
 		progress.setTranslateX(0);
 		progress.setTranslateY(100);
 		progress.setFont(Font.font("Arial", FontWeight.BOLD, 20));
@@ -288,7 +289,7 @@ public class JavaFX extends PreparationCSV {
 
 		pi.setTranslateX(250);
 		pi.setTranslateY(145);
-		
+
 		progressCurrencyInfo = new Label();
 		progressCurrencyInfo.setText("Uruchamianie testu...");
 		progressCurrencyInfo.setTranslateX(0);
@@ -317,14 +318,15 @@ public class JavaFX extends PreparationCSV {
 		start.setFont(Font.font("Arial", FontWeight.BOLD, 20));
 		start.setOnAction(e -> {
 			try {
+				// Preparing lists from CSV
+				preparingCSVandLists();
+
 				progressCurrencyInfo.setText("Uruchamianie testu...");
 				progress.setText("");
 				super.addToLogs();
 				super.addToLogs("Kliknieto start (UserGUI)", getClass().getName().toString(),
 						Thread.currentThread().getStackTrace()[1].getMethodName(), 144);
 				super.addToLogs();
-				// Preparing lists from CSV
-				preparingCSVandLists();
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
@@ -336,7 +338,7 @@ public class JavaFX extends PreparationCSV {
 		root.getChildren().add(start);
 		root.getChildren().add(webTest);
 		root.getChildren().add(mobileTest);
-		root.getChildren().add(phisicDevice);
+		root.getChildren().add(physicsDevice);
 		root.getChildren().add(Firefox);
 		root.getChildren().add(Chrome);
 		root.getChildren().add(Opera);
@@ -387,11 +389,16 @@ public class JavaFX extends PreparationCSV {
 		launch(args);
 	}
 
-	public void preparingCSVandLists() throws IOException {
+	protected void preparingCSVandLists() throws IOException {
+		if (super.CSVCurrenciesOfEurope == null || super.CSVCurrenciesOfAsia == null
+				|| super.CSVCurrenciesOfAustralia == null || super.CSVCurrenciesOfNorthAmerica == null
+				|| super.CSVCurrenciesOfSouthAmerica == null || super.CSVCurrenciesOfAfrica == null) {
+			super.readCSVDate();
+		}
 
 		if (super.CurrenciesOfEurope == null || super.CurrenciesOfAsia == null || super.CurrenciesOfAustralia == null
 				|| super.CurrenciesOfNorthAmerica == null || super.CurrenciesOfSouthAmerica == null
-				|| super.CurrenciesOfAfrica == null) {
+				|| super.CurrenciesOfAfrica == null || super.CurrenciesAll == null) {
 			super.CurrenciesOfEurope = new ArrayList<ObjectAllAboutCurrencyCSV>();
 			super.CurrenciesOfAsia = new ArrayList<ObjectAllAboutCurrencyCSV>();
 			super.CurrenciesOfAustralia = new ArrayList<ObjectAllAboutCurrencyCSV>();
@@ -400,16 +407,16 @@ public class JavaFX extends PreparationCSV {
 			super.CurrenciesOfAfrica = new ArrayList<ObjectAllAboutCurrencyCSV>();
 			super.CurrenciesAll = new ArrayList<ObjectAllAboutCurrencyCSV>();
 
-			super.continentName = new ArrayList<String>();
-			super.listOfListsCurrency = new ArrayList<ArrayList<ObjectAllAboutCurrencyCSV>>();
-
-			super.readCSVDate();
 			super.CurrenciesOfEurope = super.CSVCurrenciesOfEurope;
 			super.CurrenciesOfAsia = super.CSVCurrenciesOfAsia;
 			super.CurrenciesOfAustralia = super.CSVCurrenciesOfAustralia;
 			super.CurrenciesOfNorthAmerica = super.CSVCurrenciesOfNorthAmerica;
 			super.CurrenciesOfSouthAmerica = super.CSVCurrenciesOfSouthAmerica;
 			super.CurrenciesOfAfrica = super.CSVCurrenciesOfAfrica;
+		}
+		if (continentName == null || listOfListsCurrency == null || CurrenciesAll == null) {
+			super.continentName = new ArrayList<String>();
+			super.listOfListsCurrency = new ArrayList<ArrayList<ObjectAllAboutCurrencyCSV>>();
 
 			// add all lists to "CountriesAll" list
 			super.CurrenciesAll.addAll(super.CurrenciesOfEurope);
@@ -420,5 +427,4 @@ public class JavaFX extends PreparationCSV {
 			super.CurrenciesAll.addAll(super.CurrenciesOfAfrica);
 		}
 	}
-
 }

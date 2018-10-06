@@ -27,33 +27,33 @@ import javafx.scene.control.ProgressIndicator;
 public abstract class TestControl extends CheckExchange {
 
 
-	public WebDriver driver;
+	protected WebDriver driver;
 
 
-	public ArrayList<ObjectAllAboutCurrencyCSV> CurrenciesOfEurope;
-	public ArrayList<ObjectAllAboutCurrencyCSV> CurrenciesOfAsia;
-	public ArrayList<ObjectAllAboutCurrencyCSV> CurrenciesOfAustralia;
-	public ArrayList<ObjectAllAboutCurrencyCSV> CurrenciesOfNorthAmerica;
-	public ArrayList<ObjectAllAboutCurrencyCSV> CurrenciesOfSouthAmerica;
-	public ArrayList<ObjectAllAboutCurrencyCSV> CurrenciesOfAfrica;
-	public ArrayList<ObjectAllAboutCurrencyCSV> CurrenciesAll;
+	protected static ArrayList<ObjectAllAboutCurrencyCSV> CurrenciesOfEurope;
+	protected static ArrayList<ObjectAllAboutCurrencyCSV> CurrenciesOfAsia;
+	protected static ArrayList<ObjectAllAboutCurrencyCSV> CurrenciesOfAustralia;
+	protected static ArrayList<ObjectAllAboutCurrencyCSV> CurrenciesOfNorthAmerica;
+	protected static ArrayList<ObjectAllAboutCurrencyCSV> CurrenciesOfSouthAmerica;
+	protected static ArrayList<ObjectAllAboutCurrencyCSV> CurrenciesOfAfrica;
+	protected static ArrayList<ObjectAllAboutCurrencyCSV> CurrenciesAll;
 	//Continent Name list
-	public ArrayList<String> continentName;
+	protected static ArrayList<String> continentName;
 	
-	public ArrayList<ArrayList<ObjectAllAboutCurrencyCSV>> listOfListsCurrency;
+	protected static ArrayList<ArrayList<ObjectAllAboutCurrencyCSV>> listOfListsCurrency;
 
-	public boolean firstRun = true;
-	public static REPO.Browsers browser;
+	protected boolean firstRun = true;
+	protected static REPO.Browsers browser;
 	
 	//Button in messagebox that pops up when selection is empty
-	  public Object[] optionsOK = {"OK"};
+	  protected Object[] optionsOK = {"OK"};
 	  int error;
 	  //String with kind of tests (mobile/web)
 	  String kindOfTests;
 	  
 	@SuppressWarnings("deprecation")
 	@BeforeTest
-	public void beforeTest() throws IOException {
+	protected void beforeTest() throws IOException {
 		//set kindOfTests on Web. Only Chrome have mobile or emulator option
 		kindOfTests="web";
 		
@@ -110,7 +110,7 @@ public abstract class TestControl extends CheckExchange {
 			driver.manage().window().maximize();
 			}
 			//Physics device
-			else if(JavaFX.phisicDevice.isSelected()==true){
+			else if(JavaFX.physicsDevice.isSelected()==true){
 				//set kindOfTests on mobile
 				kindOfTests="mobile";
 				DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -260,7 +260,7 @@ public abstract class TestControl extends CheckExchange {
 	}
 
 	@Test
-	public void TestCurrency() throws IOException {
+	protected void TestCurrency() throws IOException {
 		driver.get(REPO.linkTabelaA);
 		//Currency exchange rate 
 		super.addToLogs();
@@ -283,7 +283,7 @@ public abstract class TestControl extends CheckExchange {
 
 	}
 	@Test
-	public void TestGold() throws IOException {
+	protected void TestGold() throws IOException {
 		driver.get(REPO.linkGold);
 		
 		//set progress
@@ -299,7 +299,7 @@ public abstract class TestControl extends CheckExchange {
 	}
 
 	@AfterTest
-	public void afterTest() throws IOException {
+	protected void afterTest() throws IOException {
 		driver.quit();
 		// Problem with closing the browser (Opera)
 		if (browser == REPO.Browsers.Opera) {
@@ -325,7 +325,7 @@ public abstract class TestControl extends CheckExchange {
 				Thread.currentThread().getStackTrace()[1].getMethodName(), 144);
 	}
 	//Return name of Browser for CSV file with time
-	public static String returnBrowserName()
+	protected static String returnBrowserName()
 	{
 		return browser.toString();
 	}
