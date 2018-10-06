@@ -2,64 +2,30 @@ package com.engineering_work.example;
 
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
-import java.awt.event.WindowEvent;
 import java.io.IOException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import javax.swing.text.Element;
 
-//import org.apache.commons.collections.functors.PrototypeFactory;
-
-import com.google.common.collect.Table;
 
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import java.awt.event.ActionEvent;
 import javafx.scene.control.ToggleGroup;
-import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.event.EventHandler;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.scene.layout.HBox;
 import javafx.scene.control.TableColumn;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn.CellDataFeatures;
-import javafx.scene.control.TableColumn.CellEditEvent;
-import javafx.scene.control.TablePosition;
 import javafx.scene.control.cell.CheckBoxTableCell;
-import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.Callback;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.Slider;
-
-import javafx.scene.Group;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
 
-public class JavaFX extends Application {
-	TestControl tc = TestControl.getInstance();
-	Logs logi = Logs.getInstance();
-	PreparationCSV pCSV = new PreparationCSV();
-	ProgressBar pbClass = new ProgressBar();
+public class JavaFX extends PreparationCSV {
 
 	// Thread to analysis action after click "start" 
 	Thread threadAnalysis;
@@ -104,7 +70,7 @@ public class JavaFX extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// clear the file logs.txt
-		logi.clearFileLogs();
+		super.clearFileLogs();
 		// Preparing lists from CSV
 		preparingCSVandLists();
 
@@ -210,12 +176,12 @@ public class JavaFX extends Application {
 		// TableView with selection of Continents that include Currency
 		// Add continents to list
 		list = FXCollections.observableArrayList();
-		list.add(new ObjectToTableView(false, "Afryka", "Africa", tc.CurrenciesOfAfrica));
-		list.add(new ObjectToTableView(false, "Ameryka Po³udniowa", "SouthAmerica", tc.CurrenciesOfSouthAmerica));
-		list.add(new ObjectToTableView(false, "Ameryka Pó³nocna", "NorthAmerica", tc.CurrenciesOfNorthAmerica));
-		list.add(new ObjectToTableView(false, "Australia", "Australia", tc.CurrenciesOfAustralia));
-		list.add(new ObjectToTableView(false, "Azja", "Asia", tc.CurrenciesOfAsia));
-		list.add(new ObjectToTableView(false, "Europa", "Europe", tc.CurrenciesOfEurope));
+		list.add(new ObjectToTableView(false, "Afryka", "Africa", super.CurrenciesOfAfrica));
+		list.add(new ObjectToTableView(false, "Ameryka Po³udniowa", "SouthAmerica", super.CurrenciesOfSouthAmerica));
+		list.add(new ObjectToTableView(false, "Ameryka Pó³nocna", "NorthAmerica", super.CurrenciesOfNorthAmerica));
+		list.add(new ObjectToTableView(false, "Australia", "Australia", super.CurrenciesOfAustralia));
+		list.add(new ObjectToTableView(false, "Azja", "Asia", super.CurrenciesOfAsia));
+		list.add(new ObjectToTableView(false, "Europa", "Europe", super.CurrenciesOfEurope));
 		// new table
 		table = new TableView<ObjectToTableView>();
 		table.setEditable(true);
@@ -246,15 +212,15 @@ public class JavaFX extends Application {
 
 		final ToggleGroup allOrChosenCurrencyGroup = new ToggleGroup();
 		all = new RadioButton();
-		all.setText("Wszystkie waluty (Iloœæ: " + tc.CurrenciesAll.size() + ")");
+		all.setText("Wszystkie waluty (Iloœæ: " + super.CurrenciesAll.size() + ")");
 		all.setTranslateX(125);
 		all.setTranslateY(-65);
 		all.setToggleGroup(allOrChosenCurrencyGroup);
 		// When you click "all Currency", all CheckBoxes of tableView have been checked
 		all.setOnAction(e -> {
 			try {
-				logi.addToLogs();
-				logi.addToLogs("Kliknieto Wszystkie Waluty (UserGUI)", getClass().getName().toString(),
+				super.addToLogs();
+				super.addToLogs("Kliknieto Wszystkie Waluty (UserGUI)", getClass().getName().toString(),
 						Thread.currentThread().getStackTrace()[1].getMethodName(), 224);
 			} catch (IOException e1) {
 				e1.printStackTrace();
@@ -265,8 +231,8 @@ public class JavaFX extends Application {
 			}
 			table.refresh();
 			try {
-				logi.addToLogs();
-				logi.addToLogs("Odznaczone checkboxy w tableView, tableView nieaktywne (UserGUI)",
+				super.addToLogs();
+				super.addToLogs("Odznaczone checkboxy w tableView, tableView nieaktywne (UserGUI)",
 						getClass().getName().toString(), Thread.currentThread().getStackTrace()[1].getMethodName(),
 						224);
 			} catch (IOException e1) {
@@ -284,8 +250,8 @@ public class JavaFX extends Application {
 		selected.setOnAction(e -> {
 			table.setEditable(true);
 			try {
-				logi.addToLogs();
-				logi.addToLogs("Klikniêto wybrane waluty, tableView aktywne (UserGUI)", getClass().getName().toString(),
+				super.addToLogs();
+				super.addToLogs("Klikniêto wybrane waluty, tableView aktywne (UserGUI)", getClass().getName().toString(),
 						Thread.currentThread().getStackTrace()[1].getMethodName(), 249);
 			} catch (IOException e1) {
 				e1.printStackTrace();
@@ -353,10 +319,10 @@ public class JavaFX extends Application {
 			try {
 				progressCurrencyInfo.setText("Uruchamianie testu...");
 				progress.setText("");
-				logi.addToLogs();
-				logi.addToLogs("Kliknieto start (UserGUI)", getClass().getName().toString(),
+				super.addToLogs();
+				super.addToLogs("Kliknieto start (UserGUI)", getClass().getName().toString(),
 						Thread.currentThread().getStackTrace()[1].getMethodName(), 144);
-				logi.addToLogs();
+				super.addToLogs();
 				// Preparing lists from CSV
 				preparingCSVandLists();
 			} catch (IOException e1) {
@@ -395,10 +361,10 @@ public class JavaFX extends Application {
 		// when you click close (X)
 		primaryStage.setOnCloseRequest(event -> {
 			try {
-				logi.addToLogs();
-				logi.addToLogs("Zamkniêto program (UserGUI- klikniecie X)", getClass().getName().toString(),
+				super.addToLogs();
+				super.addToLogs("Zamkniêto program (UserGUI- klikniecie X)", getClass().getName().toString(),
 						Thread.currentThread().getStackTrace()[1].getMethodName(), 144);
-				tc.driver.quit();
+				super.driver.quit();
 			} catch (Exception e) {
 			}
 			System.exit(0);
@@ -423,35 +389,35 @@ public class JavaFX extends Application {
 
 	public void preparingCSVandLists() throws IOException {
 
-		if (tc.CurrenciesOfEurope == null || tc.CurrenciesOfAsia == null || tc.CurrenciesOfAustralia == null
-				|| tc.CurrenciesOfNorthAmerica == null || tc.CurrenciesOfSouthAmerica == null
-				|| tc.CurrenciesOfAfrica == null) {
-			tc.CurrenciesOfEurope = new ArrayList<ObjectAllAboutCurrencyCSV>();
-			tc.CurrenciesOfAsia = new ArrayList<ObjectAllAboutCurrencyCSV>();
-			tc.CurrenciesOfAustralia = new ArrayList<ObjectAllAboutCurrencyCSV>();
-			tc.CurrenciesOfNorthAmerica = new ArrayList<ObjectAllAboutCurrencyCSV>();
-			tc.CurrenciesOfSouthAmerica = new ArrayList<ObjectAllAboutCurrencyCSV>();
-			tc.CurrenciesOfAfrica = new ArrayList<ObjectAllAboutCurrencyCSV>();
-			tc.CurrenciesAll = new ArrayList<ObjectAllAboutCurrencyCSV>();
+		if (super.CurrenciesOfEurope == null || super.CurrenciesOfAsia == null || super.CurrenciesOfAustralia == null
+				|| super.CurrenciesOfNorthAmerica == null || super.CurrenciesOfSouthAmerica == null
+				|| super.CurrenciesOfAfrica == null) {
+			super.CurrenciesOfEurope = new ArrayList<ObjectAllAboutCurrencyCSV>();
+			super.CurrenciesOfAsia = new ArrayList<ObjectAllAboutCurrencyCSV>();
+			super.CurrenciesOfAustralia = new ArrayList<ObjectAllAboutCurrencyCSV>();
+			super.CurrenciesOfNorthAmerica = new ArrayList<ObjectAllAboutCurrencyCSV>();
+			super.CurrenciesOfSouthAmerica = new ArrayList<ObjectAllAboutCurrencyCSV>();
+			super.CurrenciesOfAfrica = new ArrayList<ObjectAllAboutCurrencyCSV>();
+			super.CurrenciesAll = new ArrayList<ObjectAllAboutCurrencyCSV>();
 
-			tc.continentName = new ArrayList<String>();
-			tc.listOfListsCurrency = new ArrayList<ArrayList<ObjectAllAboutCurrencyCSV>>();
+			super.continentName = new ArrayList<String>();
+			super.listOfListsCurrency = new ArrayList<ArrayList<ObjectAllAboutCurrencyCSV>>();
 
-			pCSV.readCSVDate();
-			tc.CurrenciesOfEurope = pCSV.CSVCurrenciesOfEurope;
-			tc.CurrenciesOfAsia = pCSV.CSVCurrenciesOfAsia;
-			tc.CurrenciesOfAustralia = pCSV.CSVCurrenciesOfAustralia;
-			tc.CurrenciesOfNorthAmerica = pCSV.CSVCurrenciesOfNorthAmerica;
-			tc.CurrenciesOfSouthAmerica = pCSV.CSVCurrenciesOfSouthAmerica;
-			tc.CurrenciesOfAfrica = pCSV.CSVCurrenciesOfAfrica;
+			super.readCSVDate();
+			super.CurrenciesOfEurope = super.CSVCurrenciesOfEurope;
+			super.CurrenciesOfAsia = super.CSVCurrenciesOfAsia;
+			super.CurrenciesOfAustralia = super.CSVCurrenciesOfAustralia;
+			super.CurrenciesOfNorthAmerica = super.CSVCurrenciesOfNorthAmerica;
+			super.CurrenciesOfSouthAmerica = super.CSVCurrenciesOfSouthAmerica;
+			super.CurrenciesOfAfrica = super.CSVCurrenciesOfAfrica;
 
 			// add all lists to "CountriesAll" list
-			tc.CurrenciesAll.addAll(tc.CurrenciesOfEurope);
-			tc.CurrenciesAll.addAll(tc.CurrenciesOfAsia);
-			tc.CurrenciesAll.addAll(tc.CurrenciesOfAustralia);
-			tc.CurrenciesAll.addAll(tc.CurrenciesOfNorthAmerica);
-			tc.CurrenciesAll.addAll(tc.CurrenciesOfSouthAmerica);
-			tc.CurrenciesAll.addAll(tc.CurrenciesOfAfrica);
+			super.CurrenciesAll.addAll(super.CurrenciesOfEurope);
+			super.CurrenciesAll.addAll(super.CurrenciesOfAsia);
+			super.CurrenciesAll.addAll(super.CurrenciesOfAustralia);
+			super.CurrenciesAll.addAll(super.CurrenciesOfNorthAmerica);
+			super.CurrenciesAll.addAll(super.CurrenciesOfSouthAmerica);
+			super.CurrenciesAll.addAll(super.CurrenciesOfAfrica);
 		}
 	}
 

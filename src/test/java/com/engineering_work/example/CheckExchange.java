@@ -8,11 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.AssertJUnit;
 
-public class CheckExchange {
-	Rest_currency rc = new Rest_currency();
+public abstract class CheckExchange extends Rest_currency  {
 	REPO repo = new REPO();
-	ProgressBar pbClass= new ProgressBar();
-	Logs logi = Logs.getInstance();
 	DecimalFormat df = new DecimalFormat("#.####");
 	
 	//Iterator for progress bar
@@ -22,11 +19,11 @@ public class CheckExchange {
 	public void CheckGoldExchangeRate(WebDriver driver) throws IOException {
 		driver.navigate().to(REPO.linkGold);
 		System.out.println("Change side to table of gold");
-		logi.addToLogs("INFO Zmiana strony na tablice ze zlotem.", getClass().getName().toString(),
+		super.addToLogs("INFO Zmiana strony na tablice ze zlotem.", getClass().getName().toString(),
 				Thread.currentThread().getStackTrace()[1].getMethodName(), 22);
 
 		// Value of gold exchange rate from RestAPI
-		String tmp = rc.exchange();
+		String tmp = super.exchange();
 		Float goldExchangeRateFromRestAPI = Float.parseFloat(tmp);
 		// Rounding value to two decimal places
 		goldExchangeRateFromRestAPI = round(goldExchangeRateFromRestAPI, 2);
@@ -45,11 +42,11 @@ public class CheckExchange {
 		AssertJUnit.assertEquals("Porownanie kursu z REST API i strony dla zlota.", goldExchangeRateFromRestAPI,
 				goldExchangeRateFromWebSide);
 		if (goldExchangeRateFromRestAPI.compareTo(goldExchangeRateFromWebSide) == 0) {
-			logi.addToLogs("PASS- Wartoœci zgodne dla z³ota równe " + goldExchangeRateFromWebSide,
+			super.addToLogs("PASS- Wartoœci zgodne dla z³ota równe " + goldExchangeRateFromWebSide,
 					getClass().getName().toString(), Thread.currentThread().getStackTrace()[1].getMethodName(), 46);
-			pbClass.changedProgress(1, 1, "Kurs z³ota: "+goldExchangeRateFromWebSide+" z³.");
+			super.changedProgress(1, 1, "Kurs z³ota: "+goldExchangeRateFromWebSide+" z³.");
 		} else {
-			logi.addToLogs(
+			super.addToLogs(
 					"***FAIL- Nie zgodna wartoœæ dla z³ota :API- " + goldExchangeRateFromRestAPI + " /WebSide- "
 							+ goldExchangeRateFromWebSide,
 					getClass().getName().toString(), Thread.currentThread().getStackTrace()[1].getMethodName(), 51);
@@ -62,7 +59,7 @@ public class CheckExchange {
 	public void CheckCurrencyExchangeRate(WebDriver driver, String table, String code, String codeUnit, String name, int listCurrencySize)throws IOException {
 		String side = driver.getCurrentUrl().toString();
 		// Value currency exchange rate from RestAPI
-		Float currencyExchangeRateFromRestAPI = Float.parseFloat(rc.exchange(table, code));
+		Float currencyExchangeRateFromRestAPI = Float.parseFloat(super.exchange(table, code));
 		// Multipler and rounding value to four decimal places
 		currencyExchangeRateFromRestAPI = currencyExchangeRateFromRestAPI * returnMultiplier(codeUnit);
 		currencyExchangeRateFromRestAPI = round(currencyExchangeRateFromRestAPI, 4);
@@ -74,7 +71,7 @@ public class CheckExchange {
 			if (side.charAt(42) == 'b') {
 				driver.navigate().to(REPO.linkTabelaA);
 				System.out.println("Change side to table A");
-				logi.addToLogs("INFO Zmiana strony na tablice A.", getClass().getName().toString(),
+				super.addToLogs("INFO Zmiana strony na tablice A.", getClass().getName().toString(),
 						Thread.currentThread().getStackTrace()[1].getMethodName(), 73);
 			}
 			break;
@@ -82,12 +79,12 @@ public class CheckExchange {
 			if (side.charAt(42) == 'a') {
 				driver.navigate().to(REPO.linkTabelaB);
 				System.out.println("Change side to table B");
-				logi.addToLogs("INFO Zmiana strony na tablice B.", getClass().getName().toString(),
+				super.addToLogs("INFO Zmiana strony na tablice B.", getClass().getName().toString(),
 						Thread.currentThread().getStackTrace()[1].getMethodName(), 81);
 			}
 			break;
 		default:
-			logi.addToLogs("***ERROR***Zle wybrano link z tabela", getClass().getName().toString(),
+			super.addToLogs("***ERROR***Zle wybrano link z tabela", getClass().getName().toString(),
 					Thread.currentThread().getStackTrace()[1].getMethodName(), 86);
 			break;
 		}
@@ -115,14 +112,14 @@ public class CheckExchange {
 				AssertJUnit.assertEquals("Porownanie kursu z REST API i strony.", currencyExchangeRateFromRestAPI,
 						currencyExchangeRateFromWebSide);
 				if (currencyExchangeRateFromRestAPI.compareTo(currencyExchangeRateFromWebSide) == 0) {
-					logi.addToLogs(
+					super.addToLogs(
 							"PASS- Wartoœci zgodne dla " + name + "- KOD: " + code + " równe " + currencyExchangeRateFromWebSide,
 							getClass().getName().toString(), Thread.currentThread().getStackTrace()[1].getMethodName(),
 							116);
 							iterator++;
-							pbClass.changedProgress(iterator, listCurrencySize, "Kurs waluty "+name+": "+currencyExchangeRateFromWebSide+" z³.");
+							super.changedProgress(iterator, listCurrencySize, "Kurs waluty "+name+": "+currencyExchangeRateFromWebSide+" z³.");
 				} else {
-					logi.addToLogs(
+					super.addToLogs(
 							"***FAIL- Nie zgodna wartoœæ dla " + code + " :API- " + currencyExchangeRateFromRestAPI + " /WebSide- "
 									+ currencyExchangeRateFromWebSide,
 							getClass().getName().toString(), Thread.currentThread().getStackTrace()[1].getMethodName(),

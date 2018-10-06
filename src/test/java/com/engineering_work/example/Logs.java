@@ -1,6 +1,9 @@
 package com.engineering_work.example;
 
 import java.io.File;
+import javafx.application.Application;
+import javafx.stage.Stage;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -8,15 +11,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 
-public class Logs {
-	//Singleton for class Logs 
-	private static Logs instance = null;
-	 public static Logs getInstance() {
-	      if(instance == null) {
-	         instance = new Logs();
-	      }
-	      return instance;
-	   }
+
+
+public abstract class Logs extends Application {
 	 //Add empty line to file logs
 	public void addToLogs()throws IOException
 	{
@@ -34,7 +31,7 @@ public class Logs {
 		}
 	}
 	 //Adding log and automatically saving to logs.txt in format ISO-8859-2
-	public void addToLogs(String log, String className, String methodName, int line)throws IOException
+	protected void addToLogs(String log, String className, String methodName, int line)throws IOException
 	{
 		try		
 		{
@@ -50,7 +47,7 @@ public class Logs {
 		}
 	}
 	//Clear file logs.txt
-	public void clearFileLogs() throws IOException
+	protected void clearFileLogs() throws IOException
 	{
 		try		
 		{
@@ -74,6 +71,7 @@ public class Logs {
 		   LocalDateTime now = LocalDateTime.now();  
 		   return dtf.format(now).toString();
 	}
+
 
 
 }

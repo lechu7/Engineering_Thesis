@@ -7,18 +7,17 @@ import javax.swing.JLabel;
 
 import javafx.application.Platform;
 
-public class ProgressBar {
+public abstract class ProgressBar extends Logs  {
 	
-
 	
 	//Method that you change progress for progressBar
 	 public void changedProgress(double new_val,double all_val,final String messageText) {
-         JavaFX.pb.setProgress(new_val/all_val);
-         JavaFX.pi.setProgress(new_val/all_val);
+		 JavaFX.pb.setProgress(new_val/all_val);
+		 JavaFX.pi.setProgress(new_val/all_val);
          //Changing the text under progress bar
          Platform.runLater(new Runnable() {
              @Override public void run() {
-            	  JavaFX.progressCurrencyInfo.setText(messageText+" ("+(int)new_val+"/"+(int)all_val+")");
+            	 JavaFX.progressCurrencyInfo.setText(messageText+" ("+(int)new_val+"/"+(int)all_val+")");
             	  }
        });
        
@@ -27,13 +26,12 @@ public class ProgressBar {
 	 public void visable()
 	 {
 		 CheckExchange.iterator=0;
-	     JavaFX.pb.setProgress(0);
-	     JavaFX.pi.setProgress(0);
+		 JavaFX.pb.setProgress(0);
+		 JavaFX.pi.setProgress(0);
 		 JavaFX.pb.setVisible(true);
 		 JavaFX.pi.setVisible(true);
 		 JavaFX.pb.setDisable(false);;
 		 JavaFX.pi.setDisable(false);;
-		 
 		 JavaFX.progress.setVisible(true);
 		 JavaFX.progress.setDisable(false);;
 		 

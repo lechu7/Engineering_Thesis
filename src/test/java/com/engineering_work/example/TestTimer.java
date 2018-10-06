@@ -10,13 +10,11 @@ import java.text.DecimalFormat;
 
 import javafx.application.Platform;
 
-public class TestTimer {
+public abstract class TestTimer extends ProgressBar{
 	static DecimalFormat df = new DecimalFormat("0.000");
-	TestControl tc = TestControl.getInstance();
-	static Logs logi = Logs.getInstance();
 	
 	//The method that shows on the label, which part of tests is being done 
-	public static void setProgressLabel(int progress, int maxProgress) {
+	public  void setProgressLabel(int progress, int maxProgress) {
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
@@ -25,7 +23,7 @@ public class TestTimer {
 		});
 	}
 	//The method that shows time of all tests on the label 
-	public static void setTimer(long time) {
+	public  void setTimer(long time) {
 		final double returnTime=time/1000000000F;
 		Platform.runLater(new Runnable() {
 			@Override
@@ -35,7 +33,7 @@ public class TestTimer {
 		});
 	}
 	//Method that saves value of test time to file CSV
-	public static void saveTimeToCSV(String Web_Mobile, String continent,long elapsedTime) throws IOException
+	public void saveTimeToCSV(String Web_Mobile, String continent,long elapsedTime) throws IOException
 	{
 		final double returnTime=elapsedTime/1000000000F;
 		
@@ -52,8 +50,8 @@ public class TestTimer {
 	        
 	        pw.write(sb.toString());
 	        pw.close();
-	        logi.addToLogs();
-	    	logi.addToLogs("Zapisano czas dla "+continent,"TestTimer","saveTimeToCSV", 51);
-	    	logi.addToLogs();
+	        super.addToLogs();
+	    	super.addToLogs("Zapisano czas dla "+continent,"TestTimer","saveTimeToCSV", 51);
+	    	super.addToLogs();
 	}
 }

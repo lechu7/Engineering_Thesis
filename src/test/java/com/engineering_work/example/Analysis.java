@@ -15,10 +15,8 @@ import javax.swing.JOptionPane;
 //New thread
 // Analysis elements after click start, disable elements after click, 
 //enable elements after testing
-public class Analysis implements Runnable {
-	TestControl tc = TestControl.getInstance();
-	Logs logi = Logs.getInstance();
-	ProgressBar pbClass = new ProgressBar();
+public class Analysis extends JavaFX implements Runnable  {
+
 	
 	public String web_mobile;
 	public String browserName;
@@ -37,103 +35,103 @@ public class Analysis implements Runnable {
 				if (item.returnBool() == true) {
 					isSelectedCurrency = true;
 					if (item.returnContinentName() == "Africa") {
-						tc.listOfListsCurrency.add(tc.CurrenciesOfAfrica);
-						tc.continentName.add(item.returnContinentPolishName());
+						super.listOfListsCurrency.add(super.CurrenciesOfAfrica);
+						super.continentName.add(item.returnContinentPolishName());
 					}
 					if (item.returnContinentName() == "SouthAmerica") {
-						tc.listOfListsCurrency.add(tc.CurrenciesOfSouthAmerica);
-						tc.continentName.add(item.returnContinentPolishName());
+						super.listOfListsCurrency.add(super.CurrenciesOfSouthAmerica);
+						super.continentName.add(item.returnContinentPolishName());
 					}
 					if (item.returnContinentName() == "NorthAmerica") {
-						tc.listOfListsCurrency.add(tc.CurrenciesOfNorthAmerica);
-						tc.continentName.add(item.returnContinentPolishName());
+						super.listOfListsCurrency.add(super.CurrenciesOfNorthAmerica);
+						super.continentName.add(item.returnContinentPolishName());
 					}
 					if (item.returnContinentName() == "Australia") {
-						tc.listOfListsCurrency.add(tc.CurrenciesOfAustralia);
-						tc.continentName.add(item.returnContinentPolishName());
+						super.listOfListsCurrency.add(super.CurrenciesOfAustralia);
+						super.continentName.add(item.returnContinentPolishName());
 					}
 					if (item.returnContinentName() == "Asia") {
-						tc.listOfListsCurrency.add(tc.CurrenciesOfAsia);
-						tc.continentName.add(item.returnContinentPolishName());
+						super.listOfListsCurrency.add(super.CurrenciesOfAsia);
+						super.continentName.add(item.returnContinentPolishName());
 					}
 					if (item.returnContinentName() == "Europe") {
-						tc.listOfListsCurrency.add(tc.CurrenciesOfEurope);
-						tc.continentName.add(item.returnContinentPolishName());
+						super.listOfListsCurrency.add(super.CurrenciesOfEurope);
+						super.continentName.add(item.returnContinentPolishName());
 					}
 				}
 			}
 			if (JavaFX.goldTest.isSelected() == true) {
 				isSelectedGold = true;
-				tc.continentName.add("Z³oto");
+				super.continentName.add("Z³oto");
 			}
 			// Select browser
 			if (isSelectedCurrency == true || isSelectedGold == true) {
 				if (JavaFX.Chrome.isSelected()) {
-						tc.browser = REPO.Browsers.Chrome;
-						logi.addToLogs("Wybrano Chrome (UserGUI)", getClass().getName().toString(),
+						super.browser = REPO.Browsers.Chrome;
+						super.addToLogs("Wybrano Chrome (UserGUI)", getClass().getName().toString(),
 								Thread.currentThread().getStackTrace()[1].getMethodName(), 21);
 				
 				} else if (JavaFX.Opera.isSelected()) {
-					tc.browser = REPO.Browsers.Opera;
-					logi.addToLogs("Wybrano Opera (UserGUI)", getClass().getName().toString(),
+					super.browser = REPO.Browsers.Opera;
+					super.addToLogs("Wybrano Opera (UserGUI)", getClass().getName().toString(),
 							Thread.currentThread().getStackTrace()[1].getMethodName(), 25);
 				} else if (JavaFX.IE.isSelected()) {
-					tc.browser = REPO.Browsers.IE;
-					logi.addToLogs("Wybrano Internet Explorer (UserGUI)", getClass().getName().toString(),
+					super.browser = REPO.Browsers.IE;
+					super.addToLogs("Wybrano Internet Explorer (UserGUI)", getClass().getName().toString(),
 							Thread.currentThread().getStackTrace()[1].getMethodName(), 29);
 				} else if (JavaFX.Edge.isSelected()) {
-					tc.browser = REPO.Browsers.Edge;
-					logi.addToLogs("Wybrano Edge (UserGUI)", getClass().getName().toString(),
+					super.browser = REPO.Browsers.Edge;
+					super.addToLogs("Wybrano Edge (UserGUI)", getClass().getName().toString(),
 							Thread.currentThread().getStackTrace()[1].getMethodName(), 33);
 				} else {
-					tc.browser = REPO.Browsers.Firefox;
-					logi.addToLogs("Wybrano Mozilla Firefox (UserGUI)", getClass().getName().toString(),
+					super.browser = REPO.Browsers.Firefox;
+					super.addToLogs("Wybrano Mozilla Firefox (UserGUI)", getClass().getName().toString(),
 							Thread.currentThread().getStackTrace()[1].getMethodName(), 37);
 				}
 
 				// Disable all elements on the screen after click start
 				disable();
 
-				tc.beforeTest();
+				super.beforeTest();
 
-				logi.addToLogs();
+				super.addToLogs();
 				// choice between Web and Mobile test
 				if (JavaFX.webTest.isSelected()==true) {
-					logi.addToLogs("Wybrano test WEB (UserGUI)", getClass().getName().toString(),
+					super.addToLogs("Wybrano test WEB (UserGUI)", getClass().getName().toString(),
 							Thread.currentThread().getStackTrace()[1].getMethodName(), 46);
 
 					//start timer
 					long start = System.nanoTime();
 					if (isSelectedCurrency == true) {
-						tc.TestCurrency();
+						super.TestCurrency();
 
 					}
 					if (isSelectedGold == true) {
 						// The method sets 0 in progress
 						disable();
-						tc.TestGold();
+						super.TestGold();
 					}
 					//stop timer
 					long elapsedTime = System.nanoTime() - start;
-					TestTimer.setTimer(elapsedTime);
+					super.setTimer(elapsedTime);
 
 				} else {
 
-					logi.addToLogs("Wybrano test MOBILE (UserGUI)", getClass().getName().toString(),
+					super.addToLogs("Wybrano test MOBILE (UserGUI)", getClass().getName().toString(),
 							Thread.currentThread().getStackTrace()[1].getMethodName(), 49);
 					long start = System.nanoTime();
 					if (isSelectedCurrency == true) {
-						tc.TestCurrency();
+						super.TestCurrency();
 					}
 					if (isSelectedGold == true) {
 						// The method sets 0 in progress
 						disable();
-						tc.TestGold();
+						super.TestGold();
 					}
 					long elapsedTime = System.nanoTime() - start;
-					TestTimer.setTimer(elapsedTime);
+					super.setTimer(elapsedTime);
 				}
-				tc.afterTest();
+				super.afterTest();
 				// Enable all elements on the screen
 				enable();
 			}
@@ -152,7 +150,7 @@ public class Analysis implements Runnable {
 	public void disable() {
 		for (Node node : JavaFX.root.getChildren()) {
 			node.setDisable(true);
-			pbClass.visable();
+			super.visable();
 		}
 	}
 
@@ -162,8 +160,8 @@ public class Analysis implements Runnable {
 			node.setDisable(false);
 		}
 		// new list of lists with marked currency
-		tc.listOfListsCurrency = new ArrayList<ArrayList<ObjectAllAboutCurrencyCSV>>();
-		tc.continentName= new ArrayList<String>();
-		pbClass.invisable();
+		super.listOfListsCurrency = new ArrayList<ArrayList<ObjectAllAboutCurrencyCSV>>();
+		super.continentName= new ArrayList<String>();
+		super.invisable();
 	}
 }

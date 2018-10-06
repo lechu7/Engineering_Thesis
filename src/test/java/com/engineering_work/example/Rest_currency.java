@@ -10,11 +10,10 @@ import java.nio.charset.StandardCharsets;
 
 import com.google.gson.Gson;
 
-public class Rest_currency {
+public abstract class Rest_currency extends TestTimer{
 
 	// Method for currency
 	public String exchange(String table, String code) throws IOException {
-		Logs logi = Logs.getInstance();
 		
 		
 		// address url in string
@@ -51,12 +50,12 @@ public class Rest_currency {
 					+ Response + " zlotych.";
 			System.out.println(tmpConsole);
 			//adding logs
-			logi.addToLogs("Pobrano kurs waluty: "+code+": "+Response+ " zlotych." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),54);
+			super.addToLogs("Pobrano kurs waluty: "+code+": "+Response+ " zlotych." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),54);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			//adding logs
-			logi.addToLogs("***ERROR***Nie pobrano kursu waluty- "+code+"." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),59);
+			super.addToLogs("***ERROR***Nie pobrano kursu waluty- "+code+"." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),59);
 
 		}
 		return Response;
@@ -65,7 +64,6 @@ public class Rest_currency {
 
 	// Method for gold
 	public String exchange() throws IOException {
-		Logs logi = Logs.getInstance();
 		// address url in string
 		String url;
 		// address url
@@ -97,11 +95,11 @@ public class Rest_currency {
 			String tmpConsole = "Values for the gold is " + gold[0].Get_gold_exchange() + " z?otych.";
 			System.out.println(tmpConsole);
 			//adding to logs
-			logi.addToLogs("Pobrano kurs zlota- "+gold[0].Get_gold_exchange()+ " zlotych." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),99);
+			super.addToLogs("Pobrano kurs zlota- "+gold[0].Get_gold_exchange()+ " zlotych." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),99);
 		} catch (Exception e) {
 			e.printStackTrace();
 			//adding to logs
-			logi.addToLogs("***ERROR***Nie pobrano kursu zlota- "+Response+ "zlotych." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),103);
+			super.addToLogs("***ERROR***Nie pobrano kursu zlota- "+Response+ "zlotych." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),103);
 
 		}
 		return Response;
