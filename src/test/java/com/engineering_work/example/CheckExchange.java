@@ -56,7 +56,7 @@ public abstract class CheckExchange extends Rest_currency  {
 
 	// check currency exchange rate
 	
-	protected void CheckCurrencyExchangeRate(WebDriver driver, String table, String code, String codeUnit, String name, int listCurrencySize)throws IOException {
+	protected void CheckCurrencyExchangeRate(WebDriver driver, String table, String code, String codeUnit, String name, int listCurrencySize)throws IOException, InterruptedException {
 		String side = driver.getCurrentUrl().toString();
 		// Value currency exchange rate from RestAPI
 		Float currencyExchangeRateFromRestAPI = Float.parseFloat(super.exchange(table, code));
@@ -66,18 +66,20 @@ public abstract class CheckExchange extends Rest_currency  {
 
 		// change side depends on currency data from CSV 
 		switch (table) {
-		
+		//http://-42   https://-43
 		case "A":
-			if (side.charAt(42) == 'b') {
-				driver.navigate().to(REPO.linkTabelaA);
+			if (side.charAt(42) == 'b' || side.charAt(43) == 'b') {
+				//driver.get(REPO.linkTabelaA);
+				repo.changeToTable(driver, 'a');
 				System.out.println("Change side to table A");
 				super.addToLogs("INFO Zmiana strony na tablice A.", getClass().getName().toString(),
 						Thread.currentThread().getStackTrace()[1].getMethodName(), 73);
 			}
 			break;
 		case "B":
-			if (side.charAt(42) == 'a') {
-				driver.navigate().to(REPO.linkTabelaB);
+			if (side.charAt(42) == 'a' || side.charAt(43) == 'a') {
+				//driver.get(REPO.linkTabelaB);
+				repo.changeToTable(driver, 'b');
 				System.out.println("Change side to table B");
 				super.addToLogs("INFO Zmiana strony na tablice B.", getClass().getName().toString(),
 						Thread.currentThread().getStackTrace()[1].getMethodName(), 81);
@@ -125,6 +127,7 @@ public abstract class CheckExchange extends Rest_currency  {
 							getClass().getName().toString(), Thread.currentThread().getStackTrace()[1].getMethodName(),
 							122);
 				}
+				return;
 			}
 		}
 	}

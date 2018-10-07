@@ -92,7 +92,7 @@ public abstract class Rest_currency extends TestTimer{
 			Response = gold[0].Get_gold_exchange().toString();
 			
 			// message including values for the gold on console 
-			String tmpConsole = "Values for the gold is " + gold[0].Get_gold_exchange() + " z?otych.";
+			String tmpConsole = "Values for the gold is " + gold[0].Get_gold_exchange() + " zlotych.";
 			System.out.println(tmpConsole);
 			//adding to logs
 			super.addToLogs("Pobrano kurs zlota- "+gold[0].Get_gold_exchange()+ " zlotych." ,getClass().getName().toString(),Thread.currentThread().getStackTrace()[1].getMethodName(),99);

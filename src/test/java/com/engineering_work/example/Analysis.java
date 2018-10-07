@@ -140,7 +140,8 @@ public class Analysis extends JavaFX implements Runnable  {
 				JOptionPane.showMessageDialog(null, "Nie zaznaczono ¿adnych elementów do testowania!");
 			}
 		} catch (IOException e) {
-
+			e.printStackTrace();
+		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 

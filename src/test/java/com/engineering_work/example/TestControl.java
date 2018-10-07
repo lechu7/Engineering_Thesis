@@ -42,14 +42,13 @@ public abstract class TestControl extends CheckExchange {
 	
 	protected static ArrayList<ArrayList<ObjectAllAboutCurrencyCSV>> listOfListsCurrency;
 
-	protected boolean firstRun = true;
 	protected static REPO.Browsers browser;
 	
 	//Button in messagebox that pops up when selection is empty
 	  protected Object[] optionsOK = {"OK"};
 	  int error;
 	  //String with kind of tests (mobile/web)
-	  String kindOfTests;
+	public static  String kindOfTests;
 	  
 	@SuppressWarnings("deprecation")
 	@BeforeTest
@@ -134,7 +133,7 @@ public abstract class TestControl extends CheckExchange {
 				kindOfTests="emulator";
 				DesiredCapabilities capabilities = new DesiredCapabilities();
 				capabilities.setCapability("BROWSER_NAME", "Android");
-				capabilities.setCapability("VERSION", "8.1"); 
+				capabilities.setCapability("VERSION", "9.0"); 
 				capabilities.setCapability("deviceName","emulator-5554");
 				capabilities.setCapability("platformName","Android");
 				
@@ -260,8 +259,10 @@ public abstract class TestControl extends CheckExchange {
 	}
 
 	@Test
-	protected void TestCurrency() throws IOException {
-		driver.get(REPO.linkTabelaA);
+	protected void TestCurrency() throws IOException, InterruptedException {
+		driver.get(REPO.link);
+		//driver.get(REPO.linkTabelaA);
+		repo.changeToTable(driver,'a');
 		//Currency exchange rate 
 		super.addToLogs();
 		for (int i = 0; i < listOfListsCurrency.size(); i++) {
@@ -283,8 +284,10 @@ public abstract class TestControl extends CheckExchange {
 
 	}
 	@Test
-	protected void TestGold() throws IOException {
-		driver.get(REPO.linkGold);
+	protected void TestGold() throws IOException, InterruptedException {
+		driver.get(REPO.link);
+		//driver.get(REPO.linkGold);
+		repo.changeToTable(driver,'g');
 		
 		//set progress
 		super.setProgressLabel(listOfListsCurrency.size()+1, listOfListsCurrency.size()+1);
