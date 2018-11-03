@@ -60,8 +60,6 @@ public class JavaFX extends PreparationCSV {
 	// checkbox to test gold exchange rate
 	protected static CheckBox goldTest;
 
-	// checkbox to test gold exchange rate
-	protected static CheckBox physicsDevice;
 
 	// Button start
 	protected static Button start;
@@ -89,7 +87,6 @@ public class JavaFX extends PreparationCSV {
 			Opera.setDisable(false);
 			IE.setDisable(false);
 			Edge.setDisable(false);
-			physicsDevice.setVisible(false);
 		});
 
 		// RadioButton mobileTest
@@ -106,15 +103,8 @@ public class JavaFX extends PreparationCSV {
 			Edge.setDisable(true);
 
 			Chrome.setSelected(true);
-			physicsDevice.setVisible(true);
 		});
 
-		// CheckBox- testing on phisic device.
-		physicsDevice = new CheckBox();
-		physicsDevice.setText("Urz¹dzenie fizyczne");
-		physicsDevice.setTranslateX(220);
-		physicsDevice.setTranslateY(-220);
-		physicsDevice.setVisible(false);
 
 		final ToggleGroup groupOfBrowsers = new ToggleGroup();
 		// RadioButton Firefox
@@ -338,7 +328,6 @@ public class JavaFX extends PreparationCSV {
 		root.getChildren().add(start);
 		root.getChildren().add(webTest);
 		root.getChildren().add(mobileTest);
-		root.getChildren().add(physicsDevice);
 		root.getChildren().add(Firefox);
 		root.getChildren().add(Chrome);
 		root.getChildren().add(Opera);

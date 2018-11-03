@@ -53,9 +53,8 @@ public abstract class ProgressBar extends Logs  {
 		//Setting visible for label timer
 		 JavaFX.timer.setVisible(true);
 		 
-		//Setting invisible chbox physicsDevice and deselect mobile test
+		//Deselect mobile test
 		 JavaFX.webTest.setSelected(true);
-		 JavaFX.physicsDevice.setVisible(false);
 	 }
 	
 
