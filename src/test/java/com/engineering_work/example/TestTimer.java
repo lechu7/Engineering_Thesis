@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
 
+import com.relevantcodes.extentreports.LogStatus;
+
 import javafx.application.Platform;
 
 public abstract class TestTimer extends ProgressBar{
@@ -36,6 +38,8 @@ public abstract class TestTimer extends ProgressBar{
 	protected void saveTimeToCSV(String Web_Mobile, String continent,long elapsedTime) throws IOException
 	{
 		final double returnTime=elapsedTime/1000000000F;
+		
+		TestControl.logger.log(LogStatus.INFO, "<b>CZAS:</b> Test <b>"+Web_Mobile.toUpperCase()+"</b>, przegladarka <b>"+TestControl.returnBrowserName().toString()+"</b>, <b>"+continent+"</b>, rowny: <b>"+df.format(returnTime)+"s.</b>");
 		
 		 PrintWriter pw = new PrintWriter(new FileWriter("time.csv",true));
 	        StringBuilder sb = new StringBuilder();

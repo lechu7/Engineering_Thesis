@@ -14,13 +14,13 @@ public abstract class ProgressBar extends Logs  {
 	 protected void changedProgress(double new_val,double all_val,final String messageText) {
 		 JavaFX.pb.setProgress(new_val/all_val);
 		 JavaFX.pi.setProgress(new_val/all_val);
-         //Changing the text under progress bar
-         Platform.runLater(new Runnable() {
+		 //Changing the text under progress bar
+         Platform.runLater(new Runnable() { 
              @Override public void run() {
             	 JavaFX.progressCurrencyInfo.setText(messageText+" ("+(int)new_val+"/"+(int)all_val+")");
             	  }
        });
-       
+
 	 }
 	 //Visible progress bar and other elements 
 	 protected void visable()

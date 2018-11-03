@@ -1,5 +1,7 @@
 package com.engineering_work.example;
 
+import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -134,8 +136,18 @@ public class Analysis extends JavaFX implements Runnable  {
 				super.afterTest();
 				// Enable all elements on the screen
 				enable();
+				//Question about launch the report
+				int raport = JOptionPane.showOptionDialog(null, "Czy chcesz zobaczyæ raport po wykonanym teœcie?", "Raport",
+						JOptionPane.PLAIN_MESSAGE, JOptionPane.QUESTION_MESSAGE, null, optionsYesNo, optionsYesNo);
+				if (raport == 0) {
+					try {
+						 File file = new java.io.File(System.getProperty("user.dir") + "\\test-output\\STMExtentReport.html").getAbsoluteFile();
+						 Desktop.getDesktop().open(file); 
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+				}
 			}
-
 			else {
 				JOptionPane.showMessageDialog(null, "Nie zaznaczono ¿adnych elementów do testowania!");
 			}

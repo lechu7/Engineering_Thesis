@@ -62,6 +62,7 @@ public abstract class TestControl extends CheckExchange {
 	@BeforeTest
 	protected void beforeTest() throws IOException {
 		extent = new ExtentReports(System.getProperty("user.dir") + "\\test-output\\STMExtentReport.html", true);
+		logger = extent.startTest("Uruchomienie przegl¹darki - "+browser.toString());
 		// set kindOfTests on Web. Only Chrome have mobile or emulator option
 		kindOfTests = "web";
 
@@ -266,12 +267,14 @@ public abstract class TestControl extends CheckExchange {
 						listOfListsCurrency.get(i).get(j).Code, listOfListsCurrency.get(i).get(j).CodeUnit,
 						listOfListsCurrency.get(i).get(j).Name, listOfListsCurrency.get(i).size());
 			}
+			JavaFX.progressCurrencyInfo.setVisible(false);
 			// stop timer
 			long elapsedTime = System.nanoTime() - start;
 			super.saveTimeToCSV(kindOfTests, continentName.get(i), elapsedTime);
 		}
 
 	}
+
 
 	@Test
 	protected void TestGold() throws IOException, InterruptedException {
@@ -290,7 +293,9 @@ public abstract class TestControl extends CheckExchange {
 		super.CheckGoldExchangeRate(driver);
 		// stop timer
 		long elapsedTime = System.nanoTime() - start;
+		JavaFX.progressCurrencyInfo.setVisible(false);
 		super.saveTimeToCSV(kindOfTests, "Z³oto", elapsedTime);
+		
 	}
 
 	@AfterTest
@@ -320,21 +325,6 @@ public abstract class TestControl extends CheckExchange {
 		
 		extent.endTest(logger);
 		extent.flush();
-		int raport = JOptionPane.showOptionDialog(null, "Czy chcesz zobaczyæ raport po wykonanym teœcie?", "Raport",
-				JOptionPane.PLAIN_MESSAGE, JOptionPane.QUESTION_MESSAGE, null, optionsYesNo, optionsYesNo);
-		if (raport == 0) {
-			try {
-				 File file = new java.io.File(System.getProperty("user.dir") + "\\test-output\\STMExtentReport.html").getAbsoluteFile();
-				 Desktop.getDesktop().open(file); 
-				 
-				 //Desktop.getDesktop().browse(System.getProperty("user.dir") + "\\test-output\\STMExtentReport.html");
-				//Runtime.getRuntime().exec(System.getProperty("user.dir") + "\\test-output\\STMExtentReport.html");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
-		
 		super.addToLogs("Zamknieto przegladarkê " + browser.toString() + ". ", getClass().getName().toString(),
 				Thread.currentThread().getStackTrace()[1].getMethodName(), 144);
 
