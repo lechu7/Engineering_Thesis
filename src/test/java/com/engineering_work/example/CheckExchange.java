@@ -1,6 +1,9 @@
 package com.engineering_work.example;
 
 import java.io.IOException;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
