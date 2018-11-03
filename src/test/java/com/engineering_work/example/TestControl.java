@@ -267,7 +267,6 @@ public abstract class TestControl extends CheckExchange {
 						listOfListsCurrency.get(i).get(j).Code, listOfListsCurrency.get(i).get(j).CodeUnit,
 						listOfListsCurrency.get(i).get(j).Name, listOfListsCurrency.get(i).size());
 			}
-			JavaFX.progressCurrencyInfo.setVisible(false);
 			// stop timer
 			long elapsedTime = System.nanoTime() - start;
 			super.saveTimeToCSV(kindOfTests, continentName.get(i), elapsedTime);
@@ -293,7 +292,6 @@ public abstract class TestControl extends CheckExchange {
 		super.CheckGoldExchangeRate(driver);
 		// stop timer
 		long elapsedTime = System.nanoTime() - start;
-		JavaFX.progressCurrencyInfo.setVisible(false);
 		super.saveTimeToCSV(kindOfTests, "Z³oto", elapsedTime);
 		
 	}
