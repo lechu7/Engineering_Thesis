@@ -1,14 +1,10 @@
-package com.engineering_work.example;
+package com.engineering_thesis.example;
 
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
 
-import java.awt.Desktop;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.swing.JOptionPane;
 
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
@@ -69,6 +65,7 @@ public class JavaFX extends PreparationCSV {
 	// Button start
 	protected static Button start;
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// clear the file logs.txt
@@ -184,7 +181,7 @@ public class JavaFX extends PreparationCSV {
 		// Create and add column1 with CheckBoxes
 		TableColumn<ObjectToTableView, Boolean> Column1 = new TableColumn<ObjectToTableView, Boolean>("Testowanie");
 		Column1.setCellValueFactory(new PropertyValueFactory<ObjectToTableView, Boolean>("run"));
-		Column1.setCellFactory(column -> new CheckBoxTableCell());
+		Column1.setCellFactory(column -> new CheckBoxTableCell<ObjectToTableView, Boolean>());
 		table.getColumns().add(Column1);
 		// Create and add column2 with name of continents
 		TableColumn<ObjectToTableView, String> Column2 = new TableColumn<ObjectToTableView, String>("Nazwa kontynentu");
@@ -383,6 +380,7 @@ public class JavaFX extends PreparationCSV {
 		launch(args);
 	}
 
+	@SuppressWarnings("static-access")
 	protected void preparingCSVandLists() throws IOException {
 		if (super.CSVCurrenciesOfEurope == null || super.CSVCurrenciesOfAsia == null
 				|| super.CSVCurrenciesOfAustralia == null || super.CSVCurrenciesOfNorthAmerica == null

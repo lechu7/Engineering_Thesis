@@ -1,11 +1,8 @@
-package com.engineering_work.example;
+package com.engineering_thesis.example;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriver.Window;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 public class REPO {

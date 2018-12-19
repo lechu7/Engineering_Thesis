@@ -1,5 +1,5 @@
 //Object with Currency Rates Table for "ObjectCurrency"
-package com.engineering_work.example;
+package com.engineering_thesis.example;
 
 public class ObjectRate {
 	private Double mid;

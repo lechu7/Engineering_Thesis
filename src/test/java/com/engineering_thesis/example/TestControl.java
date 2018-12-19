@@ -1,6 +1,5 @@
-package com.engineering_work.example;
+package com.engineering_thesis.example;
 
-import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 
@@ -22,13 +21,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.remote.MobileCapabilityType;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ProgressIndicator;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
 
 public abstract class TestControl extends CheckExchange {
 

@@ -1,4 +1,4 @@
-package com.engineering_work.example;
+package com.engineering_thesis.example;
 
 import java.io.FileReader;
 import java.io.IOException;

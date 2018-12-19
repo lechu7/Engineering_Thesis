@@ -1,10 +1,4 @@
-package com.engineering_work.example;
-import javafx.scene.control.Label;
-
-import java.awt.EventQueue;
-
-import javax.swing.JLabel;
-
+package com.engineering_thesis.example;
 import javafx.application.Platform;
 
 public abstract class ProgressBar extends Logs  {

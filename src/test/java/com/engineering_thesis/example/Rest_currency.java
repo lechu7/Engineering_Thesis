@@ -1,5 +1,5 @@
 //The class that downloads the current exchange rate from the API
-package com.engineering_work.example;
+package com.engineering_thesis.example;
 
 import java.io.BufferedReader;
 import java.io.IOException;

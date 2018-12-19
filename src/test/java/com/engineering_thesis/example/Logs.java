@@ -1,9 +1,7 @@
-package com.engineering_work.example;
+package com.engineering_thesis.example;
 
 import java.io.File;
 import javafx.application.Application;
-import javafx.stage.Stage;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;

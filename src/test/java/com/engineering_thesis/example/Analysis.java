@@ -1,4 +1,4 @@
-package com.engineering_work.example;
+package com.engineering_thesis.example;
 
 import java.awt.Desktop;
 import java.io.File;
@@ -6,12 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Timer;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-
-import javafx.event.ActionEvent;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javax.swing.JOptionPane;
 
 //New thread
@@ -28,6 +23,7 @@ public class Analysis extends JavaFX implements Runnable  {
     //TestTimer test
 	Timer timer1 = new Timer();
 
+	@SuppressWarnings("static-access")
 	public void run() {
 		try {
 			isSelectedGold = false;
@@ -168,6 +164,7 @@ public class Analysis extends JavaFX implements Runnable  {
 	}
 
 	// Enable all elements after tests
+	@SuppressWarnings("static-access")
 	protected void enable() {
 		for (Node node : JavaFX.root.getChildren()) {
 			node.setDisable(false);
