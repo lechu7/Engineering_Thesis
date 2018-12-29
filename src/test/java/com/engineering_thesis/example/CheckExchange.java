@@ -48,7 +48,7 @@ public abstract class CheckExchange extends Rest_currency  {
 					getClass().getName().toString(), Thread.currentThread().getStackTrace()[1].getMethodName(), 46);
 			super.changedProgress(1, 1, "Kurs z³ota: "+goldExchangeRateFromWebSide+"z³.");
 		} else {
-			TestControl.logger.log(LogStatus.FAIL,"Nie zgodna wartosc dla z³ota :API- " + goldExchangeRateFromRestAPI + "zl /WebSide- "
+			TestControl.logger.log(LogStatus.FAIL,"Nie zgodna wartosc dla zlota :API- " + goldExchangeRateFromRestAPI + "zl /WebSide- "
 							+ goldExchangeRateFromWebSide+"zl");
 			super.addToLogs(
 					"***FAIL- Nie zgodna wartoœæ dla z³ota :API- " + goldExchangeRateFromRestAPI + " /WebSide- "

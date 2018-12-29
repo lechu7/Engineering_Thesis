@@ -56,7 +56,7 @@ public abstract class TestControl extends CheckExchange {
 	@BeforeTest
 	protected void beforeTest() throws IOException {
 		extent = new ExtentReports(System.getProperty("user.dir") + "\\test-output\\STMExtentReport.html", true);
-		logger = extent.startTest("Uruchomienie przegl¹darki - "+browser.toString());
+		logger = extent.startTest("Uruchomienie przegladarki - "+browser.toString());
 		// set kindOfTests on Web. Only Chrome have mobile or emulator option
 		kindOfTests = "web";
 
@@ -237,7 +237,7 @@ public abstract class TestControl extends CheckExchange {
 		}
 		extent.addSystemInfo("User Name", "Damian");
 		extent.addSystemInfo("Browser", browser.toString());
-		extent.loadConfig(new File(System.getProperty("user.dir") + "\\extent-config.xml"));
+		extent.loadConfig(new File(System.getProperty("user.dir") + ".\\src\\test\\resources\\extent-config.xml"));
 	}
 
 	@Test

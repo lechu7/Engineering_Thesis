@@ -65,7 +65,7 @@ public class JavaFX extends PreparationCSV {
 	// Button start
 	protected static Button start;
 
-	@SuppressWarnings("static-access")
+	@SuppressWarnings({ "static-access", "restriction" })
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// clear the file logs.txt
