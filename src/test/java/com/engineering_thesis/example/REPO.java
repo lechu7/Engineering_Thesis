@@ -18,12 +18,12 @@ public class REPO {
 
 	public Browsers browser;
 
-	static By logo = new By.ByCssSelector("html body div#pageHolder form#F1 div#mainHeader div#headBanner.pl a");
+	static By logo = new By.ByXPath("//a[@title='Strona g³ówna NBP']");
 	static By statisticAndReporting = new By.ById("navBarMain_item_52_cell");
 	static By rates = new By.ById("navBarMain_item_65_cell");
-	static By tableA = new By.ByXPath("/html/body/div[1]/form/div[4]/div[2]/div/ul[1]/blockquote[1]/li[1]/a");
-	static By tableB = new By.ByXPath("/html/body/div[1]/form/div[4]/div[2]/div/ul[1]/blockquote[1]/li[2]/a");
-	static By tableGold = new By.ByXPath("/html/body/div[1]/form/div[4]/div[2]/div/ul[1]/blockquote[4]/li[1]/a");
+	static By tableA = new By.ByXPath("//a[contains(text(),\"Tabela A\")]");
+	static By tableB = new By.ByXPath("//a[contains(text(),\"Tabela B\")]");
+	static By tableGold = new By.ByXPath("//a[contains(text(),\"Aktualna cena z³ota\")]");
 
 	public int returnNumberOfRows(WebDriver driver, String tableXPath) {
 		return driver.findElements(By.xpath(tableXPath)).size();

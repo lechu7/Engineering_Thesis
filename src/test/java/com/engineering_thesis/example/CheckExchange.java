@@ -32,7 +32,7 @@ public abstract class CheckExchange extends Rest_currency  {
 		// Value of exchange rate from WebSides
 		// Replacement because in webside there is ',' but in CSV there is '.'
 		String goldExchangeRateFromWebSideString = driver
-				.findElement(By.xpath(".//*[@id='contentholder']/table/tbody/tr[2]/td/table/tbody/tr[2]/td[2]"))
+				.findElement(By.xpath("//*[@class='bgt2 right bold']"))
 				.getText().toString().replace(',', '.');
 		Float goldExchangeRateFromWebSide = Float.parseFloat(goldExchangeRateFromWebSideString);
 
@@ -97,7 +97,7 @@ public abstract class CheckExchange extends Rest_currency  {
 			break;
 		}
 		// XPath to table
-		String tableXPath = ".//*[@id='article']/table/tbody/tr/td/center/table[1]";
+		String tableXPath = "//*[@class=\"pad5\"]";
 		// Count elements in table from side
 		int countListOnWebSide = repo.returnNumberOfRows(driver, tableXPath + "/tbody/tr");
 		// Loop through all elements from webside until find element which looking for
