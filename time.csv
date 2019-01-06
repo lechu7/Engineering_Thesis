@@ -1,481 +1,404 @@
 Web/Mobile;Przegl鉅arka;Kontynent;Czas (s)
-web;Edge;Australia;10,769
-web;Edge;Europa;11,17
+web;Edge;Uruchomienie;2,379
+web;Edge;Afryka;32,648
+web;Edge;Ameryka Po逝dniowa;27,243
+web;Edge;Ameryka P馧nocna;27,087
+web;Edge;Australia;24,133
+web;Edge;Azja;43,899
+web;Edge;Europa;25,328
 web;Edge;Z這to;0,604
-web;Edge;Afryka;42,836
-web;Edge;Ameryka P馧nocna;16,361
-web;Edge;Z這to;0,768
-web;Firefox;Europa;21,552
-web;Firefox;Z這to;0,997
-web;Opera;Australia;66,549
-web;Opera;Azja;206,139
-web;Opera;Europa;41,512
-web;Opera;Z這to;0,567
-web;Edge;Afryka;50,842
-web;Firefox;Z這to;2,334
-web;Chrome;Australia;32,39
-web;Chrome;Z這to;0,589
-web;Opera;Australia;26,383
-web;Opera;Z這to;0,635
-web;IE;Z這to;1,268
-web;Edge;Ameryka Po逝dniowa;23,335
-web;Edge;Australia;11,022
-web;Edge;Z這to;0,892
-web;Edge;Ameryka Po逝dniowa;15,882
-web;Edge;Australia;8,964
-web;Edge;Z這to;0,561
-web;Edge;Ameryka Po逝dniowa;20,722
-web;Edge;Australia;11,532
-web;Edge;Z這to;0,682
-web;Edge;Ameryka P馧nocna;21,525
-web;Edge;Z這to;0,891
-web;Edge;Ameryka P馧nocna;18,912
-web;Edge;Z這to;0,601
-web;IE;Z這to;3,272
-web;IE;Z這to;1,147
-web;Firefox;Uruchomienie;5,491
-web;Firefox;Z這to;1,149
-web;Chrome;Uruchomienie;2,957
-web;Chrome;Z這to;0,636
-web;Opera;Uruchomienie;2,791
-web;Opera;Z這to;0,564
-web;IE;Uruchomienie;1,717
-web;IE;Z這to;1
-web;Edge;Uruchomienie;1,868
-web;Edge;Z這to;0,68
-web;Firefox;Uruchomienie;5,915
-web;Firefox;Z這to;1,408
-web;Edge;Uruchomienie;3,42
-web;Edge;Australia;12,077
-web;Edge;Uruchomienie;3,091
-web;Edge;Z這to;0,921
-web;Edge;Uruchomienie;1,801
-web;Edge;Australia;10,537
-web;Edge;Uruchomienie;2,156
-web;Edge;Z這to;0,913
-web;Firefox;Uruchomienie;6,172
-web;Firefox;Ameryka Po逝dniowa;24,294
-web;Firefox;Australia;15,503
-web;Firefox;Z這to;0,937
-web;Edge;Uruchomienie;1,93
-web;Edge;Z這to;0,721
-mobile;Chrome;Uruchomienie;30,292
-mobile;Chrome;Europa;291,011
-mobile;Chrome;Z這to;1,711
-web;Edge;Uruchomienie;4,486
-web;Edge;Afryka;44,528
-web;Edge;Z這to;0,737
-mobile;Chrome;Uruchomienie;20,201
-mobile;Chrome;Australia;194,736
-mobile;Chrome;Z這to;1,66
-emulator;Chrome;Uruchomienie;19,699
-emulator;Chrome;Z這to;2,354
-web;Edge;Uruchomienie;1,872
-web;Edge;Europa;13,553
-web;Edge;Z這to;0,478
-web;Firefox;Uruchomienie;5,382
-web;Edge;Uruchomienie;3,112
-web;Edge;Europa;14,69
-web;Edge;Z這to;0,586
-mobile;Chrome;Uruchomienie;23,447
-mobile;Chrome;Europa;275,381
-mobile;Chrome;Z這to;1,859
-web;Edge;Uruchomienie;3,052
-web;Edge;Europa;13,855
-web;Edge;Z這to;0,666
-mobile;Chrome;Uruchomienie;20,197
-mobile;Chrome;Europa;278,086
-mobile;Chrome;Z這to;1,691
-web;Edge;Uruchomienie;2,971
-web;Edge;Z這to;0,684
-web;Edge;Uruchomienie;3,012
-web;Edge;Uruchomienie;3,187
-web;Edge;Z這to;0,783
-web;Edge;Uruchomienie;3,149
-web;Edge;Uruchomienie;3,096
-web;Edge;Europa;14,426
-web;Edge;Uruchomienie;1,724
-web;Edge;Australia;9,725
-emulator;Chrome;Uruchomienie;22,417
-emulator;Chrome;Europa;312,816
-emulator;Chrome;Z這to;1,984
-web;Edge;Uruchomienie;2,169
-web;Edge;Azja;54,087
-web;Edge;Z這to;0,663
-web;Chrome;Uruchomienie;4
-web;Chrome;Z這to;0,585
-emulator;Chrome;Uruchomienie;22,32
-emulator;Chrome;Z這to;2,157
-mobile;Chrome;Uruchomienie;20,279
-mobile;Chrome;Z這to;2,301
-web;Edge;Uruchomienie;3,097
-web;Edge;Europa;13,7
-web;Edge;Z這to;0,613
-web;Firefox;Uruchomienie;5,518
-emulator;Chrome;Uruchomienie;26,856
-emulator;Chrome;Z這to;2,515
-web;Edge;Uruchomienie;3,183
-web;Edge;Uruchomienie;3,472
-web;Edge;Uruchomienie;3,280
-web;Edge;Uruchomienie;3,695
-web;Edge;Uruchomienie;4,230
-web;Edge;Uruchomienie;3,431
-web;Edge;Uruchomienie;3,337
-web;Edge;Uruchomienie;3,839
-web;Edge;Uruchomienie;4,253
-web;Edge;Uruchomienie;4,272
-web;Edge;Uruchomienie;3,486
-web;Firefox;Uruchomienie;6,217
-web;Edge;Uruchomienie;3,157
-web;Edge;Europa;8,834
-web;Edge;Z這to;1,151
-emulator;Chrome;Uruchomienie;29,129
-web;Edge;Uruchomienie;3,128
-web;Edge;Europa;9,583
-web;Edge;Z這to;1,245
-emulator;Chrome;Uruchomienie;28,943
-emulator;Chrome;Uruchomienie;24,089
-emulator;Chrome;Australia;65,573
-emulator;Chrome;Z這to;2,588
-web;Edge;Uruchomienie;2,062
-web;Edge;Uruchomienie;3,085
-web;Edge;Uruchomienie;2,891
-web;Edge;Australia;4,196
-web;Edge;Z這to;1,301
-web;Firefox;Uruchomienie;3,951
-web;Firefox;Uruchomienie;5,198
-web;Edge;Uruchomienie;3,202
-web;Edge;Afryka;6,024
-web;Edge;Z這to;1,292
-web;Firefox;Uruchomienie;5,388
-web;Firefox;Afryka;26,792
-web;Edge;Uruchomienie;3,556
-web;Edge;Afryka;5,757
-web;Edge;Z這to;1,243
-web;Edge;Uruchomienie;4,041
-web;Edge;Uruchomienie;3,400
-web;Edge;Uruchomienie;3,529
-web;Edge;Uruchomienie;3,336
-web;Edge;Afryka;5,955
-web;Edge;Z這to;1,179
-web;Chrome;Uruchomienie;5,698
-web;Edge;Uruchomienie;3,462
-web;Edge;Uruchomienie;3,766
-web;Edge;Uruchomienie;3,385
-web;Edge;Australia;3,071
-web;Edge;Z這to;1,400
-web;Edge;Uruchomienie;3,607
-web;Edge;Afryka;57,728
-web;Edge;Z這to;1,187
-web;Edge;Uruchomienie;3,495
-web;Edge;Uruchomienie;3,518
-web;Edge;Uruchomienie;3,160
-web;Edge;Europa;10,222
-web;Edge;Z這to;1,302
-web;Edge;Uruchomienie;3,280
-web;Edge;Afryka;9,066
-web;Edge;Z這to;0,870
-web;Edge;Uruchomienie;3,295
-web;Edge;Afryka;11,902
-web;Edge;Uruchomienie;4,154
-web;Edge;Afryka;57,953
-web;Edge;Z這to;0,596
-web;Edge;Uruchomienie;3,147
-web;Edge;Europa;14,306
-web;Edge;Z這to;0,659
-emulator;Chrome;Uruchomienie;23,155
-emulator;Chrome;Australia;54,204
-emulator;Chrome;Z這to;2,674
-emulator;Chrome;Uruchomienie;22,087
-emulator;Chrome;Europa;98,339
-emulator;Chrome;Uruchomienie;22,691
-emulator;Chrome;Uruchomienie;22,067
-emulator;Chrome;Australia;129,485
-emulator;Chrome;Z這to;2,736
-mobile;Chrome;Uruchomienie;22,281
-mobile;Chrome;Afryka;637,128
-mobile;Chrome;Z這to;2,659
-web;Edge;Uruchomienie;3,637
-web;Edge;Ameryka P馧nocna;17,442
-web;Edge;Uruchomienie;3,272
-web;Edge;Australia;12,097
-web;Edge;Uruchomienie;2,923
-web;Edge;Uruchomienie;2,802
-web;Edge;Australia;15,214
-web;Edge;Z這to;1,117
-web;Edge;Uruchomienie;3,274
-web;Edge;Uruchomienie;2,782
-web;Edge;Australia;12,750
-web;Edge;Z這to;0,767
-web;Edge;Uruchomienie;3,420
-web;Edge;Uruchomienie;3,133
-web;Edge;Afryka;48,696
-web;Edge;Ameryka Po逝dniowa;26,345
-web;Edge;Ameryka P馧nocna;26,861
-web;Edge;Australia;23,180
-web;Edge;Azja;48,887
-web;Edge;Europa;20,574
-web;Edge;Z這to;0,866
-web;IE;Uruchomienie;4,091
-web;IE;Uruchomienie;2,908
-web;IE;Uruchomienie;3,070
-web;Firefox;Uruchomienie;5,214
-web;Firefox;Afryka;53,416
-web;Firefox;Ameryka Po逝dniowa;39,084
-web;Firefox;Ameryka P馧nocna;41,940
-web;Firefox;Australia;34,007
-web;Firefox;Azja;84,104
-web;Firefox;Europa;41,590
-web;Firefox;Z這to;0,720
-web;Chrome;Uruchomienie;2,910
-web;Chrome;Afryka;77,161
-web;Chrome;Ameryka Po逝dniowa;49,466
-web;Chrome;Ameryka P馧nocna;46,235
-web;Chrome;Australia;38,732
-web;Chrome;Azja;96,681
-web;Chrome;Europa;42,919
-web;Chrome;Uruchomienie;3,626
-web;Firefox;Uruchomienie;5,106
-web;Firefox;Z這to;1,025
-web;Chrome;Uruchomienie;2,445
-web;Chrome;Z這to;1,154
-web;Opera;Uruchomienie;3,579
-web;Opera;Afryka;75,279
-web;Opera;Ameryka Po逝dniowa;47,370
-web;Opera;Ameryka P馧nocna;44,345
-web;Opera;Australia;37,395
-web;Opera;Azja;90,293
-web;Opera;Europa;40,639
-web;Opera;Z這to;0,834
-web;Edge;Uruchomienie;1,902
-web;Edge;Afryka;30,944
-web;Edge;Ameryka Po逝dniowa;26,957
-web;Edge;Ameryka P馧nocna;26,741
-web;Edge;Australia;24,196
-web;Edge;Azja;42,119
-web;Edge;Europa;25,092
-web;Edge;Z這to;0,726
-web;IE;Uruchomienie;1,566
-web;IE;Uruchomienie;2,982
-web;IE;Uruchomienie;3,148
-web;IE;Uruchomienie;3,091
-web;IE;Uruchomienie;3,117
-web;IE;Uruchomienie;2,971
-web;IE;Uruchomienie;3,176
-web;IE;Uruchomienie;3,338
-web;IE;Uruchomienie;3,827
-web;IE;Uruchomienie;3,608
-web;IE;Uruchomienie;3,661
-web;IE;Uruchomienie;3,285
-web;IE;Uruchomienie;3,030
-web;Edge;Uruchomienie;3,405
-web;Edge;Afryka;37,542
-web;Edge;Ameryka Po逝dniowa;29,171
-web;Edge;Ameryka P馧nocna;28,609
-web;Edge;Australia;24,929
-web;Edge;Azja;46,451
-web;Edge;Europa;26,828
-web;Edge;Z這to;0,799
-web;IE;Uruchomienie;3,766
-web;IE;Uruchomienie;3,071
-web;IE;Uruchomienie;101,185
-web;IE;Uruchomienie;3,145
-web;IE;Uruchomienie;2,742
-web;IE;Afryka;572,791
-web;IE;Uruchomienie;2,861
-web;IE;Uruchomienie;2,806
-web;IE;Afryka;561,832
-web;IE;Ameryka Po逝dniowa;186,401
-web;IE;Ameryka P馧nocna;182,307
-web;IE;Australia;106,262
-web;IE;Uruchomienie;2,350
-web;IE;Z這to;1,895
-web;Edge;Uruchomienie;2,775
-web;Edge;Australia;15,274
-web;Edge;Z這to;0,740
-web;Edge;Uruchomienie;2,496
-web;Edge;Australia;16,239
-web;Edge;Z這to;0,706
-web;Edge;Uruchomienie;1,619
-web;Edge;Uruchomienie;2,723
-web;Edge;Australia;15,741
-web;Edge;Z這to;0,587
-web;Firefox;Uruchomienie;5,152
-web;Firefox;Australia;20,932
-web;Firefox;Z這to;0,839
-web;Edge;Uruchomienie;2,453
-web;Edge;Australia;16,018
-web;Edge;Z這to;0,556
-web;Edge;Uruchomienie;2,428
-web;Edge;Z這to;0,818
-web;Firefox;Uruchomienie;4,634
-web;Firefox;Z這to;1,334
-web;Edge;Uruchomienie;2,877
-web;Edge;Uruchomienie;2,813
-web;Edge;Ameryka Po逝dniowa;18,617
-web;Edge;Australia;24,661
-web;Edge;Z這to;0,610
-web;Edge;Uruchomienie;2,392
-web;Edge;Ameryka Po逝dniowa;18,580
-web;Edge;Australia;24,285
-web;Edge;Z這to;0,634
-mobile;Chrome;Uruchomienie;26,341
-mobile;Chrome;Uruchomienie;26,082
-mobile;Chrome;Australia;163,700
-mobile;Chrome;Z這to;3,165
-web;Edge;Uruchomienie;2,563
-web;Edge;Ameryka Po逝dniowa;21,923
-web;Edge;Australia;25,712
-web;Edge;Z這to;0,694
-mobile;Chrome;Uruchomienie;22,035
-mobile;Chrome;Ameryka Po逝dniowa;206,858
-mobile;Chrome;Australia;160,947
-mobile;Chrome;Z這to;2,839
-web;Edge;Uruchomienie;2,470
-web;Edge;Z這to;0,731
-web;Edge;Uruchomienie;1,918
-web;Edge;Z這to;0,747
-web;Edge;Uruchomienie;2,335
-web;Edge;Z這to;0,715
-web;Edge;Uruchomienie;2,344
-web;Edge;Z這to;0,729
-web;Edge;Uruchomienie;2,409
-web;Edge;Z這to;0,729
-web;Edge;Uruchomienie;2,423
-web;Edge;Afryka;34,637
-web;Edge;Ameryka Po逝dniowa;29,587
-web;Edge;Ameryka P馧nocna;27,329
-web;Edge;Australia;24,021
-web;Edge;Azja;41,098
-web;Edge;Europa;25,255
-web;Edge;Z這to;0,679
-web;Edge;Uruchomienie;2,496
-web;Edge;Z這to;0,960
-web;Edge;Uruchomienie;1,652
-web;Edge;Uruchomienie;2,192
-web;Edge;Z這to;0,844
-web;Edge;Uruchomienie;2,222
-web;Edge;Ameryka Po逝dniowa;18,751
-web;Edge;Australia;24,544
-web;Edge;Z這to;0,511
-web;Edge;Uruchomienie;2,356
-web;Edge;Afryka;32,960
-web;Edge;Ameryka Po逝dniowa;27,419
-web;Edge;Ameryka P馧nocna;27,065
-web;Edge;Australia;24,360
-web;Edge;Azja;42,136
-web;Edge;Europa;25,245
-web;Edge;Z這to;0,645
-web;IE;Uruchomienie;2,860
-web;IE;Afryka;586,610
-web;IE;Ameryka Po逝dniowa;190,834
-web;IE;Ameryka P馧nocna;185,702
-web;IE;Australia;110,624
-web;IE;Azja;655,434
-web;IE;Europa;145,835
-web;IE;Z這to;1,050
-web;Edge;Uruchomienie;1,653
-web;Edge;Z這to;0,598
-web;Edge;Uruchomienie;2,347
-web;Edge;Uruchomienie;2,291
-web;Edge;Z這to;1,047
-web;Edge;Uruchomienie;2,172
-web;Edge;Z這to;0,860
-web;Edge;Uruchomienie;2,335
-web;Edge;Australia;15,434
-web;Edge;Z這to;0,554
-web;Edge;Uruchomienie;2,365
-web;Edge;Australia;15,665
-web;Edge;Z這to;0,675
-web;Edge;Uruchomienie;2,339
-web;Edge;Australia;15,441
-web;Edge;Z這to;0,707
-web;Edge;Uruchomienie;1,671
-web;Edge;Australia;15,308
-web;Edge;Z這to;0,614
-web;Edge;Uruchomienie;2,785
-web;Edge;Uruchomienie;2,249
-web;Edge;Uruchomienie;2,351
-web;Edge;Uruchomienie;2,170
-web;Edge;Uruchomienie;2,327
-web;Edge;Australia;15,419
-web;Edge;Z這to;0,605
-web;Edge;Uruchomienie;2,185
-web;Edge;Australia;15,650
-web;Edge;Z這to;0,778
-web;Edge;Uruchomienie;2,329
-web;Edge;Australia;15,530
-web;Edge;Z這to;0,598
-web;Edge;Uruchomienie;2,307
-web;Edge;Australia;15,673
-web;Edge;Z這to;0,587
-web;Firefox;Uruchomienie;4,584
-web;Edge;Uruchomienie;2,358
-web;Edge;Australia;15,933
-web;Edge;Z這to;2,207
-web;IE;Uruchomienie;2,238
-web;IE;Afryka;583,362
-web;IE;Uruchomienie;2,151
-web;IE;Ameryka Po逝dniowa;194,030
-web;IE;Australia;110,511
-web;IE;Z這to;0,976
-mobile;Chrome;Uruchomienie;20,550
-mobile;Chrome;Ameryka Po逝dniowa;298,804
-mobile;Chrome;Australia;157,551
-mobile;Chrome;Z這to;2,475
-web;Edge;Uruchomienie;1,760
-web;Edge;Ameryka Po逝dniowa;17,687
-web;Edge;Australia;24,178
-web;Edge;Z這to;0,531
-web;Edge;Uruchomienie;3,168
-web;Edge;Z這to;0,900
-web;Firefox;Uruchomienie;5,170
-web;Firefox;Ameryka Po逝dniowa;27,045
-web;Edge;Uruchomienie;2,489
-web;Edge;Ameryka Po逝dniowa;19,035
-web;Edge;Uruchomienie;2,467
-web;Edge;Ameryka Po逝dniowa;18,338
-web;Edge;Australia;24,580
-web;Edge;Z這to;0,943
-web;Edge;Uruchomienie;2,340
-web;Edge;Australia;15,365
-web;Edge;Z這to;0,598
-web;Edge;Uruchomienie;2,417
-web;Edge;Australia;15,303
-web;Edge;Z這to;0,597
-web;Edge;Uruchomienie;2,315
-web;Edge;Australia;15,531
-web;Edge;Z這to;0,629
-mobile;Chrome;Uruchomienie;29,134
-mobile;Chrome;Afryka;643,236
-mobile;Chrome;Ameryka Po逝dniowa;200,867
-mobile;Chrome;Ameryka P馧nocna;200,667
-mobile;Chrome;Australia;134,091
-mobile;Chrome;Azja;551,747
-mobile;Chrome;Europa;156,345
-mobile;Chrome;Z這to;2,750
-web;Edge;Uruchomienie;2,308
-web;Edge;Z這to;1,105
-web;Edge;Uruchomienie;2,632
-web;Edge;Z這to;1,318
-web;Edge;Uruchomienie;2,374
-web;Edge;Z這to;1,087
-web;Edge;Uruchomienie;2,423
-web;Edge;Z這to;1,755
-web;Edge;Uruchomienie;2,381
-web;Edge;Australia;16,156
-web;Edge;Z這to;1,396
+web;Edge;Uruchomienie;1,542
+web;Edge;Afryka;29,273
+web;Edge;Ameryka Po逝dniowa;26,442
+web;Edge;Ameryka P馧nocna;26,656
+web;Edge;Australia;23,879
+web;Edge;Azja;40,274
+web;Edge;Europa;25,221
+web;Edge;Z這to;1,129
+web;Edge;Uruchomienie;1,554
+web;Edge;Afryka;29,011
+web;Edge;Ameryka Po逝dniowa;26,425
+web;Edge;Ameryka P馧nocna;26,615
+web;Edge;Australia;23,993
+web;Edge;Azja;40,319
+web;Edge;Europa;25,085
+web;Edge;Z這to;1,007
 web;Edge;Uruchomienie;1,623
-web;Edge;Australia;15,473
-web;Edge;Europa;26,302
-web;Edge;Z這to;1,344
-web;Edge;Uruchomienie;2,749
-web;Edge;Uruchomienie;2,477
-web;Edge;Australia;16,532
-web;Edge;Z這to;1,119
-web;Edge;Uruchomienie;2,395
-web;Edge;Australia;15,544
-web;Edge;Z這to;0,991
+web;Edge;Afryka;29,251
+web;Edge;Ameryka Po逝dniowa;28,436
+web;Edge;Ameryka P馧nocna;26,703
+web;Edge;Australia;23,895
+web;Edge;Azja;40,476
+web;Edge;Europa;25,511
+web;Edge;Z這to;0,982
+web;Edge;Uruchomienie;1,55
+web;Edge;Afryka;29,242
+web;Edge;Ameryka Po逝dniowa;26,746
+web;Edge;Ameryka P馧nocna;26,835
+web;Edge;Australia;24,118
+web;Edge;Azja;40,922
+web;Edge;Europa;25,192
+web;Edge;Z這to;1,117
+web;Edge;Uruchomienie;1,564
+web;Edge;Afryka;28,857
+web;Edge;Ameryka Po逝dniowa;26,451
+web;Edge;Ameryka P馧nocna;26,286
+web;Edge;Australia;24,107
+web;Edge;Azja;40,424
+web;Edge;Europa;25,408
+web;Edge;Z這to;1,026
+web;Edge;Uruchomienie;1,5
+web;Edge;Afryka;28,985
+web;Edge;Ameryka Po逝dniowa;26,397
+web;Edge;Ameryka P馧nocna;26,728
+web;Edge;Australia;24,111
+web;Edge;Azja;40,76
+web;Edge;Europa;25,309
+web;Edge;Z這to;1,052
+web;Edge;Uruchomienie;1,52
+web;Edge;Afryka;29,099
+web;Edge;Ameryka Po逝dniowa;26,926
+web;Edge;Ameryka P馧nocna;26,537
+web;Edge;Australia;24,403
+web;Edge;Azja;40,811
+web;Edge;Europa;25,526
+web;Edge;Z這to;1,016
+web;Edge;Uruchomienie;1,509
+web;Edge;Afryka;32,649
+web;Edge;Ameryka Po逝dniowa;26,403
+web;Edge;Ameryka P馧nocna;26,363
+web;Edge;Australia;24,058
+web;Edge;Azja;41,232
+web;Edge;Europa;25,533
+web;Edge;Z這to;1,158
+web;Edge;Uruchomienie;1,481
+web;Edge;Afryka;28,922
+web;Edge;Ameryka Po逝dniowa;26,587
+web;Edge;Ameryka P馧nocna;26,717
+web;Edge;Australia;23,843
+web;Edge;Azja;41,174
+web;Edge;Europa;25,371
+web;Edge;Z這to;0,985
+web;Firefox;Uruchomienie;5,408
+web;Firefox;Afryka;49,485
+web;Firefox;Ameryka Po逝dniowa;39,429
+web;Firefox;Ameryka P馧nocna;37,85
+web;Firefox;Australia;32,692
+web;Firefox;Azja;62,674
+web;Firefox;Europa;34,353
+web;Firefox;Z這to;0,684
+web;Firefox;Uruchomienie;4,104
+web;Firefox;Afryka;46,676
+web;Firefox;Ameryka Po逝dniowa;38,724
+web;Firefox;Ameryka P馧nocna;39,81
+web;Firefox;Australia;32,227
+web;Firefox;Azja;60,959
+web;Firefox;Europa;35,512
+web;Firefox;Z這to;1,044
+web;Firefox;Uruchomienie;4,578
+web;Firefox;Afryka;46,593
+web;Firefox;Ameryka Po逝dniowa;36,993
+web;Firefox;Ameryka P馧nocna;40,45
+web;Firefox;Australia;34,115
+web;Firefox;Azja;63,996
+web;Firefox;Europa;34,089
+web;Firefox;Z這to;0,698
+web;Firefox;Uruchomienie;4,538
+web;Firefox;Afryka;46,174
+web;Firefox;Ameryka Po逝dniowa;38,561
+web;Firefox;Ameryka P馧nocna;37,436
+web;Firefox;Australia;34,014
+web;Firefox;Azja;64,072
+web;Firefox;Europa;33,502
+web;Firefox;Z這to;0,721
+web;Firefox;Uruchomienie;4,516
+web;Firefox;Afryka;46,575
+web;Firefox;Ameryka Po逝dniowa;38,648
+web;Firefox;Ameryka P馧nocna;37,185
+web;Firefox;Australia;32,534
+web;Firefox;Azja;65,929
+web;Firefox;Europa;36,886
+web;Firefox;Z這to;0,669
+web;Firefox;Uruchomienie;3,959
+web;Firefox;Afryka;46,757
+web;Firefox;Ameryka Po逝dniowa;39,139
+web;Firefox;Ameryka P馧nocna;38,977
+web;Firefox;Australia;34,409
+web;Firefox;Azja;63,738
+web;Firefox;Europa;34,406
+web;Firefox;Z這to;0,914
+web;Firefox;Uruchomienie;4,068
+web;Firefox;Afryka;49,401
+web;Firefox;Ameryka Po逝dniowa;38,345
+web;Firefox;Ameryka P馧nocna;36,36
+web;Firefox;Australia;31,368
+web;Firefox;Azja;64,16
+web;Firefox;Europa;36,001
+web;Firefox;Z這to;1,47
+web;Firefox;Uruchomienie;4,551
+web;Firefox;Afryka;47,186
+web;Firefox;Ameryka Po逝dniowa;38,361
+web;Firefox;Ameryka P馧nocna;37,798
+web;Firefox;Australia;32,694
+web;Firefox;Azja;69,543
+web;Firefox;Europa;39,692
+web;Firefox;Z這to;0,745
+web;Firefox;Uruchomienie;4,5
+web;Firefox;Afryka;46,855
+web;Firefox;Ameryka Po逝dniowa;39,248
+web;Firefox;Ameryka P馧nocna;39,973
+web;Firefox;Australia;34,468
+web;Firefox;Azja;67,033
+web;Firefox;Europa;35,542
+web;Firefox;Z這to;1,059
+web;Firefox;Uruchomienie;4,218
+web;Firefox;Afryka;45,549
+web;Firefox;Ameryka Po逝dniowa;38,217
+web;Firefox;Ameryka P馧nocna;42,74
+web;Firefox;Australia;35,978
+web;Firefox;Azja;63,643
+web;Firefox;Europa;35,511
+web;Firefox;Z這to;0,74
+web;Chrome;Uruchomienie;3,61
+web;Chrome;Afryka;82,871
+web;Chrome;Ameryka Po逝dniowa;50,785
+web;Chrome;Ameryka P馧nocna;51,095
+web;Chrome;Australia;40,389
+web;Chrome;Azja;98,27
+web;Chrome;Europa;43,623
+web;Chrome;Z這to;0,788
+web;Chrome;Uruchomienie;2,399
+web;Chrome;Afryka;79,146
+web;Chrome;Ameryka Po逝dniowa;49,779
+web;Chrome;Ameryka P馧nocna;48,139
+web;Chrome;Australia;39,111
+web;Chrome;Azja;97,507
+web;Chrome;Europa;43,565
+web;Chrome;Z這to;0,849
+web;Chrome;Uruchomienie;2,42
+web;Chrome;Afryka;78,393
+web;Chrome;Ameryka Po逝dniowa;49,93
+web;Chrome;Ameryka P馧nocna;48,19
+web;Chrome;Australia;39,064
+web;Chrome;Azja;97,429
+web;Chrome;Europa;43,596
+web;Chrome;Z這to;0,948
+web;Chrome;Uruchomienie;2,371
+web;Chrome;Afryka;76,313
+web;Chrome;Ameryka Po逝dniowa;49,856
+web;Chrome;Ameryka P馧nocna;47,945
+web;Chrome;Australia;38,973
+web;Chrome;Azja;95,735
+web;Chrome;Europa;43,589
+web;Chrome;Z這to;0,799
+web;Chrome;Uruchomienie;2,694
+web;Chrome;Afryka;77,312
+web;Chrome;Ameryka Po逝dniowa;50,209
+web;Chrome;Ameryka P馧nocna;47,925
+web;Chrome;Australia;39,023
+web;Chrome;Azja;96,723
+web;Chrome;Europa;43,859
+web;Chrome;Z這to;1,209
+web;Chrome;Uruchomienie;3,378
+web;Chrome;Afryka;79,652
+web;Chrome;Ameryka Po逝dniowa;50,183
+web;Chrome;Ameryka P馧nocna;48,254
+web;Chrome;Australia;39
+web;Chrome;Azja;97,614
+web;Chrome;Europa;44,066
+web;Chrome;Z這to;0,845
+web;Chrome;Uruchomienie;2,412
+web;Chrome;Afryka;79,577
+web;Chrome;Ameryka Po逝dniowa;50,149
+web;Chrome;Ameryka P馧nocna;54,406
+web;Chrome;Australia;40,393
+web;Chrome;Azja;96,825
+web;Chrome;Europa;43,807
+web;Chrome;Z這to;0,867
+web;Chrome;Uruchomienie;2,393
+web;Chrome;Afryka;76,3
+web;Chrome;Ameryka Po逝dniowa;49,737
+web;Chrome;Ameryka P馧nocna;47,935
+web;Chrome;Australia;38,935
+web;Chrome;Azja;99,817
+web;Chrome;Europa;43,708
+web;Chrome;Z這to;0,84
+web;Chrome;Uruchomienie;2,38
+web;Chrome;Afryka;78,422
+web;Chrome;Ameryka Po逝dniowa;50,174
+web;Chrome;Ameryka P馧nocna;48,702
+web;Chrome;Australia;41,663
+web;Chrome;Azja;96,544
+web;Chrome;Europa;45,607
+web;Chrome;Z這to;0,997
+web;Chrome;Uruchomienie;2,573
+web;Chrome;Afryka;79,019
+web;Chrome;Ameryka Po逝dniowa;49,95
+web;Chrome;Ameryka P馧nocna;48,958
+web;Chrome;Australia;39,287
+web;Chrome;Azja;96,357
+web;Chrome;Europa;44,269
+web;Chrome;Z這to;0,763
+web;Opera;Uruchomienie;3,421
+web;Opera;Afryka;81,226
+web;Opera;Ameryka Po逝dniowa;50,97
+web;Opera;Ameryka P馧nocna;49,215
+web;Opera;Australia;39,828
+web;Opera;Azja;93,54
+web;Opera;Europa;42,51
+web;Opera;Z這to;0,854
+web;Opera;Uruchomienie;2,282
+web;Opera;Afryka;74,477
+web;Opera;Ameryka Po逝dniowa;49,329
+web;Opera;Ameryka P馧nocna;50,266
+web;Opera;Australia;38,098
+web;Opera;Azja;92,853
+web;Opera;Europa;42,132
+web;Opera;Z這to;0,883
+web;Opera;Uruchomienie;2,259
+web;Opera;Afryka;73,587
+web;Opera;Ameryka Po逝dniowa;48,262
+web;Opera;Ameryka P馧nocna;46,949
+web;Opera;Australia;38,105
+web;Opera;Azja;97,59
+web;Opera;Europa;42,221
+web;Opera;Z這to;0,894
+web;Opera;Uruchomienie;2,241
+web;Opera;Afryka;72,367
+web;Opera;Ameryka Po逝dniowa;47,422
+web;Opera;Ameryka P馧nocna;46,795
+web;Opera;Australia;38,717
+web;Opera;Azja;92,654
+web;Opera;Europa;41,324
+web;Opera;Z這to;0,903
+web;Opera;Uruchomienie;2,248
+web;Opera;Afryka;72,904
+web;Opera;Ameryka Po逝dniowa;47,332
+web;Opera;Ameryka P馧nocna;48,08
+web;Opera;Australia;38,619
+web;Opera;Azja;92,085
+web;Opera;Europa;41,806
+web;Opera;Z這to;0,957
+web;Opera;Uruchomienie;2,256
+web;Opera;Afryka;72,104
+web;Opera;Ameryka Po逝dniowa;48,49
+web;Opera;Ameryka P馧nocna;47,094
+web;Opera;Australia;39,123
+web;Opera;Azja;92,591
+web;Opera;Europa;42,667
+web;Opera;Z這to;0,886
+web;Opera;Uruchomienie;2,265
+web;Opera;Afryka;72,818
+web;Opera;Ameryka Po逝dniowa;48,647
+web;Opera;Ameryka P馧nocna;46,527
+web;Opera;Australia;38,114
+web;Opera;Azja;92,137
+web;Opera;Europa;42,673
+web;Opera;Z這to;0,886
+web;Opera;Uruchomienie;2,215
+web;Opera;Afryka;73,31
+web;Opera;Ameryka Po逝dniowa;47,421
+web;Opera;Ameryka P馧nocna;46,954
+web;Opera;Australia;38,994
+web;Opera;Azja;91,081
+web;Opera;Europa;44,612
+web;Opera;Z這to;0,878
+web;Opera;Uruchomienie;2,23
+web;Opera;Afryka;74,514
+web;Opera;Ameryka Po逝dniowa;48,236
+web;Opera;Ameryka P馧nocna;46,945
+web;Opera;Australia;38,001
+web;Opera;Azja;92,589
+web;Opera;Europa;42,621
+web;Opera;Z這to;0,88
+web;Opera;Uruchomienie;2,201
+web;Opera;Afryka;73,199
+web;Opera;Ameryka Po逝dniowa;48,212
+web;Opera;Ameryka P馧nocna;47,523
+web;Opera;Australia;38,053
+web;Opera;Azja;91,91
+web;Opera;Europa;41,308
+web;Opera;Z這to;0,913
+mobile;Chrome;Uruchomienie;21,498
+mobile;Chrome;Afryka;662,534
+mobile;Chrome;Ameryka Po逝dniowa;224,821
+mobile;Chrome;Ameryka P馧nocna;203,818
+mobile;Chrome;Australia;146,187
+mobile;Chrome;Azja;608,289
+mobile;Chrome;Europa;173,642
+mobile;Chrome;Z這to;2,941
+mobile;Chrome;Uruchomienie;22,141
+mobile;Chrome;Afryka;670,783
+mobile;Chrome;Ameryka Po逝dniowa;233,359
+mobile;Chrome;Ameryka P馧nocna;209,62
+mobile;Chrome;Australia;158,778
+mobile;Chrome;Azja;618,833
+mobile;Chrome;Europa;171,442
+mobile;Chrome;Z這to;2,45
+mobile;Chrome;Uruchomienie;22,621
+mobile;Chrome;Afryka;663,562
+mobile;Chrome;Ameryka Po逝dniowa;215,626
+mobile;Chrome;Ameryka P馧nocna;198,91
+mobile;Chrome;Australia;150,048
+mobile;Chrome;Azja;645,433
+mobile;Chrome;Europa;182,601
+mobile;Chrome;Z這to;2,491
+mobile;Chrome;Uruchomienie;22,099
+mobile;Chrome;Afryka;689,802
+mobile;Chrome;Ameryka Po逝dniowa;224,91
+mobile;Chrome;Ameryka P馧nocna;207,701
+mobile;Chrome;Australia;151,377
+mobile;Chrome;Azja;601,462
+mobile;Chrome;Europa;174,595
+mobile;Chrome;Z這to;2,522
+mobile;Chrome;Uruchomienie;22,198
+mobile;Chrome;Afryka;700,699
+mobile;Chrome;Ameryka Po逝dniowa;222,056
+mobile;Chrome;Ameryka P馧nocna;202,28
+mobile;Chrome;Australia;154,794
+mobile;Chrome;Azja;599,583
+mobile;Chrome;Europa;169,341
+mobile;Chrome;Z這to;3,123
+mobile;Chrome;Uruchomienie;24,126
+mobile;Chrome;Afryka;632,698
+mobile;Chrome;Ameryka Po逝dniowa;212,283
+mobile;Chrome;Ameryka P馧nocna;188,207
+mobile;Chrome;Australia;134,379
+mobile;Chrome;Azja;541,084
+mobile;Chrome;Europa;160,103
+mobile;Chrome;Z這to;2,749
+mobile;Chrome;Uruchomienie;20,031
+mobile;Chrome;Afryka;661,095
+mobile;Chrome;Ameryka Po逝dniowa;201,034
+mobile;Chrome;Ameryka P馧nocna;183,613
+mobile;Chrome;Australia;135,989
+mobile;Chrome;Azja;549,676
+mobile;Chrome;Europa;162,104
+mobile;Chrome;Z這to;2,554
+mobile;Chrome;Uruchomienie;20,153
+mobile;Chrome;Afryka;650,199
+mobile;Chrome;Ameryka Po逝dniowa;208,786
+mobile;Chrome;Ameryka P馧nocna;194,152
+mobile;Chrome;Australia;139,104
+mobile;Chrome;Azja;540,162
+mobile;Chrome;Europa;156,745
+mobile;Chrome;Z這to;2,493
+mobile;Chrome;Uruchomienie;20,679
+mobile;Chrome;Afryka;642,91
+mobile;Chrome;Ameryka Po逝dniowa;201,945
+mobile;Chrome;Ameryka P馧nocna;187,317
+mobile;Chrome;Australia;132,56
+mobile;Chrome;Azja;539,799
+mobile;Chrome;Europa;159,352
+mobile;Chrome;Z這to;2,612
+mobile;Chrome;Uruchomienie;19,312
+mobile;Chrome;Afryka;697,686
+mobile;Chrome;Ameryka Po逝dniowa;229,458
+mobile;Chrome;Ameryka P馧nocna;213,168
+mobile;Chrome;Australia;162,902
+mobile;Chrome;Azja;591,674
+mobile;Chrome;Europa;168,086
+mobile;Chrome;Z這to;2,591
 web;IE;Uruchomienie;3,533
 web;IE;Afryka;616,950
 web;IE;Ameryka Po逝dniowa;205,193
