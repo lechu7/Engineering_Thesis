@@ -123,16 +123,29 @@ public abstract class TestControl extends CheckExchange {
 
 				capabilities.setCapability("browserName", "Chrome");
 				capabilities.setCapability("noReset", true);
+				try {
 				// start timer
 				long start = System.nanoTime();
 				driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 				// stop timer
 				long elapsedTime = System.nanoTime() - start;
 				super.saveTimeToCSV(kindOfTests, "Uruchomienie", elapsedTime);
-			}
+				}
+				catch (Exception e) {
+					error = JOptionPane.showOptionDialog(null,
+							"Najprawdopodobnie nie zainstalowano wybranej przegl¹darki: " + browser.toString()+" \nlub nie wykryto telefonu"
+									+ ". \nAplikacja zostanie wy³¹czona.",
+							"B³¹d przegl¹darki " + browser.toString() + ".", JOptionPane.PLAIN_MESSAGE,
+							JOptionPane.ERROR_MESSAGE, null, optionsOK, optionsOK[0]);
+					if (error == JOptionPane.OK_OPTION || error == JOptionPane.CLOSED_OPTION) {
+						System.exit(0);
+					}
+				}
+				
 
 			super.addToLogs("Uruchomiono Chrome", getClass().getName().toString(),
 					Thread.currentThread().getStackTrace()[1].getMethodName(), 81);
+			}
 			break;
 		case Opera:
 			extent.addSystemInfo("Host Name", "PC");
